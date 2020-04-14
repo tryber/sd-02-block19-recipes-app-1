@@ -63,3 +63,16 @@ export function getMealsByArea(area) {
     .then((response) => response.json()
       .then(({ meals }) => meals));
 }
+
+// para testar APIs:
+// { getMealsByName('fish') }
+// { getMealsByFirstLetter('a') }
+// { getMealById(52921) }
+// { getSingleRandomMeal() }
+// { getMealsCategories() }
+// { getMealsCategoriesList() }
+// { getMealsAreasList() }
+// { getMealsIngredientsList() }
+// { getMealsByMainIngredient('chicken_breast') }
+// { getMealsByCategory('Seafood') }
+// { getMealsByArea('Canadian') }
