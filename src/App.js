@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import './App.css';
 import LoginPage from './pages/LoginPage';
 
 function App() {
@@ -11,9 +11,8 @@ function App() {
           <Route exact path="/" component={LoginPage} />
         </Switch>
       </BrowserRouter>
-      </div>
+    </div>
   );
 }
-
 
 export default App;
