@@ -1,0 +1,67 @@
+.login-campo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  font-size: 25px;
+  line-height: 47px;
+  margin: auto;
+}
+
+.login-campo>input {
+  border: 1px solid black;
+  box-sizing: border-box;
+  font-size: 25px;
+  margin: 10px;
+  height: 76px;
+  width: 300px;
+}
+
+.btn-div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-entrar {
+  align-items: center;
+  background: rgb(134, 214, 96);
+  font-size: 20px;
+  height: 55px;
+  margin-top: 10px;
+  width: 300px;
+}
+
+button:disabled {
+  background: rgb(61, 90, 47);
+}
+
+@media (min-width: 486px) and (max-width: 761px) {
+  .btn-entrar {
+    align-items: center;
+    background: rgb(134, 214, 96);
+    color: black;
+    font-size: 35px;
+    height: 70px;
+    margin-top: 30px;
+    width: 440px;
+  }
+
+  button:disabled {
+    background: rgb(61, 90, 47);
+    color: white;
+  }
+
+  .login-campo>input {
+    border: 1px solid black;
+    box-sizing: border-box;
+    font-size: 25px;
+    margin: 15px;
+    height: 76px;
+    width: 440px;
+  }
+
+  .login-campo {
+    padding-top: 40px;
+  }
+}
