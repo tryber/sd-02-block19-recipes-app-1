@@ -23,7 +23,7 @@ class LoginPage extends React.Component {
         <input
           id="email"
           name="email"
-          type="text"
+          type="email"
           data-testid="email-input"
           placeholder=" E-mail"
           onChange={(event) => this.handleChange(event)}
@@ -41,10 +41,11 @@ class LoginPage extends React.Component {
   }
 
   renderEntrarButton() {
+    const mailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
     const { password, email } = this.state;
-    let disabled = false;
-    if (password.length < 6 || email === '') {
-      disabled = true;
+    let disabled = true;
+    if (password.length > 6 && mailRegex.test(email)) {
+      disabled = false;
     }
     return (
       <div className="btn-div">
