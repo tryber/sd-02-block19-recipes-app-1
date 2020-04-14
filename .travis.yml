@@ -14,7 +14,7 @@ cache:
     # we also need to cache folder with Cypress binary
     - ~/.cache
 
- jobs:
+jobs:
   include:
     - stage: Unit testing
       script: npm test -- --coverage --watchAll=false
