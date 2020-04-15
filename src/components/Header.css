@@ -1,7 +1,7 @@
 header {
   display: flex;
   justify-content: space-around;
-  margin: 2rem 5rem 2rem 5rem;
+  margin: 2rem 5rem;
 }
 
 h2 {
@@ -19,6 +19,7 @@ h2 {
 }
 
 @media only screen and ( max-width : 761px ) {
+
   header {
     background-color: rgb(196, 196, 196);
     display: flex;
@@ -26,6 +27,7 @@ h2 {
     margin: 0;
     padding-top: 0.5rem;
   }
+
   .profile-icon {
     margin-right: -12px;
     width: 4rem;
