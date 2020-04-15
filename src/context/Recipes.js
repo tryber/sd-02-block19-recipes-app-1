@@ -7,7 +7,7 @@ const RecipesProvider = ({ children }) => {
   // useState
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [headerTitle, setHeaderTitle] = useState('Receitas');
+  const [headerTitle] = useState('Receitas');
 
   // context 1 - funções
 
