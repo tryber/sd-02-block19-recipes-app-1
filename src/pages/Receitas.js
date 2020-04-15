@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Receitas = () => {
-  return (
-    <div>
-      Receitas
-    </div>
-  );
-};
+const Receitas = () => (
+  <div>
+    Receitas
+  </div>
+);
 
 export default Receitas;
