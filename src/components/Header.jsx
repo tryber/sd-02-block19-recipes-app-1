@@ -10,10 +10,20 @@ const Header = () => {
   return (
     <header>
       <Link to="/perfil">
-        <img src={profileIcon} alt="ícone de perfil" className="profile-icon" />
+        <img
+          src={profileIcon}
+          alt="ícone de perfil"
+          className="profile-icon"
+          data-testid="profile-top-btn"
+        />
       </Link>
-      <h2>{headerTitle}</h2>
-      <img src={searchIcon} alt="lupa de busca" className="search-icon" />
+      <h2 data-testid="page-title">{headerTitle}</h2>
+      <img
+        src={searchIcon}
+        alt="lupa de busca"
+        className="search-icon"
+        data-testid="search-top-btn"
+      />
     </header>
   );
 };
