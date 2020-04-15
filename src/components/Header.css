@@ -1,0 +1,33 @@
+header {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 5rem 2rem 5rem;
+}
+
+h2 {
+  margin: 1rem 0;
+}
+
+.profile-icon {
+  width: 4rem;
+}
+
+.search-icon {
+  height: 3rem;
+  margin-top: 0.5rem;
+  width: 3rem;
+}
+
+@media only screen and ( max-width : 761px ) {
+  header {
+    background-color: rgb(196, 196, 196);
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding-top: 0.5rem;
+  }
+  .profile-icon {
+    margin-right: -12px;
+    width: 4rem;
+  }
+}
