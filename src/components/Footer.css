@@ -1,6 +1,6 @@
 .footer-container {
   background-color: rgb(196, 196, 196);
-  bottom: 0px;
+  bottom: 0;
   box-sizing: border-box;
   display: flex;
   height: 9vh;
@@ -17,5 +17,5 @@
 
 .footer-image {
   height: 75%;
-  margin: 0 10px;
+  padding: 0 10%;
 }
