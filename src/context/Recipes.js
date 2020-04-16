@@ -8,6 +8,9 @@ const RecipesProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [headerTitle] = useState('Receitas');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [search, setSearch] = useState('');
+  const [searchRadio, setSearchRadio] = useState('');
 
   // context 1 - funções
 
@@ -18,6 +21,12 @@ const RecipesProvider = ({ children }) => {
     setEmail,
     setPassword,
     headerTitle,
+    isSearchOpen,
+    setIsSearchOpen,
+    search,
+    setSearch,
+    searchRadio,
+    setSearchRadio,
   };
 
   // render
