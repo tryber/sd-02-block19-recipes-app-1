@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
-import LoginPage from './pages/LoginPage';
 import { RecipesProvider } from './context/Recipes';
+import LoginPage from './pages/LoginPage';
 import Receitas from './pages/Receitas';
 
 function App() {

@@ -1,0 +1,21 @@
+.footer-container {
+  background-color: rgb(196, 196, 196);
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  height: 9vh;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+}
+
+.footer-transparent-button {
+  background: none;
+  border: none;
+  height: 9vh;
+}
+
+.footer-image {
+  height: 75%;
+  padding: 0 10%;
+}
