@@ -11,8 +11,10 @@ const RecipesProvider = ({ children }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [searchRadio, setSearchRadio] = useState('');
+  // const [recipes, setRecipes] = useState([]);
 
   // context 1 - funções
+
 
   // context 2 - export.context
   const contextValues = {

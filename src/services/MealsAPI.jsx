@@ -1,7 +1,7 @@
 export function getMealsByName(name) {
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
     .then((response) => response.json()
-      .then(({ meals }) => meals));
+      .then((data) => data));
 }
 
 export function getMealsByFirstLetter(letter) {

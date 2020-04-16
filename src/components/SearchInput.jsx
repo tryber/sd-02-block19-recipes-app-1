@@ -24,9 +24,9 @@ const SearchInput = () => {
               <input
                 type="radio"
                 data-testid="ingredient-search-radio"
-                value="ingredient"
+                value="i"
                 onChange={({ target: { value } }) => setSearchRadio(value)}
-                checked={searchRadio === 'ingredient'}
+                checked={searchRadio === 'i'}
               />
               Ingrediente
             </label>
@@ -34,9 +34,9 @@ const SearchInput = () => {
               <input
                 type="radio"
                 data-testid="name-search-radio"
-                value="name"
+                value="s"
                 onChange={({ target: { value } }) => setSearchRadio(value)}
-                checked={searchRadio === 'name'}
+                checked={searchRadio === 's'}
               />
               Nome
             </label>
@@ -44,9 +44,9 @@ const SearchInput = () => {
               <input
                 type="radio"
                 data-testid="first-letter-search-radio"
-                value="first-letter"
+                value="f"
                 onChange={({ target: { value } }) => setSearchRadio(value)}
-                checked={searchRadio === 'first-letter'}
+                checked={searchRadio === 'f'}
               />
               Primeira letra
             </label>
