@@ -22,7 +22,7 @@ const RecipesProvider = ({ children }) => {
   const debouncedSearchTerm = useDebounce(search, 600);
 
   const requestOk = (dataJson) => {
-    // console.log(dataJson.meals);
+    console.log(dataJson.meals);
     setFetchResult(dataJson.meals);
     setIsFetching(false);
     setIsError(null);
