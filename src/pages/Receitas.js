@@ -12,10 +12,11 @@ const Receitas = () => {
       if (API === 'themealdb') {
         const { idMeal } = fetchResult[0];
         return <Redirect to={`./receita/${idMeal}`} />;
-      } if (API === 'thecocktaildb') {
-        const { idDrink } = fetchResult[0];
-        return <Redirect to={`./receita/${idDrink}`} />;
       }
+      // if (API === 'thecocktaildb') {
+      //   const { idDrink } = fetchResult[0];
+      //   return <Redirect to={`./receita/${idDrink}`} />;
+      // }
     }
     return fetchResult.length ? <h2>Receitas...</h2> : <h2>Nada encontrado</h2>;
   };
