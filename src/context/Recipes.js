@@ -14,16 +14,18 @@ const RecipesProvider = ({ children }) => {
   const [searchRadio, setSearchRadio] = useState();
   const [isFetching, setIsFetching] = useState(false);
   const [fetchResult, setFetchResult] = useState([]);
+  const [isError, setIsError] = useState(null);
 
   // context 1 - funções
   const requestOk = (dataJson) => {
     console.log(dataJson.meals);
     setFetchResult(dataJson.meals);
     setIsFetching(false);
+    setIsError(null);
   };
 
   const requestFail = (errorMsg) => {
-    setFetchResult(errorMsg);
+    setIsError(errorMsg);
     setIsFetching(false);
   };
 
@@ -46,6 +48,7 @@ const RecipesProvider = ({ children }) => {
     }
   }, [search]);
 
+
   // context 2 - export.context
   const contextValues = {
     email,
@@ -63,6 +66,8 @@ const RecipesProvider = ({ children }) => {
     setIsFetching,
     fetchResult,
     setFetchResult,
+    isError,
+    setIsError,
   };
 
   // render
