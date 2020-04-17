@@ -13,6 +13,7 @@ const RecipesProvider = ({ children }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [search, setSearch] = useState();
   const [searchRadio, setSearchRadio] = useState();
+  const [API] = useState('themealdb');
   const [isFetching, setIsFetching] = useState(false);
   const [fetchResult, setFetchResult] = useState([]);
   const [isError, setIsError] = useState(null);
@@ -21,7 +22,7 @@ const RecipesProvider = ({ children }) => {
   const debouncedSearchTerm = useDebounce(search, 600);
 
   const requestOk = (dataJson) => {
-    console.log(dataJson.meals);
+    // console.log(dataJson.meals);
     setFetchResult(dataJson.meals);
     setIsFetching(false);
     setIsError(null);
@@ -38,7 +39,6 @@ const RecipesProvider = ({ children }) => {
   }, [isSearchOpen]);
 
   useEffect(() => {
-    const API = 'themealdb';
     const stringAPI = `https://www.${API}.com/api/json/v1/1/${searchRadio}=${search}`;
     if (searchRadio && search && debouncedSearchTerm) {
       setIsFetching(true);
@@ -65,6 +65,7 @@ const RecipesProvider = ({ children }) => {
     setSearch,
     searchRadio,
     setSearchRadio,
+    API,
     isFetching,
     setIsFetching,
     fetchResult,
