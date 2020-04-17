@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 
 const RadioItem = ({ id, radioValue, name }) => {
@@ -20,4 +21,9 @@ const RadioItem = ({ id, radioValue, name }) => {
   );
 };
 
+RadioItem.propTypes = {
+  id: propTypes.string.isRequired,
+  radioValue: propTypes.string.isRequired,
+  name: propTypes.string.isRequired,
+};
 export default RadioItem;

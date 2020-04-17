@@ -12,6 +12,6 @@ const Receitas = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default Receitas;
