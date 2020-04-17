@@ -9,7 +9,7 @@ import SearchInput from './SearchInput';
 const Header = () => {
   const { headerTitle, isSearchOpen, setIsSearchOpen } = useContext(RecipesContext);
   return (
-    <>
+    <div>
       <header>
         <Link to="/perfil">
           <img
@@ -33,10 +33,8 @@ const Header = () => {
           />
         </button>
       </header>
-      <div>
-        <SearchInput />
-      </div>
-    </>
+      <div><SearchInput /></div>
+    </div>
   );
 };
 
