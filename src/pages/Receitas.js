@@ -11,7 +11,7 @@ const oneRecipe = (fetchResult) => {
 };
 
 const showRecipes = (fetchResult) => {
-  if (fetchResult === null || !fetchResult.length) return <h2>Nada encontrado.</h2>;
+  if (fetchResult === null) return <h2>Nada encontrado.</h2>;
   if (fetchResult.length > 1) return <div>Receitas...</div>;
   return oneRecipe(fetchResult);
 };
