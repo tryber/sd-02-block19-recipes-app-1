@@ -3,9 +3,7 @@ import { RecipesContext } from '../context/Recipes';
 import './SearchInput.css';
 
 const SearchInput = () => {
-  const {
-    isSearchOpen, search, setSearch, searchRadio, setSearchRadio,
-  } = useContext(RecipesContext);
+  const { isSearchOpen, search, setSearch, setSearchRadio } = useContext(RecipesContext);
   return (
     isSearchOpen
       ? (
@@ -20,33 +18,36 @@ const SearchInput = () => {
             />
           </div>
           <div className="radio-buttons">
-            <label>
+            <label htmlFor="ingredient">
               <input
+                id="ingredient"
                 type="radio"
                 data-testid="ingredient-search-radio"
-                value="ingredient"
+                value="filter.php?i"
                 onChange={({ target: { value } }) => setSearchRadio(value)}
-                checked={searchRadio === 'ingredient'}
+                name="search-options"
               />
               Ingrediente
             </label>
-            <label>
+            <label htmlFor="name">
               <input
+                id="name"
                 type="radio"
                 data-testid="name-search-radio"
-                value="name"
+                value="search.php?s"
                 onChange={({ target: { value } }) => setSearchRadio(value)}
-                checked={searchRadio === 'name'}
+                name="search-options"
               />
               Nome
             </label>
-            <label>
+            <label htmlFor="first-letter">
               <input
+                id="first-letter"
                 type="radio"
                 data-testid="first-letter-search-radio"
-                value="first-letter"
+                value="search.php?f"
                 onChange={({ target: { value } }) => setSearchRadio(value)}
-                checked={searchRadio === 'first-letter'}
+                name="search-options"
               />
               Primeira letra
             </label>

@@ -4,7 +4,7 @@
   box-sizing: border-box;
   display: flex;
   height: 9vh;
-  justify-content: space-between;
+  justify-content: space-around;
   position: absolute;
   width: 100%;
 }
@@ -17,5 +17,4 @@
 
 .footer-image {
   height: 75%;
-  padding: 0 10%;
 }
