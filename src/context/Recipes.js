@@ -15,7 +15,7 @@ const RecipesProvider = ({ children }) => {
   const [searchRadio, setSearchRadio] = useState();
   const [API] = useState('themealdb');
   const [isFetching, setIsFetching] = useState(false);
-  const [fetchResult, setFetchResult] = useState([]);
+  const [fetchResult, setFetchResult] = useState(null);
   const [isError, setIsError] = useState(null);
 
   // context 1 - funções
