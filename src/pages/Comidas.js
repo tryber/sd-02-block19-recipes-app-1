@@ -1,9 +1,23 @@
 import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { RecipesContext } from '../context/Recipes';
 import useFetchAllCategories from '../hooks/useFetchAllCategories';
 import './Comidas.css';
+import RecipesList from '../components/RecipesList';
+
+const oneRecipe = (fetchResult) => {
+  const { idMeal, idDrink } = fetchResult[0];
+  const idRecipe = idMeal || idDrink;
+  return <Redirect to={`./receita/${idRecipe}`} />;
+};
+
+const showRecipes = (fetchResult) => {
+  if (fetchResult === null) return <h2>Nada encontrado.</h2>;
+  if (fetchResult.length > 1) return <RecipesList />;
+  return oneRecipe(fetchResult);
+};
 
 const Comidas = (props) => {
   const { isFetching, fetchResult } = useContext(RecipesContext);
@@ -20,20 +34,14 @@ const Comidas = (props) => {
             key={elem}
             type="button"
             value={elem}
+            
           >
             {elem}
           </button>
         ))}
       </div>
       <div className="MainContainerPage">
-        {isFetching && <h1>Tá buscando</h1>}
-        {fetchResult && fetchResult.map(({ strMeal, strMealThumb, strCategory }) => (
-          <div key={strMeal} className="MainContainerRecipe">
-            <img className="MainImg" src={strMealThumb} alt={strMeal} />
-            <p className="MainCategory">{strCategory}</p>
-            <p className="MainRecipe">{strMeal}</p>
-          </div>
-        ))}
+        {isFetching ? <h2>Buscando...</h2> : showRecipes(fetchResult)}
       </div>
       <Footer />
     </div>

@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import { simpleGetAnything } from '../services/MealsAPI';
+import useDebounce from '../hooks/useDebounce';
 
 const RecipesContext = createContext();
 
@@ -12,11 +13,14 @@ const RecipesProvider = ({ children }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [search, setSearch] = useState();
   const [searchRadio, setSearchRadio] = useState();
-  const [isFetching, setIsFetching] = useState(false);
-  const [fetchResult, setFetchResult] = useState();
+  const [API] = useState('themealdb');
+  const [isFetching, setIsFetching] = useState(true);
+  const [fetchResult, setFetchResult] = useState(null);
   const [isError, setIsError] = useState(null);
 
   // context 1 - funções
+  const debouncedSearchTerm = useDebounce(search, 600);
+
   const requestOk = (dataJson) => {
     setFetchResult(dataJson.meals);
     setIsFetching(false);
@@ -35,7 +39,6 @@ const RecipesProvider = ({ children }) => {
 
   // Random 12 fetch
   useEffect(() => {
-    const API = 'themealdb';
     const stringAPI = `https://www.${API}.com/api/json/v1/1/search.php?s=`;
     setIsFetching(true);
     simpleGetAnything(stringAPI)
@@ -47,10 +50,8 @@ const RecipesProvider = ({ children }) => {
 
   // SearchBar fetch
   useEffect(() => {
-    const API = 'themealdb';
     const stringAPI = `https://www.${API}.com/api/json/v1/1/${searchRadio}=${search}`;
-    setFetchResult(null);
-    if (searchRadio && search) {
+    if (searchRadio && search && debouncedSearchTerm) {
       setIsFetching(true);
       simpleGetAnything(stringAPI)
         .then(
@@ -58,7 +59,7 @@ const RecipesProvider = ({ children }) => {
           (error) => requestFail(error.message),
         );
     }
-  }, [search]);
+  }, [debouncedSearchTerm]);
 
 
   // context 2 - export.context
@@ -75,6 +76,7 @@ const RecipesProvider = ({ children }) => {
     setSearch,
     searchRadio,
     setSearchRadio,
+    API,
     isFetching,
     setIsFetching,
     fetchResult,
