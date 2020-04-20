@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { RecipesContext } from '../context/Recipes';
 
-const Receitas = () => {
+const Bebidas = () => {
   const { isFetching } = useContext(RecipesContext);
   return (
     <div>
@@ -14,4 +14,4 @@ const Receitas = () => {
   );
 };
 
-export default Receitas;
+export default Bebidas;

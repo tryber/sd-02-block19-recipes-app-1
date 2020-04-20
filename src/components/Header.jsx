@@ -33,7 +33,7 @@ const Header = () => {
           />
         </button>
       </header>
-      <div><SearchInput /></div>
+      <SearchInput />
     </div>
   );
 };
