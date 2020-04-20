@@ -24,12 +24,12 @@ const Header = () => {
           style={{ background: 'none', border: 'none', cursor: 'pointer' }}
           type="button"
           onClick={() => (!isSearchOpen ? setIsSearchOpen(true) : setIsSearchOpen(false))}
+          data-testid="search-top-btn"
         >
           <img
             src={searchIcon}
             alt="lupa de busca"
             className="search-icon"
-            data-testid="search-top-btn"
           />
         </button>
       </header>

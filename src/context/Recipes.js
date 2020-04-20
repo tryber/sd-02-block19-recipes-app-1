@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import simpleGetAnything from '../services/MealsAPI';
+import useDebounce from '../hooks/useDebounce';
 
 const RecipesContext = createContext();
 
@@ -12,11 +13,14 @@ const RecipesProvider = ({ children }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [search, setSearch] = useState();
   const [searchRadio, setSearchRadio] = useState();
+  const [API] = useState('themealdb');
   const [isFetching, setIsFetching] = useState(false);
-  const [fetchResult, setFetchResult] = useState([]);
+  const [fetchResult, setFetchResult] = useState(null);
   const [isError, setIsError] = useState(null);
 
   // context 1 - funções
+  const debouncedSearchTerm = useDebounce(search, 600);
+
   const requestOk = (dataJson) => {
     console.log(dataJson.meals);
     setFetchResult(dataJson.meals);
@@ -35,9 +39,8 @@ const RecipesProvider = ({ children }) => {
   }, [isSearchOpen]);
 
   useEffect(() => {
-    const API = 'themealdb';
     const stringAPI = `https://www.${API}.com/api/json/v1/1/${searchRadio}=${search}`;
-    if (searchRadio && search) {
+    if (searchRadio && search && debouncedSearchTerm) {
       setIsFetching(true);
       console.log(stringAPI);
       simpleGetAnything(stringAPI)
@@ -46,7 +49,7 @@ const RecipesProvider = ({ children }) => {
           (error) => requestFail(error.message),
         );
     }
-  }, [search]);
+  }, [debouncedSearchTerm]);
 
 
   // context 2 - export.context
@@ -62,6 +65,7 @@ const RecipesProvider = ({ children }) => {
     setSearch,
     searchRadio,
     setSearchRadio,
+    API,
     isFetching,
     setIsFetching,
     fetchResult,
