@@ -19,7 +19,7 @@ const Header = () => {
             data-testid="profile-top-btn"
           />
         </Link>
-        <h2 data-testid="page-title">{headerTitle}</h2>
+        <h2 className="page-title" data-testid="page-title">{headerTitle}</h2>
         <button
           style={{ background: 'none', border: 'none', cursor: 'pointer' }}
           type="button"

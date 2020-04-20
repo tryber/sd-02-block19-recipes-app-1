@@ -13,7 +13,7 @@ const RecipesProvider = ({ children }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [search, setSearch] = useState();
   const [searchRadio, setSearchRadio] = useState();
-  const [API] = useState('themealdb');
+  const [API, setAPI] = useState('themealdb');
   const [isFetching, setIsFetching] = useState(true);
   const [fetchResult, setFetchResult] = useState(null);
   const [isError, setIsError] = useState(null);
@@ -30,6 +30,13 @@ const RecipesProvider = ({ children }) => {
   const requestFail = (errorMsg) => {
     setIsError(errorMsg);
     setIsFetching(false);
+  };
+
+  // set headerTitle
+  const titleHeader = ({ path }) => {
+    console.log(path);
+    const title = path.split('/')[path.split('/').length - 1];
+    setHeaderTitle(title);
   };
 
   useEffect(() => {
@@ -65,8 +72,8 @@ const RecipesProvider = ({ children }) => {
   // context 2 - export.context
   const contextValues = {
     email,
-    password,
     setEmail,
+    password,
     setPassword,
     headerTitle,
     setHeaderTitle,
@@ -77,12 +84,14 @@ const RecipesProvider = ({ children }) => {
     searchRadio,
     setSearchRadio,
     API,
+    setAPI,
     isFetching,
     setIsFetching,
     fetchResult,
     setFetchResult,
     isError,
     setIsError,
+    titleHeader,
   };
 
   // render
