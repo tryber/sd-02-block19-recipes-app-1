@@ -13,6 +13,7 @@ const RecipesProvider = ({ children }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [search, setSearch] = useState();
   const [searchRadio, setSearchRadio] = useState();
+  const [category, setCategory] = useState([]);
   const [API, setAPI] = useState('themealdb');
   const [isFetching, setIsFetching] = useState(true);
   const [fetchResult, setFetchResult] = useState(null);
@@ -34,9 +35,28 @@ const RecipesProvider = ({ children }) => {
 
   // set headerTitle
   const titleHeader = ({ path }) => {
-    console.log(path);
     const title = path.split('/')[path.split('/').length - 1];
     setHeaderTitle(title);
+  };
+
+  // set fetch on category
+
+  const btnCategory = (param) => {
+    if (param === category) {
+      setFetchResult(null);
+      setCategory(null);
+    }
+    else {
+      setCategory(param);
+      const stringAPI = `https://www.${API}.com/api/json/v1/1/filter.php?c=${param}`;
+      console.log('passei aqui');
+      setIsFetching(true);
+      simpleGetAnything(stringAPI)
+        .then(
+          (dataJson) => requestOk(dataJson),
+          (error) => requestFail(error.message),
+        );
+    }
   };
 
   useEffect(() => {
@@ -54,6 +74,18 @@ const RecipesProvider = ({ children }) => {
         (error) => requestFail(error.message),
       );
   }, []);
+
+  // Categories fetch
+  // useEffect(() => {
+  //   const stringAPI = `https://www.${API}.com/api/json/v1/1/filter.php?c=${category}`;
+  //   console.log('passei aqui');
+  //   setIsFetching(true);
+  //   simpleGetAnything(stringAPI)
+  //     .then(
+  //       (dataJson) => requestOk(dataJson),
+  //       (error) => requestFail(error.message),
+  //     );
+  // }, [category]);
 
   // SearchBar fetch
   useEffect(() => {
@@ -83,6 +115,8 @@ const RecipesProvider = ({ children }) => {
     setSearch,
     searchRadio,
     setSearchRadio,
+    category,
+    setCategory,
     API,
     setAPI,
     isFetching,
@@ -92,6 +126,7 @@ const RecipesProvider = ({ children }) => {
     isError,
     setIsError,
     titleHeader,
+    btnCategory,
   };
 
   // render
