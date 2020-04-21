@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { RecipesContext } from '../context/Recipes';
+import RecipesList from './RecipesList';
 
 const oneRecipe = (fetchResult) => {
   const { idMeal, idDrink } = fetchResult[0];
@@ -12,7 +13,7 @@ const oneRecipe = (fetchResult) => {
 
 const showRecipes = (fetchResult) => {
   if (fetchResult === null) return <h2>Nada encontrado.</h2>;
-  if (fetchResult.length > 1) return <div>Receitas...</div>;
+  if (fetchResult.length > 1) return <RecipesList />;
   return oneRecipe(fetchResult);
 };
 
