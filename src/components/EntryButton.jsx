@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
-import { Link } from 'react-router-dom'; 
-
 
 const handleSubmit = (email) => {
   localStorage.setItem('meals-token', '1');
@@ -16,14 +15,14 @@ const EntryButton = () => {
   return (
     <div className="btn-div">
       <Link to="/receitas/">
-      <button
-        type="button"
-        className="btn-entrar"
-        data-testid="login-submit-btn"
-        disabled={!(password.length > 6 && mailRegex.test(email))}
-        onClick={() => handleSubmit(email)}
-      >
-        Entrar
+        <button
+          type="button"
+          className="btn-entrar"
+          data-testid="login-submit-btn"
+          disabled={!(password.length > 6 && mailRegex.test(email))}
+          onClick={() => handleSubmit(email)}
+        >
+          Entrar
       </button>
       </Link>
     </div>
