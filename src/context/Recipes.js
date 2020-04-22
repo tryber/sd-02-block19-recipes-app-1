@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
-import { simpleGetAnything } from '../services/MealsAPI';
+import { simpleGetAnything, getSingleRandomMeal } from '../services/MealsAPI';
 import useDebounce from '../hooks/useDebounce';
 
 const RecipesContext = createContext();
@@ -20,10 +20,11 @@ const RecipesProvider = ({ children }) => {
   const [isError, setIsError] = useState(null);
 
   // context 1 - funções
-  const debouncedSearchTerm = useDebounce(search, 600);
+  const delayDebounce = 600;
+  const debouncedSearchTerm = useDebounce(search, delayDebounce);
 
   const requestOk = (dataJson) => {
-    setFetchResult(dataJson.meals);
+    setFetchResult(dataJson);
     setIsFetching(false);
     setIsError(null);
   };
@@ -46,14 +47,23 @@ const RecipesProvider = ({ children }) => {
       setFetchResult(null);
       setCategory(null);
     }
-    else {
+    const stringAPI = `https://www.${API}.com/api/json/v1/1/filter.php?c=${param}`;
+    if (param === 'All') {
+      console.log('passei no All');
       setCategory(param);
-      const stringAPI = `https://www.${API}.com/api/json/v1/1/filter.php?c=${param}`;
+      setIsFetching(true);
+      getSingleRandomMeal()
+        .then(
+          (dataJson) => requestOk(dataJson.meals),
+          (error) => requestFail(error.message),
+        );
+    } else {
+      setCategory(param);
       console.log('passei aqui');
       setIsFetching(true);
       simpleGetAnything(stringAPI)
         .then(
-          (dataJson) => requestOk(dataJson),
+          (dataJson) => requestOk(dataJson.meals),
           (error) => requestFail(error.message),
         );
     }
@@ -65,15 +75,15 @@ const RecipesProvider = ({ children }) => {
   }, [isSearchOpen]);
 
   // Random 12 fetch
-  useEffect(() => {
-    const stringAPI = `https://www.${API}.com/api/json/v1/1/search.php?s=`;
-    setIsFetching(true);
-    simpleGetAnything(stringAPI)
-      .then(
-        (dataJson) => requestOk(dataJson),
-        (error) => requestFail(error.message),
-      );
-  }, []);
+  // useEffect(() => {
+  //   const stringAPI = `https://www.${API}.com/api/json/v1/1/search.php?s=`;
+  //   setIsFetching(true);
+  //   simpleGetAnything(stringAPI)
+  //     .then(
+  //       (dataJson) => requestOk(dataJson.meals),
+  //       (error) => requestFail(error.message),
+  //     );
+  // }, []);
 
   // Categories fetch
   // useEffect(() => {
@@ -94,7 +104,7 @@ const RecipesProvider = ({ children }) => {
       setIsFetching(true);
       simpleGetAnything(stringAPI)
         .then(
-          (dataJson) => requestOk(dataJson),
+          (dataJson) => requestOk(dataJson.meals),
           (error) => requestFail(error.message),
         );
     }
@@ -127,6 +137,7 @@ const RecipesProvider = ({ children }) => {
     setIsError,
     titleHeader,
     btnCategory,
+    requestOk,
   };
 
   // render

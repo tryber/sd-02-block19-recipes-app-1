@@ -6,23 +6,23 @@ const useFetchAllCategories = (url) => {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
 
-  const fetchUrl = async () => {
-    try {
-      const response = await axios.get(url);
-      const { meals, cocktails } = response.data;
-      const values = (cocktails, meals).map((elem) => Object.values(elem));
-      values.length = 5;
-      values.unshift(['All']);
-      setData(values);
-    } catch (errorMsg) {
-      setError('Erro ao criar os botões, verifique sua Internet!');
-    }
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const fetchUrl = async () => {
+      try {
+        const response = await axios.get(url);
+        const { meals, cocktails } = response.data;
+        const values = (cocktails, meals).map((elem) => elem.strCategory);
+        values.length = 5;
+        values.unshift('All');
+        setData(values);
+      } catch (errorMsg) {
+        setError('Erro ao criar os botões, verifique sua Internet!');
+      }
+      setLoading(false);
+    };
+
     fetchUrl();
-  }, []);
+  }, [url]);
   return [data, loading, error];
 };
 export default useFetchAllCategories;

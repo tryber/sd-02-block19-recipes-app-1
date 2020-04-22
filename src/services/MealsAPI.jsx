@@ -4,6 +4,12 @@ const simpleGetAnything = (API) => (
       response.json()
         .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))))));
 
+const getSingleRandomMeal = () => (
+  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then((response) => (
+      response.json()
+        .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))))));
+
 const getMealsByName = (name) => (
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
     .then((response) => response.json()
@@ -20,12 +26,6 @@ const getMealsByName = (name) => (
 //     .then((response) => response.json()
 //       .then(({ meals }) => meals))
 // }
-
-// const getSingleRandomMeal = () => (
-//   fetch('https://www.themealdb.com/api/json/v1/1/random.php')
-//     .then((response) => response.json()
-//       .then(({ meals }) => meals))
-// )
 
 // function getMealsCategories() {
 //   fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
@@ -69,4 +69,4 @@ const getMealsByName = (name) => (
 //       .then(({ meals }) => meals))
 // }
 
-export { simpleGetAnything, getMealsByName };
+export { simpleGetAnything, getSingleRandomMeal, getMealsByName };

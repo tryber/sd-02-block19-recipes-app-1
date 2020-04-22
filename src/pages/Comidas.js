@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -6,6 +6,7 @@ import { RecipesContext } from '../context/Recipes';
 import RecipesList from '../components/RecipesList';
 import CategoriesList from '../components/CategoriesList';
 import './Comidas.css';
+import useFetchRandom from '../hooks/useFetchRandom';
 
 const oneRecipe = (fetchResult) => {
   const { idMeal, idDrink } = fetchResult[0];
@@ -21,7 +22,8 @@ const showRecipes = (fetchResult) => {
 
 const Comidas = ({ match }) => {
   const { isFetching, fetchResult, titleHeader } = useContext(RecipesContext);
-  titleHeader(match);
+  useFetchRandom();
+  // titleHeader(match);
   return (
     <div>
       <Header title={match} />
