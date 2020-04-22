@@ -1,0 +1,17 @@
+.radio-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.5rem;
+}
+
+.search-input-container {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.search-input {
+  border: 1px solid black;
+  height: 1.5rem;
+  padding: 0.5rem;
+  width: 90%;
+}
