@@ -3,7 +3,6 @@ import { RecipesContext } from '../context/Recipes';
 
 const RecipesList = () => {
   const { fetchResult } = useContext(RecipesContext);
-  console.log('test', fetchResult);
   return (fetchResult.map(({
     strMeal, strDrink, strMealThumb, strDrinkThumb, strCategory,
   }) => (

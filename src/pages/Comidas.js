@@ -1,12 +1,13 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
+import propTypes from 'prop-types';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { RecipesContext } from '../context/Recipes';
 import RecipesList from '../components/RecipesList';
 import CategoriesList from '../components/CategoriesList';
-import './Comidas.css';
 import useFetchRandom from '../hooks/useFetchRandom';
+import './Comidas.css';
 
 const oneRecipe = (fetchResult) => {
   const { idMeal, idDrink } = fetchResult[0];
@@ -21,9 +22,10 @@ const showRecipes = (fetchResult) => {
 };
 
 const Comidas = ({ match }) => {
+  console.log(typeof match);
   const { isFetching, fetchResult, titleHeader } = useContext(RecipesContext);
   useFetchRandom();
-  // titleHeader(match);
+  titleHeader(match);
   return (
     <div>
       <Header title={match} />
@@ -34,6 +36,10 @@ const Comidas = ({ match }) => {
       <Footer />
     </div>
   );
+};
+
+Comidas.propTypes = {
+  match: propTypes.objectOf(propTypes.object()).isRequired,
 };
 
 export default Comidas;

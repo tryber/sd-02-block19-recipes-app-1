@@ -8,7 +8,7 @@ h2 {
   margin: 1rem 0;
 }
 
-.page-title{
+.page-title {
   text-transform: capitalize;
 }
 
@@ -20,7 +20,7 @@ h2 {
   width: 4rem;
 }
 
-@media only screen and ( max-width : 761px ) {
+@media only screen and (max-width : 761px) {
 
   header {
     background-color: rgb(196, 196, 196);
