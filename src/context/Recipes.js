@@ -49,7 +49,7 @@ const RecipesProvider = ({ children }) => {
           (error) => requestFail(error.message),
         );
     }
-  }, [debouncedSearchTerm]);
+  }, [debouncedSearchTerm, searchRadio]);
 
 
   // context 2 - export.context
