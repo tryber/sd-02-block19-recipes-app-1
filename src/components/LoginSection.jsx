@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { RecipesContext } from '../context/Recipes';
 
-
 const LoginSection = () => {
   const { email, password, setEmail, setPassword } = useContext(RecipesContext);
   return (
