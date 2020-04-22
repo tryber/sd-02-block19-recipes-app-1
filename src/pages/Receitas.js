@@ -3,17 +3,20 @@ import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { RecipesContext } from '../context/Recipes';
+import RecipesList from '../components/RecipesList';
 
-const oneRecipe = (fetchResult) => {
+const OneRecipe = (fetchResult) => {
+  const { setRecipeId } = useContext(RecipesContext);
   const { idMeal, idDrink } = fetchResult[0];
   const idRecipe = idMeal || idDrink;
+  setRecipeId(idRecipe);
   return <Redirect to={`./receita/${idRecipe}`} />;
 };
 
 const showRecipes = (fetchResult) => {
   if (fetchResult === null) return <h2>Nada encontrado.</h2>;
-  if (fetchResult.length > 1) return <div>Receitas...</div>;
-  return oneRecipe(fetchResult);
+  if (fetchResult.length > 1) return <RecipesList />;
+  return OneRecipe(fetchResult);
 };
 
 const Receitas = () => {
