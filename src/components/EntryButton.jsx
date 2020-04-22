@@ -5,7 +5,7 @@ import { RecipesContext } from '../context/Recipes';
 const handleSubmit = (email) => {
   localStorage.setItem('meals-token', '1');
   localStorage.setItem('cocktails-token', '1');
-  localStorage.setItem('user', JSON.stringify({ email: email }));
+  localStorage.setItem('user', JSON.stringify({ email }));
   return true;
 };
 
