@@ -6,7 +6,7 @@ const RecipesList = () => {
   return (fetchResult.map(({
     strMeal, strDrink, strMealThumb, strDrinkThumb, strCategory,
   }) => (
-    <div key={strMeal} className="MainContainerRecipe">
+    <div key={`${strMeal}-${Math.random() * 32}`} className="MainContainerRecipe">
       <img className="MainImg" src={strMealThumb || strDrinkThumb} alt={strMeal || strDrink} />
       <p className="MainCategory">{strCategory}</p>
       <p className="MainRecipe">{strMeal || strDrink}</p>

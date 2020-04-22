@@ -1,0 +1,46 @@
+.MainCategoryButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.MainCategoryButton {
+  background: silver;
+  margin: 1%;
+  width: 30%;
+}
+
+.MainContainerPage {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.MainContainerRecipe {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  margin: 20px 0;
+  width: 42%;
+}
+
+.MainImg {
+  border-radius: 6px;
+  height: auto;
+  width: 100%;
+}
+
+.MainCategory {
+  color: darkgray;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.MainRecipe {
+  color: black;
+  font-size: 18px;
+  line-height: 21px;
+}
