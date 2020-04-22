@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { RecipesContext } from '../context/Recipes';
-import RecipesList from './RecipesList';
+import RecipesList from '../components/RecipesList';
 
 const oneRecipe = (fetchResult) => {
   const { idMeal, idDrink } = fetchResult[0];
