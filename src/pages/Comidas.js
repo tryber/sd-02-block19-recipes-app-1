@@ -22,7 +22,6 @@ const showRecipes = (fetchResult) => {
 };
 
 const Comidas = ({ match }) => {
-  console.log(typeof match);
   const { isFetching, fetchResult, titleHeader } = useContext(RecipesContext);
   useFetchRandom();
   titleHeader(match);
@@ -39,7 +38,7 @@ const Comidas = ({ match }) => {
 };
 
 Comidas.propTypes = {
-  match: propTypes.objectOf(propTypes.object()).isRequired,
+  match: propTypes.instanceOf(Object).isRequired,
 };
 
 export default Comidas;

@@ -20,8 +20,7 @@ h2 {
   width: 4rem;
 }
 
-@media only screen and (max-width : 761px) {
-
+@media only screen and ( max-width : 761px ) {
   header {
     background-color: rgb(196, 196, 196);
     display: flex;
