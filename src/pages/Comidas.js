@@ -13,7 +13,7 @@ const Comidas = ({ match }) => {
   const [data] = useFetchRandom(match);
   return (
     <div>
-      <Header data-testid="header"  />
+      <Header data-testid="header" />
       <CategoriesList random={data} match={match} data-testid="categories-component" />
       <div className="MainContainerPage">
         {isFetching ? <h2>Buscando...</h2> : <ShowRecipes />}
