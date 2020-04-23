@@ -17,7 +17,7 @@ const RecipesProvider = ({ children }) => {
   const [isFetching, setIsFetching] = useState(false);
   const [fetchResult, setFetchResult] = useState(null);
   const [isError, setIsError] = useState(null);
-  const [recipeId, setRecipeId] = useState('');
+  const [recipeId, setRecipeId] = useState();
 
   // context 1 - funções
   const debouncedSearchTerm = useDebounce(search, 600);
@@ -40,10 +40,9 @@ const RecipesProvider = ({ children }) => {
   }, [isSearchOpen]);
 
   useEffect(() => {
-    const stringAPI = `https://www.${API}.com/api/json/v1/1/${searchRadio}=${search}`;
     if (searchRadio && search && debouncedSearchTerm) {
+      const stringAPI = `https://www.${API}.com/api/json/v1/1/${searchRadio}=${search}`;
       setIsFetching(true);
-      console.log(stringAPI);
       simpleGetAnything(stringAPI)
         .then(
           (dataJson) => requestOk(dataJson),
@@ -53,14 +52,15 @@ const RecipesProvider = ({ children }) => {
   }, [debouncedSearchTerm, searchRadio]);
 
   useEffect(() => {
-    const detailsAPI = `https://www.${API}.com/api/json/v1/1/lookup.php?i=${recipeId}`;
-    setIsFetching(true);
-    console.log(detailsAPI);
-    simpleGetAnything(detailsAPI)
-      .then(
-        (dataJson) => requestOk(dataJson),
-        (error) => requestFail(error.message),
-      );
+    if (recipeId) {
+      const detailsAPI = `https://www.${API}.com/api/json/v1/1/lookup.php?i=${recipeId}`;
+      setIsFetching(true);
+      simpleGetAnything(detailsAPI)
+        .then(
+          (dataJson) => requestOk(dataJson),
+          (error) => requestFail(error.message),
+        );
+    }
   }, [recipeId]);
 
   // context 2 - export.context

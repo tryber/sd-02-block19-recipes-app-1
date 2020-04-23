@@ -17,16 +17,23 @@
 .header-section {
   display: flex;
   justify-content: space-between;
-  margin: 0.5rem;
+  margin: 1rem;
 }
 
 h1 {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  margin-top: 2rem;
 }
 
 h3 {
-  font-size: 1.5rem;
+  color: rgb(169, 169, 169);
+  font-size: 1.2rem;
 }
 
 .title-section h1 , .title-section h3 {
@@ -43,7 +50,6 @@ h3 {
   cursor: pointer;
   height: 26px;
   margin: 0.5rem;
-  padding: 1rem;
   padding-bottom: 0px;
   padding-left: 0px;
   padding-top: 0px;
@@ -53,4 +59,19 @@ h3 {
 
 .icons {
   width: 1.625rem;
+}
+
+.ingredients-section , .instructions-section {
+  margin: 1rem;
+}
+
+.gray {
+  background-color: rgb(236, 236, 236);
+  list-style-type: none;
+  margin-top: 0.5rem;
+  padding: 1rem;
+}
+
+.recomendations-section h2 {
+  margin-left: 1rem;
 }

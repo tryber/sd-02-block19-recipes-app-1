@@ -38,6 +38,8 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
             strDrinkThumb,
             strCategory,
             strAlcoholic,
+            strInstructions,
+            strYoutube,
           }) => (
               <article className="details-page" key={strMeal || strDrink}>
                 <section className="top-image-section">
@@ -65,7 +67,26 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                 </section>
                 <section className="ingredients-section">
                   <h2>Ingredients</h2>
-                  {ingredientsList.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}
+                  <div className="gray">
+                    {ingredientsList.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}
+                  </div>
+                </section>
+                <section className="instructions-section">
+                  <h2>Instructions</h2>
+                  <p className="gray">{strInstructions}</p>
+                </section>
+                <section className="video-section">
+                  <iframe
+                    title="recipe video"
+                    src={`https://youtube.com/embed/${strYoutube.split('=')[1]}`}
+                    width="100%"
+                    height="200px"
+                    allowFullScreen
+                    frameBorder="0"
+                  />
+                </section>
+                <section className="recomendations-section">
+                  <h2>Recomendations</h2>
                 </section>
               </article>
             ))}
