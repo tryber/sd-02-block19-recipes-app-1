@@ -8,23 +8,23 @@ import CategoriesList from '../components/CategoriesList';
 import useFetchRandom from '../hooks/useFetchRandom';
 import './MainPage.css';
 
-const Comidas = ({ match }) => {
+const Bebidas = ({ match }) => {
   const { isFetching } = useContext(RecipesContext);
   const [data] = useFetchRandom(match);
   return (
     <div>
-      <Header data-testid="header"  />
-      <CategoriesList random={data} match={match} data-testid="categories-component" />
+      <Header />
+      <CategoriesList random={data} match={match} />
       <div className="MainContainerPage">
         {isFetching ? <h2>Buscando...</h2> : <ShowRecipes />}
       </div>
-      <Footer data-testid="footer" />
+      <Footer />
     </div>
   );
 };
 
-Comidas.propTypes = {
+Bebidas.propTypes = {
   match: propTypes.instanceOf(Object).isRequired,
 };
 
-export default Comidas;
+export default Bebidas;
