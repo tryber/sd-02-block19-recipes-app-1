@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
+import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 import useFetchAllCategories from '../hooks/useFetchAllCategories';
 
-const CategoriesList = () => {
+const CategoriesList = ({ random }) => {
   const { API, btnCategory } = useContext(RecipesContext);
   const allCategories = `https://www.${API}.com/api/json/v1/1/list.php?c=list`;
   const [data, loading, error] = useFetchAllCategories(allCategories);
@@ -15,7 +16,7 @@ const CategoriesList = () => {
           key={elem}
           type="button"
           data-testid={`${elem}-category-filter`}
-          onClick={() => btnCategory(elem)}
+          onClick={() => btnCategory(elem, random)}
           value={elem}
         >
           {elem}
@@ -23,6 +24,14 @@ const CategoriesList = () => {
       ))}
     </div>
   );
+};
+
+CategoriesList.propTypes = {
+  random: propTypes.instanceOf(Object),
+};
+
+CategoriesList.defaultProps = {
+  random: [],
 };
 
 export default CategoriesList;

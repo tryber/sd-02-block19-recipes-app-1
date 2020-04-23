@@ -10,8 +10,9 @@ const useFetchAllCategories = (url) => {
     const fetchUrl = async () => {
       try {
         const response = await axios.get(url);
-        const { meals, cocktails } = response.data;
-        const values = (cocktails, meals).map((elem) => elem.strCategory);
+        const { meals, drinks } = response.data;
+        console.log(response.data);
+        const values = (drinks || meals).map((elem) => elem.strCategory);
         values.length = 5;
         values.unshift('All');
         setData(values);

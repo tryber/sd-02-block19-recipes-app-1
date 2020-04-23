@@ -29,7 +29,7 @@ const showRecipes = (fetchResult = null) => {
 // };
 
 
-const Comidas = ({ match }) => {
+const Bebidas = ({ match }) => {
   const { isFetching, fetchResult, setHeaderTitle, setAPI, setFetchResult } = useContext(RecipesContext);
   useEffect(() => {
     console.log(match.path);
@@ -51,8 +51,8 @@ const Comidas = ({ match }) => {
   );
 };
 
-Comidas.propTypes = {
+Bebidas.propTypes = {
   match: propTypes.instanceOf(Object).isRequired,
 };
 
-export default Comidas;
+export default Bebidas;

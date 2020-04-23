@@ -4,7 +4,7 @@ import './App.css';
 import { RecipesProvider } from './context/Recipes';
 import LoginPage from './pages/LoginPage';
 import Comidas from './pages/Comidas';
-// import Bebidas from './pages/Bebidas';
+import Bebidas from './pages/Bebidas';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={LoginPage} />
             <Route exact path="/receitas/comidas" component={Comidas} />
-            <Route exact path="/receitas/bebidas" component={Comidas} />
+            <Route exact path="/receitas/bebidas" component={Bebidas} />
           </Switch>
         </BrowserRouter>
       </div>

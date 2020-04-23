@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
-import { simpleGetAnything, getSingleRandomMeal } from '../services/MealsAPI';
+import { simpleGetAnything } from '../services/MealsAPI';
 import useDebounce from '../hooks/useDebounce';
 
 const RecipesContext = createContext();
@@ -9,7 +9,7 @@ const RecipesProvider = ({ children }) => {
   // useState
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [headerTitle, setHeaderTitle] = useState('Comidas');
+  const [headerTitle, setHeaderTitle] = useState('comidas');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [search, setSearch] = useState();
   const [searchRadio, setSearchRadio] = useState();
@@ -20,8 +20,7 @@ const RecipesProvider = ({ children }) => {
   const [isError, setIsError] = useState(null);
 
   // context 1 - funções
-  const delayDebounce = 600;
-  const debouncedSearchTerm = useDebounce(search, delayDebounce);
+  const debouncedSearchTerm = useDebounce(search, 600);
 
   const requestOk = (dataJson) => {
     setFetchResult(dataJson);
@@ -34,38 +33,28 @@ const RecipesProvider = ({ children }) => {
     setIsFetching(false);
   };
 
-  // set headerTitle
-  const titleHeader = ({ path }) => {
-    const title = path.split('/')[path.split('/').length - 1];
-    setHeaderTitle(title);
+  const callTemplateFetch = (stringAPI) => {
+    simpleGetAnything(stringAPI)
+      .then(
+        (dataJson) => requestOk(dataJson.meals || dataJson.drinks),
+        (error) => requestFail(error.message),
+      );
   };
 
-  // set fetch on category
-
-  const btnCategory = (param) => {
+  const btnCategory = (param, random) => {
     if (param === category) {
       setFetchResult(null);
       setCategory(null);
-    }
-    const stringAPI = `https://www.${API}.com/api/json/v1/1/filter.php?c=${param}`;
-    if (param === 'All') {
-      console.log('passei no All');
+    } else if (param === 'All') {
       setCategory(param);
       setIsFetching(true);
-      getSingleRandomMeal()
-        .then(
-          (dataJson) => requestOk(dataJson.meals),
-          (error) => requestFail(error.message),
-        );
+      setFetchResult(random);
+      setIsFetching(false);
     } else {
+      const stringAPI = `https://www.${API}.com/api/json/v1/1/filter.php?c=${param}`;
       setCategory(param);
-      console.log('passei aqui');
       setIsFetching(true);
-      simpleGetAnything(stringAPI)
-        .then(
-          (dataJson) => requestOk(dataJson.meals),
-          (error) => requestFail(error.message),
-        );
+      callTemplateFetch(stringAPI);
     }
   };
 
@@ -74,42 +63,14 @@ const RecipesProvider = ({ children }) => {
     setSearchRadio('');
   }, [isSearchOpen]);
 
-  // Random 12 fetch
-  // useEffect(() => {
-  //   const stringAPI = `https://www.${API}.com/api/json/v1/1/search.php?s=`;
-  //   setIsFetching(true);
-  //   simpleGetAnything(stringAPI)
-  //     .then(
-  //       (dataJson) => requestOk(dataJson.meals),
-  //       (error) => requestFail(error.message),
-  //     );
-  // }, []);
-
-  // Categories fetch
-  // useEffect(() => {
-  //   const stringAPI = `https://www.${API}.com/api/json/v1/1/filter.php?c=${category}`;
-  //   console.log('passei aqui');
-  //   setIsFetching(true);
-  //   simpleGetAnything(stringAPI)
-  //     .then(
-  //       (dataJson) => requestOk(dataJson),
-  //       (error) => requestFail(error.message),
-  //     );
-  // }, [category]);
-
   // SearchBar fetch
   useEffect(() => {
     const stringAPI = `https://www.${API}.com/api/json/v1/1/${searchRadio}=${search}`;
     if (searchRadio && search && debouncedSearchTerm) {
       setIsFetching(true);
-      simpleGetAnything(stringAPI)
-        .then(
-          (dataJson) => requestOk(dataJson.meals),
-          (error) => requestFail(error.message),
-        );
+      callTemplateFetch(stringAPI);
     }
-  }, [debouncedSearchTerm, searchRadio]);
-
+  }, [debouncedSearchTerm]);
 
   // context 2 - export.context
   const contextValues = {
@@ -135,9 +96,11 @@ const RecipesProvider = ({ children }) => {
     setFetchResult,
     isError,
     setIsError,
-    titleHeader,
+    //    titleHeader,
     btnCategory,
     requestOk,
+    requestFail,
+    debouncedSearchTerm,
   };
 
   // render
