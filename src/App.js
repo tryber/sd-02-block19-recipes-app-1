@@ -9,7 +9,7 @@ import Comidas from './pages/Comidas';
 function App() {
   return (
     <RecipesProvider>
-      <div className="App">
+      <div className="App" data-testid="App">
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={LoginPage} />
