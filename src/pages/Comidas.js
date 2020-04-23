@@ -28,7 +28,7 @@ const Comidas = ({ match }) => {
   return (
     <div>
       <Header title={match} data-testid="header" />
-      <CategoriesList data-testid="categories-component"/>
+      <CategoriesList data-testid="categories-component" />
       <div className="MainContainerPage">
         {isFetching ? <h2>Buscando...</h2> : showRecipes(fetchResult)}
       </div>
