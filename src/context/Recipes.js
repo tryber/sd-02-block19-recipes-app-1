@@ -96,7 +96,6 @@ const RecipesProvider = ({ children }) => {
     setFetchResult,
     isError,
     setIsError,
-    //    titleHeader,
     btnCategory,
     requestOk,
     requestFail,
