@@ -13,11 +13,11 @@ const RecipesProvider = ({ children }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [search, setSearch] = useState();
   const [searchRadio, setSearchRadio] = useState();
-  const [API] = useState('themealdb');
+  const [API, setAPI] = useState('themealdb');
   const [isFetching, setIsFetching] = useState(false);
   const [fetchResult, setFetchResult] = useState(null);
   const [isError, setIsError] = useState(null);
-  const [recipeId, setRecipeId] = useState(null);
+  const [recipeId, setRecipeId] = useState('');
 
   // context 1 - funções
   const debouncedSearchTerm = useDebounce(search, 600);
@@ -77,6 +77,7 @@ const RecipesProvider = ({ children }) => {
     searchRadio,
     setSearchRadio,
     API,
+    setAPI,
     isFetching,
     setIsFetching,
     fetchResult,

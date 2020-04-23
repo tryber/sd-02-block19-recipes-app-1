@@ -1,0 +1,56 @@
+.details-page {
+  box-sizing: border-box;
+}
+
+.top-image-section {
+  height: 155px;
+  overflow: hidden;
+  position: relative;
+}
+
+.top-image {
+  position: absolute;
+  top: -50%;
+  width: 100%;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+.title-section h1 , .title-section h3 {
+  margin-top: 0;
+}
+
+.icons-section {
+  display: flex;
+}
+
+.icon-button {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%;
+  border: medium none;
+  cursor: pointer;
+  height: 26px;
+  margin: 0.5rem;
+  padding: 1rem;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  width: 26px;
+}
+
+.icons {
+  width: 1.625rem;
+}

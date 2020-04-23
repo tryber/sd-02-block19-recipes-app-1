@@ -6,11 +6,10 @@ import { RecipesContext } from '../context/Recipes';
 import RecipesList from '../components/RecipesList';
 
 const OneRecipe = (fetchResult) => {
-  const { setRecipeId } = useContext(RecipesContext);
   const { idMeal, idDrink } = fetchResult[0];
   const idRecipe = idMeal || idDrink;
-  setRecipeId(idRecipe);
-  return <Redirect to={`./receita/${idRecipe}`} />;
+  const type = idMeal ? 'comidas' : 'bebidas';
+  return <Redirect to={`./receitas/${type}/${idRecipe}`} />;
 };
 
 const showRecipes = (fetchResult) => {
@@ -20,7 +19,12 @@ const showRecipes = (fetchResult) => {
 };
 
 const Receitas = () => {
-  const { isFetching, fetchResult } = useContext(RecipesContext);
+  const { isFetching, fetchResult, setRecipeId } = useContext(RecipesContext);
+
+  if (fetchResult && fetchResult.length === 1) {
+    const { idMeal, idDrink } = fetchResult[0];
+    setRecipeId(idMeal || idDrink);
+  }
 
   return (
     <div>
