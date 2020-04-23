@@ -33,7 +33,7 @@ const Header = () => {
           />
         </button>
       </header>
-      <SearchInput />
+      <SearchInput data-testid="search-input"/>
     </div>
   );
 };

@@ -32,7 +32,7 @@ const Comidas = ({ match }) => {
       <div className="MainContainerPage">
         {isFetching ? <h2>Buscando...</h2> : showRecipes(fetchResult)}
       </div>
-      <Footer />
+      <Footer data-testid="footer" />
     </div>
   );
 };

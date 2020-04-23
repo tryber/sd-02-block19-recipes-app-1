@@ -31,7 +31,10 @@ describe('Testa a página de comidas', () => {
     
     const pageHeader = getByTestId('header');
     const categories = getByTestId('categories-component');
+    const pageFooter = getByTestId('footer');
     expect(pageHeader).toBeinTheDocument();
     expect(categories).toBeinTheDocument();
+    expect(pageFooter).toBeinTheDocument();
+    
   });
 });
