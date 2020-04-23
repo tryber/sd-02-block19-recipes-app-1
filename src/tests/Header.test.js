@@ -48,7 +48,6 @@ describe('Testa o componente Header', () => {
     );
 
     const searchButton = getByTestId('search-top-btn');
-    const searchInput = getByTestId('search-input');
     expect(searchButton).toBeInTheDocument();
     expect(searchButton.tagName).toBe('BUTTON');
     expect(searchButton.click).toBeTruthy();
