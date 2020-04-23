@@ -4,7 +4,6 @@ import { createMemoryHistory } from 'history';
 import { RecipesProvider } from '../context/Recipes';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import Header from '../components/Header';
-import SearchInput from '../components/SearchInput';
 
 afterEach(cleanup);
 
