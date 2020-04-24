@@ -7,15 +7,17 @@ import Bebidas from './pages/Bebidas';
 
 function App() {
   return (
-    <RecipesProvider>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={LoginPage} />
-          <Route exact path="/receitas/comidas" component={Comidas} />
-          <Route exact path="/receitas/bebidas" component={Bebidas} />
-        </Switch>
-      </BrowserRouter>
-    </RecipesProvider>
+    <div className="App" data-testid="App">
+      <RecipesProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={LoginPage} />
+            <Route exact path="/receitas/comidas" component={Comidas} />
+            <Route exact path="/receitas/bebidas" component={Bebidas} />
+          </Switch>
+        </BrowserRouter>
+      </RecipesProvider>
+    </div>
   );
 }
 
