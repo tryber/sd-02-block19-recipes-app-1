@@ -7,8 +7,9 @@ class ReceitaButton extends React.Component {
         <Link>
           <button
             className="button-receita"
+            data-testid="start-recipe-btn"
           >
-            
+
           </button>
         </Link>
       </div>
