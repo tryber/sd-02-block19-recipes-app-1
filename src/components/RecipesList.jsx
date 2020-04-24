@@ -2,22 +2,17 @@ import React, { useContext } from 'react';
 import { RecipesContext } from '../context/Recipes';
 
 const RecipesList = () => {
+
   const { fetchResult, setRecipeId } = useContext(RecipesContext);
   return (fetchResult.map(({
-    idMeal,
-    IdDrink,
-    strMeal,
-    strDrink,
-    strMealThumb,
-    strDrinkThumb,
-    strCategory,
+    idMeal, idDrink, strMeal = '', strDrink = '', strMealThumb = '', strDrinkThumb = '', strCategory,
   }) => (
     <button
-      key={strMeal}
+      key={`${strMeal}-${Math.random() * 32}`}
       style={{ background: 'none', border: 'none', cursor: 'pointer' }}
       type="button"
       className="MainContainerRecipe"
-      onClick={() => setRecipeId(idMeal || IdDrink)}
+      onClick={() => setRecipeId(idMeal || idDrink)}
     >
       <img className="MainImg" src={strMealThumb || strDrinkThumb} alt={strMeal || strDrink} />
       <p className="MainCategory">{strCategory}</p>

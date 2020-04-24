@@ -8,6 +8,10 @@ h2 {
   margin: 1rem 0;
 }
 
+.page-title {
+  text-transform: capitalize;
+}
+
 .profile-icon {
   width: 4rem;
 }

@@ -4,83 +4,69 @@ const simpleGetAnything = (API) => (
       response.json()
         .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))))));
 
-// export function getMealsByName(name) {
-//   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
-//     .then((response) => response.json()
-//       .then(({ meals }) => meals));
-// }
+const getSingleRandomMeal = () => (
+  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then((response) => (
+      response.json()
+        .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))))));
 
-// export function getMealsByFirstLetter(letter) {
+const getMealsByName = (name) => (
+  fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
+    .then((response) => response.json()
+      .then(({ meals }) => meals)));
+
+// function getMealsByFirstLetter(letter) {
 //   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`)
 //     .then((response) => response.json()
-//       .then(({ meals }) => meals));
+//       .then(({ meals }) => meals))
 // }
 
-// export function getMealById(id) {
+// function getMealById(id) {
 //   fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
 //     .then((response) => response.json()
-//       .then(({ meals }) => meals));
+//       .then(({ meals }) => meals))
 // }
 
-// export function getSingleRandomMeal() {
-//   fetch('https://www.themealdb.com/api/json/v1/1/random.php')
-//     .then((response) => response.json()
-//       .then(({ meals }) => meals));
-// }
-
-// export function getMealsCategories() {
+// function getMealsCategories() {
 //   fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
 //     .then((response) => response.json()
-//       .then(({ categories }) => categories));
+//       .then(({ categories }) => categories))
 // }
 
-// export function getMealsCategoriesList() {
+// function getMealsCategoriesList() {
 //   fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
 //     .then((response) => response.json()
-//       .then(({ meals }) => meals));
+//       .then(({ meals }) => meals))
 // }
 
-// export function getMealsAreasList() {
+// function getMealsAreasList() {
 //   fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list')
 //     .then((response) => response.json()
-//       .then(({ meals }) => meals));
+//       .then(({ meals }) => meals))
 // }
 
-// export function getMealsIngredientsList() {
+// function getMealsIngredientsList() {
 //   fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list')
 //     .then((response) => response.json()
-//       .then(({ meals }) => meals));
+//       .then(({ meals }) => meals))
 // }
 
-// export function getMealsByMainIngredient(ingredient) {
+// function getMealsByMainIngredient(ingredient) {
 //   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
 //     .then((response) => response.json()
-//       .then(({ meals }) => meals));
+//       .then(({ meals }) => meals))
 // }
 
-// export function getMealsByCategory(category) {
+// function getMealsByCategory(category) {
 //   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
 //     .then((response) => response.json()
-//       .then(({ meals }) => meals));
+//       .then(({ meals }) => meals))
 // }
 
-// export function getMealsByArea(area) {
+// function getMealsByArea(area) {
 //   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`)
 //     .then((response) => response.json()
-//       .then(({ meals }) => meals));
+//       .then(({ meals }) => meals))
 // }
 
-// para testar APIs:
-// { getMealsByName('fish') }
-// { getMealsByFirstLetter('a') }
-// { getMealById(52921) }
-// { getSingleRandomMeal() }
-// { getMealsCategories() }
-// { getMealsCategoriesList() }
-// { getMealsAreasList() }
-// { getMealsIngredientsList() }
-// { getMealsByMainIngredient('chicken_breast') }
-// { getMealsByCategory('Seafood') }
-// { getMealsByArea('Canadian') }
-
-export default simpleGetAnything;
+export { simpleGetAnything, getSingleRandomMeal, getMealsByName };
