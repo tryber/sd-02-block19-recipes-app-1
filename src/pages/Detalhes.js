@@ -52,8 +52,8 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
               </section>
               <section className="header-section">
                 <section className="title-section">
-                  <h1>{strMeal || strDrink}</h1>
-                  <h3>{strCategory || strAlcoholic}</h3>
+                  <h1 className="recipe-title">{strMeal || strDrink}</h1>
+                  <h3 className="recipe-subtitle">{strCategory || strAlcoholic}</h3>
                 </section>
                 <section className="icons-section">
                   <button
