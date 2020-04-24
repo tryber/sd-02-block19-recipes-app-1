@@ -1,0 +1,21 @@
+.ExplorarContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.ExplorarLink {
+  width: 90%;
+}
+
+.ExplorarBtn {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  font-size: 32px;
+  height: 15vh;
+  margin: 20px 0;
+  width: 100%;
+}
