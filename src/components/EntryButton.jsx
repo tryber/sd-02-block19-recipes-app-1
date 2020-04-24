@@ -14,7 +14,7 @@ const EntryButton = () => {
   const mailRegex = /^[a-zA-Z0-9\-_]+(\.[a-zA-Z0-9\-_]+)*@[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)*\.[a-z]{2,4}$/;
   return (
     <div className="btn-div">
-      <Link to="/receitas/">
+      <Link to="/receitas/comidas">
         <button
           type="button"
           className="btn-entrar"
@@ -23,7 +23,7 @@ const EntryButton = () => {
           onClick={() => handleSubmit(email)}
         >
           Entrar
-      </button>
+        </button>
       </Link>
     </div>
   );
