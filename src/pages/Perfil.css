@@ -1,0 +1,19 @@
+p {
+  align-items: flex-end;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  line-height: 29px;
+  text-align: center;
+}
+
+.rectangles {
+  align-items: center;
+  background: silver;
+  border-radius: 4px;
+  justify-content: center;
+  left: 16px;
+  margin: 10px;
+  padding: 1px;
+  top: 184px;
+  width: 329px;
+}

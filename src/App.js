@@ -4,6 +4,8 @@ import { RecipesProvider } from './context/Recipes';
 import LoginPage from './pages/LoginPage';
 import Receitas from './pages/Receitas';
 import Detalhes from './pages/Detalhes';
+import Perfil from './pages/Perfil';
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
             <Route exact path="/" component={LoginPage} />
             <Route exact path="/receitas" component={Receitas} />
             <Route exact path="/receitas/:type/:id" component={Detalhes} />
+            <Route exact path="/perfil" component={Perfil} />
           </Switch>
         </BrowserRouter>
       </div>
