@@ -30,6 +30,7 @@ const RecipesProvider = ({ children }) => {
   };
 
   const requestFail = (errorMsg) => {
+    setFetchResult(null);
     setIsError(errorMsg);
     setIsFetching(false);
   };
@@ -84,7 +85,7 @@ const RecipesProvider = ({ children }) => {
       setIsFetching(true);
       simpleGetAnything(detailsAPI)
         .then(
-          (dataJson) => requestOk(dataJson),
+          ({ meals, drinks }) => requestOk(meals || drinks),
           (error) => requestFail(error.message),
         );
     }

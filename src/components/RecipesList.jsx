@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { RecipesContext } from '../context/Recipes';
 
 const RecipesList = () => {
-
   const { fetchResult, setRecipeId } = useContext(RecipesContext);
   return (fetchResult.map(({
     idMeal, idDrink, strMeal = '', strDrink = '', strMealThumb = '', strDrinkThumb = '', strCategory,
