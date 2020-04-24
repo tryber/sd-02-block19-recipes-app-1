@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, MemoryRouter } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import { RecipesProvider } from '../context/Recipes';
 import { render, cleanup, fireEvent } from '@testing-library/react';
+import { RecipesProvider } from '../context/Recipes';
 import LoginPage from '../pages/LoginPage';
 
 afterEach(cleanup);
@@ -14,7 +14,7 @@ describe('Testa a página de login', () => {
         <MemoryRouter>
           <LoginPage />
         </MemoryRouter>
-      </RecipesProvider>
+      </RecipesProvider>,
     );
 
     const emailInput = getByTestId('email-input');
@@ -40,7 +40,7 @@ describe('Testa a página de login', () => {
         <Router history={history}>
           <LoginPage />
         </Router>
-      </RecipesProvider>
+      </RecipesProvider>,
     );
 
     const emailInput = getByTestId('email-input');

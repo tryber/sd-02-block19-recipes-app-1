@@ -9,7 +9,7 @@ class ReceitaButton extends React.Component {
             className="button-receita"
             data-testid="start-recipe-btn"
           >
-
+            
           </button>
         </Link>
       </div>
