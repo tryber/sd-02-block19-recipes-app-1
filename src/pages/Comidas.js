@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -9,7 +9,7 @@ const OneRecipe = (fetchResult) => {
   const { idMeal, idDrink } = fetchResult[0];
   const idRecipe = idMeal || idDrink;
   const type = idMeal ? 'comidas' : 'bebidas';
-  return <Redirect to={`./receitas/${type}/${idRecipe}`} />;
+  return <Redirect to={`/receitas/${type}/${idRecipe}`} />;
 };
 
 const showRecipes = (fetchResult) => {
@@ -18,13 +18,15 @@ const showRecipes = (fetchResult) => {
   return OneRecipe(fetchResult);
 };
 
-const Receitas = () => {
+const Comidas = () => {
   const { isFetching, fetchResult, setRecipeId } = useContext(RecipesContext);
 
-  if (fetchResult && fetchResult.length === 1) {
-    const { idMeal, idDrink } = fetchResult[0];
-    setRecipeId(idMeal || idDrink);
-  }
+  useEffect(() => {
+    if (fetchResult && fetchResult.length === 1) {
+      const { idMeal, idDrink } = fetchResult[0];
+      setRecipeId(idMeal || idDrink);
+    }
+  }, []);
 
   return (
     <div>
@@ -35,4 +37,4 @@ const Receitas = () => {
   );
 };
 
-export default Receitas;
+export default Comidas;

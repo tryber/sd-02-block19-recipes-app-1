@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { RecipesProvider } from './context/Recipes';
 import LoginPage from './pages/LoginPage';
-import Receitas from './pages/Receitas';
+import Comidas from './pages/Comidas';
 import Detalhes from './pages/Detalhes';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={LoginPage} />
-            <Route exact path="/receitas" component={Receitas} />
+            <Route exact path="/receitas/:type" component={Comidas} />
             <Route exact path="/receitas/:type/:id" component={Detalhes} />
           </Switch>
         </BrowserRouter>
