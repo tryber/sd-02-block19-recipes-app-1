@@ -1,8 +1,7 @@
 .ExplorarContainer {
   align-items: center;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-flow: wrap column;
 }
 
 .ExplorarLink {
