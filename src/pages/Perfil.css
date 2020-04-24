@@ -6,6 +6,14 @@ p {
   text-align: center;
 }
 
+.user-mail {
+  font-size: 25px;
+  line-height: 29px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  text-align: center;
+}
+
 .rectangles {
   align-items: center;
   background: silver;
