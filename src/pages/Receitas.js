@@ -5,20 +5,26 @@ import Footer from '../components/Footer';
 import { RecipesContext } from '../context/Recipes';
 import RecipesList from '../components/RecipesList';
 
-const oneRecipe = (fetchResult) => {
+const OneRecipe = (fetchResult) => {
   const { idMeal, idDrink } = fetchResult[0];
   const idRecipe = idMeal || idDrink;
-  return <Redirect to={`./receita/${idRecipe}`} />;
+  const type = idMeal ? 'comidas' : 'bebidas';
+  return <Redirect to={`./receitas/${type}/${idRecipe}`} />;
 };
 
 const showRecipes = (fetchResult) => {
   if (fetchResult === null) return <h2>Nada encontrado.</h2>;
   if (fetchResult.length > 1) return <RecipesList />;
-  return oneRecipe(fetchResult);
+  return OneRecipe(fetchResult);
 };
 
 const Receitas = () => {
-  const { isFetching, fetchResult } = useContext(RecipesContext);
+  const { isFetching, fetchResult, setRecipeId } = useContext(RecipesContext);
+
+  if (fetchResult && fetchResult.length === 1) {
+    const { idMeal, idDrink } = fetchResult[0];
+    setRecipeId(idMeal || idDrink);
+  }
 
   return (
     <div>
