@@ -63,6 +63,11 @@ const RecipesProvider = ({ children }) => {
     setSearchRadio('');
   }, [isSearchOpen]);
 
+  // useEffect(({ match }) => {
+  //   const title = match.path.split('/')[match.path.split('/').length - 1];
+  //   setHeaderTitle(title);
+  // }, []);
+
   // SearchBar fetch
   useEffect(() => {
     const stringAPI = `https://www.${API}.com/api/json/v1/1/${searchRadio}=${search}`;
