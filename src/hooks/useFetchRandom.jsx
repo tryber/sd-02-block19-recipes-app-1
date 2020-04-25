@@ -12,6 +12,7 @@ const useFetchRandom = ({ path }) => {
     const title = path.split('/')[path.split('/').length - 1];
     setHeaderTitle(title);
     if (title === 'comidas') setAPI('themealdb');
+    if (title === 'explorar') setAPI('themealdb');
     if (title === 'bebidas') setAPI('thecocktaildb');
     const value = [];
     setIsFetching(true);

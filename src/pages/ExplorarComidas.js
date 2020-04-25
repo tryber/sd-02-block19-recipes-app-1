@@ -9,7 +9,7 @@ import './Explorar.css';
 const explorarBtn = (routeType) => {
   const name = routeType.charAt(0).toUpperCase() + routeType.slice(1);
   return (
-    <Link className="ExplorarLink" to={`/explorar/${name}`}>
+    <Link className="ExplorarLink" to={`/receitas/${name}`}>
       <button className="ExplorarBtn" type="button">
         {`Explorar ${name}`}
       </button>
@@ -17,7 +17,7 @@ const explorarBtn = (routeType) => {
   );
 };
 
-const Explorar = ({ match }) => {
+const ExplorarComidas = ({ match }) => {
   const title = match.path.split('/')[match.path.split('/').length - 1];
   const { setHeaderTitle } = useContext(RecipesContext);
   useEffect(() => {
@@ -27,17 +27,18 @@ const Explorar = ({ match }) => {
   return (
     <div>
       <Header />
+      <h2>xD</h2>
       <div className="ExplorarContainer">
-        {explorarBtn('comidas')}
-        {explorarBtn('bebidas')}
+        {/* {explorarBtn('comidas')}
+        {explorarBtn('bebidas')} */}
       </div>
       <Footer />
     </div>
   );
 };
 
-Explorar.propTypes = {
+ExplorarComidas.propTypes = {
   match: propTypes.instanceOf(Object).isRequired,
 };
 
-export default Explorar;
+export default ExplorarComidas;
