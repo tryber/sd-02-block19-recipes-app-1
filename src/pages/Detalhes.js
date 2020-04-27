@@ -58,7 +58,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                 <section className="icons-section">
                   <button
                     className="icon-button"
-                    type="button"`
+                    type="button"
                   >
                     <img className="icons" src={ShareIcon} alt="share icon" />
                   </button>
@@ -109,6 +109,3 @@ Detalhes.propTypes = {
 };
 
 export default Detalhes;
-
-// parei na parte de criar a rota para página de detalhes.
-// Ainda necessário corrigir o bug de quando carrega uma só receita
