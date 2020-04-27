@@ -20,18 +20,18 @@ const Perfil = () => {
           {userEmail.email}
         </div>
         <Link to="/receitas-feitas">
-          <button className="rectangles" data-testid="profile-done-btn">
-            <p>Receitas Feitas</p>
+          <button className="rect" data-testid="profile-done-btn">
+            <p classname="btn-perfil">Receitas Feitas</p>
           </button>
         </Link>
         <Link to="/receitas-favoritas">
-          <button className="rectangles" data-testid="profile-favorite-btn">
-            <p>Receitas Favoritas</p>
+          <button className="rect" data-testid="profile-favorite-btn">
+            <p classname="btn-perfil">Receitas Favoritas</p>
           </button>
         </Link>
         <Link to="/">
-          <button className="rectangles" data-testid="profile-logout-btn" onClick={() => localStorage.clear()}>
-            <p>Sair</p>
+          <button className="rect" data-testid="profile-logout-btn" onClick={() => localStorage.clear()}>
+            <p classname="btn-perfil">Sair</p>
           </button>
         </Link>
       </div>
