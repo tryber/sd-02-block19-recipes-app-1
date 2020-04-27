@@ -19,13 +19,13 @@ const Perfil = () => {
           {userEmail.email}
         </div>
         <div className="rectangles" data-testid="profile-done-btn">
-          <p>Receitas Feitas</p>
+          <p className="perfil-paragraphs">Receitas Feitas</p>
         </div>
         <div className="rectangles" data-testid="profile-favorite-btn">
-          <p>Receitas Favoritas</p>
+          <p className="perfil-paragraphs">Receitas Favoritas</p>
         </div>
         <div className="rectangles" data-testid="profile-logout-btn">
-          <p>Sair</p>
+          <p className="perfil-paragraphs">Sair</p>
         </div>
       </div>
       <Footer />
