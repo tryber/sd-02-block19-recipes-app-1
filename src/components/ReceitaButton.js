@@ -7,7 +7,7 @@ const ReceitaButton = () => {
   const { buttonText } = useContext(RecipesContext);
   return (
     <div>
-      <Link>
+      <Link to="/receitas/emprocesso">
         <button
           className="button-receita"
           data-testid="start-recipe-btn"
