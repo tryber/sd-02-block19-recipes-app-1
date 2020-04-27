@@ -13,7 +13,7 @@ const oneRecipe = (fetchResult) => {
 
 const ShowRecipes = () => {
   const { fetchResult } = useContext(RecipesContext);
-  if (fetchResult === null || !fetchResult) return <h2>Nada encontrado.</h2>;
+  if (fetchResult === null) return <h2>Nada encontrado.</h2>;
   if (fetchResult.length > 1) return <RecipesList />;
   return oneRecipe(fetchResult);
 };

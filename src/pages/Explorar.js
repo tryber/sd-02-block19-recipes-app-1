@@ -6,16 +6,13 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './Explorar.css';
 
-const explorarBtn = (routeType) => {
-  const name = routeType.charAt(0).toUpperCase() + routeType.slice(1);
-  return (
-    <Link className="ExplorarLink" to={`/receitas/${name}`}>
-      <button className="ExplorarBtn" type="button">
-        {`Explorar ${name}`}
-      </button>
-    </Link>
-  );
-};
+const explorarBtn = (routeType) => (
+  <Link className="ExplorarLink" to={`/explorar/${routeType}`}>
+    <button className="ExplorarBtn" type="button">
+      {`Explorar ${routeType.charAt(0).toUpperCase() + routeType.slice(1)}`}
+    </button>
+  </Link>
+);
 
 const Explorar = ({ match }) => {
   const title = match.path.split('/')[match.path.split('/').length - 1];
@@ -23,10 +20,9 @@ const Explorar = ({ match }) => {
   useEffect(() => {
     setHeaderTitle(title);
   }, []);
-
   return (
     <div>
-      <Header />
+      <Header isDisable />
       <div className="ExplorarContainer">
         {explorarBtn('comidas')}
         {explorarBtn('bebidas')}

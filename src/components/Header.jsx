@@ -7,11 +7,11 @@ import searchIcon from '../images/search-icon.png';
 import './Header.css';
 import SearchInput from './SearchInput';
 
-const Header = ({ showSearch = true }) => {
+const Header = ({ showSearch = true, isDisable = false }) => {
   const { headerTitle, isSearchOpen, setIsSearchOpen } = useContext(RecipesContext);
   return (
     <div>
-      <header>
+      <header className="header-main-page">
         <Link to="/perfil">
           <img
             src={profileIcon}
@@ -20,7 +20,7 @@ const Header = ({ showSearch = true }) => {
             data-testid="profile-top-btn"
           />
         </Link>
-        <h2 className="page-title" data-testid="page-title">{headerTitle}</h2>
+        <h2 className="main-page-title" data-testid="page-title">{headerTitle}</h2>
         {showSearch ? (<button
           style={{ background: 'none', border: 'none', cursor: 'pointer' }}
           type="button"
@@ -34,13 +34,19 @@ const Header = ({ showSearch = true }) => {
           />
         </button>) : null}
       </header>
-      <SearchInput data-testid="search-input" />
+      {!isDisable && <SearchInput data-testid="search-input" />}
     </div>
   );
 };
 
 Header.propTypes = {
-  showSearch: propTypes.bool.isRequired,
+  showSearch: propTypes.bool,
+  isDisable: propTypes.bool,
+};
+
+Header.defaultProps = {
+  showSearch: true,
+  isDisable: false,
 };
 
 export default Header;

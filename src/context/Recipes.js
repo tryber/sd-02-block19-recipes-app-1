@@ -39,7 +39,7 @@ const RecipesProvider = ({ children }) => {
   const callTemplateFetch = (stringAPI) => {
     simpleGetAnything(stringAPI)
       .then(
-        (dataJson) => requestOk(dataJson.meals || dataJson.drinks),
+        (dataJson) => requestOk(dataJson.meals || dataJson.drinks || null),
         (error) => requestFail(error.message),
       );
   };
@@ -65,11 +65,6 @@ const RecipesProvider = ({ children }) => {
     setSearch('');
     setSearchRadio('');
   }, [isSearchOpen]);
-
-  // useEffect(({ match }) => {
-  //   const title = match.path.split('/')[match.path.split('/').length - 1];
-  //   setHeaderTitle(title);
-  // }, []);
 
   // SearchBar fetch
   useEffect(() => {
