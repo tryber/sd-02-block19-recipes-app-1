@@ -11,7 +11,7 @@ const Header = ({ showSearch = true, isDisable = false }) => {
   const { headerTitle, isSearchOpen, setIsSearchOpen } = useContext(RecipesContext);
   return (
     <div>
-      <header>
+      <header className="header-main-page">
         <Link to="/perfil">
           <img
             src={profileIcon}
@@ -20,22 +20,19 @@ const Header = ({ showSearch = true, isDisable = false }) => {
             data-testid="profile-top-btn"
           />
         </Link>
-        <h2 className="page-title" data-testid="page-title">{headerTitle}</h2>
-        {showSearch ? (
-          <button
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-            type="button"
-            disabled={isDisable}
-            onClick={() => (!isSearchOpen ? setIsSearchOpen(true) : setIsSearchOpen(false))}
-            data-testid="search-top-btn"
-          >
-            <img
-              src={searchIcon}
-              alt="lupa de busca"
-              className="search-icon"
-            />
-          </button>
-        ) : null}
+        <h2 className="main-page-title" data-testid="page-title">{headerTitle}</h2>
+        {showSearch ? (<button
+          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+          type="button"
+          onClick={() => (!isSearchOpen ? setIsSearchOpen(true) : setIsSearchOpen(false))}
+          data-testid="search-top-btn"
+        >
+          <img
+            src={searchIcon}
+            alt="lupa de busca"
+            className="search-icon"
+          />
+        </button>) : null}
       </header>
       {!isDisable && <SearchInput data-testid="search-input" />}
     </div>
