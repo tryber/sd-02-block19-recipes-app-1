@@ -7,7 +7,7 @@ import searchIcon from '../images/search-icon.png';
 import './Header.css';
 import SearchInput from './SearchInput';
 
-const Header = ({ showSearch = true }) => {
+const Header = ({ showSearch = true, isDisable = false }) => {
   const { headerTitle, isSearchOpen, setIsSearchOpen } = useContext(RecipesContext);
   return (
     <div>
@@ -34,13 +34,19 @@ const Header = ({ showSearch = true }) => {
           />
         </button>) : null}
       </header>
-      <SearchInput data-testid="search-input" />
+      {!isDisable && <SearchInput data-testid="search-input" />}
     </div>
   );
 };
 
 Header.propTypes = {
-  showSearch: propTypes.bool.isRequired,
+  showSearch: propTypes.bool,
+  isDisable: propTypes.bool,
+};
+
+Header.defaultProps = {
+  showSearch: true,
+  isDisable: false,
 };
 
 export default Header;
