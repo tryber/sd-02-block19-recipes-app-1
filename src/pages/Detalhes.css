@@ -36,8 +36,7 @@ h3 {
   font-size: 1.2rem;
 }
 
-.title-section h1 ,
-.title-section h3 {
+.recipe-tile , .recipe-subtitle {
   margin-top: 0;
 }
 
@@ -46,11 +45,12 @@ h3 {
 }
 
 .icon-button {
-  background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%;
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: medium none;
   cursor: pointer;
   height: 26px;
   margin: 0.5rem;
+  padding: 0;
   width: 26px;
 }
 
@@ -58,8 +58,7 @@ h3 {
   width: 1.625rem;
 }
 
-.ingredients-section ,
-.instructions-section {
+.ingredients-section , .instructions-section {
   margin: 1rem;
 }
 
@@ -68,8 +67,4 @@ h3 {
   list-style-type: none;
   margin-top: 0.5rem;
   padding: 1rem;
-}
-
-.recomendations-section {
-  margin-left: 1rem;
 }

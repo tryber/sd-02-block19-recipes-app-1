@@ -8,7 +8,7 @@ const OneRecipe = (fetchResult) => {
   const { idMeal, idDrink } = fetchResult[0];
   const idRecipe = idMeal || idDrink;
   const type = idMeal ? 'comidas' : 'bebidas';
-  return <Redirect to={`./receitas/${type}/${idRecipe}`} />;
+  return <Redirect to={`/receitas/${type}/${idRecipe}`} />;
 };
 
 const ShowRecipes = () => {

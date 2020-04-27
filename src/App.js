@@ -4,6 +4,7 @@ import { RecipesProvider } from './context/Recipes';
 import LoginPage from './pages/LoginPage';
 import Perfil from './pages/Perfil';
 import Comidas from './pages/Comidas';
+import Detalhes from './pages/Detalhes';
 import Bebidas from './pages/Bebidas';
 import Explorar from './pages/Explorar';
 import Detalhes from './pages/Detalhes';
@@ -19,6 +20,10 @@ function App() {
           <Route exact path="/receitas/bebidas" component={Bebidas} />
           <Route exact path="/receitas/explorar" component={Explorar} />
           <Route exact path="/receitas/:type/:id" component={Detalhes} />
+<<<<<<< HEAD
+=======
+          <Route exact path="/" component={LoginPage} />
+>>>>>>> master
         </Switch>
       </BrowserRouter>
     </RecipesProvider>
