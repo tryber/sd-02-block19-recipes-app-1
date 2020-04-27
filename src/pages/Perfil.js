@@ -24,7 +24,8 @@ function renderPage() {
         </button>
       </Link>
       <Link to="/">
-        <button className="rect"
+        <button
+          className="rect"
           data-testid="profile-logout-btn"
           onClick={() => localStorage.clear()}
         >
