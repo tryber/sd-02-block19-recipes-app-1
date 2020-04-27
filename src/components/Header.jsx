@@ -6,7 +6,7 @@ import searchIcon from '../images/search-icon.png';
 import './Header.css';
 import SearchInput from './SearchInput';
 
-const Header = () => {
+const Header = ({ showSearch = true }) => {
   const { headerTitle, isSearchOpen, setIsSearchOpen } = useContext(RecipesContext);
   return (
     <div>
@@ -20,7 +20,7 @@ const Header = () => {
           />
         </Link>
         <h2 className="page-title" data-testid="page-title">{headerTitle}</h2>
-        <button
+        {showSearch ? (<button
           style={{ background: 'none', border: 'none', cursor: 'pointer' }}
           type="button"
           onClick={() => (!isSearchOpen ? setIsSearchOpen(true) : setIsSearchOpen(false))}
@@ -31,7 +31,7 @@ const Header = () => {
             alt="lupa de busca"
             className="search-icon"
           />
-        </button>
+        </button>) : null}
       </header>
       <SearchInput />
     </div>

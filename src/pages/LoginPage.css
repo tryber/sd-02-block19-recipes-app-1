@@ -36,7 +36,7 @@ button:disabled {
   background: rgb(61, 90, 47);
 }
 
-@media ( min-width : 486px ) and ( max-width : 761px ) {
+@media ( min-width : 360px ) and ( max-width : 761px ) {
 
   .btn-entrar {
     align-items: center;

@@ -25,3 +25,11 @@ p {
   top: 184px;
   width: 329px;
 }
+
+@media (min-width : 360px) and (max-width : 761px) {
+
+  .page-title {
+    padding-right: 100px;
+  }
+
+}

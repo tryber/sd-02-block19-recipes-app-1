@@ -13,7 +13,7 @@ const Perfil = () => {
   }, []);
   return (
     <div>
-      <Header />
+      <Header showSearch={false} />
       <div>
         <div className="user-mail" data-testid="profile-email">
           {userEmail.email}
