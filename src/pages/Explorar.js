@@ -6,7 +6,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ShowRecipes from '../components/ShowRecipes';
 import './Explorar.css';
-import useDebounce from '../hooks/useDebounce';
 
 const explorarBtn = (routeType) => (
   <Link className="ExplorarLink" to={`/explorar/${routeType}`}>
