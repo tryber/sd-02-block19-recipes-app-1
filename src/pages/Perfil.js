@@ -21,17 +21,17 @@ const Perfil = () => {
         </div>
         <Link to="/receitas-feitas">
           <button className="rect" data-testid="profile-done-btn">
-            <p classname="btn-perfil">Receitas Feitas</p>
+            <p className="btn-perfil">Receitas Feitas</p>
           </button>
         </Link>
         <Link to="/receitas-favoritas">
           <button className="rect" data-testid="profile-favorite-btn">
-            <p classname="btn-perfil">Receitas Favoritas</p>
+            <p className="btn-perfil">Receitas Favoritas</p>
           </button>
         </Link>
         <Link to="/">
           <button className="rect" data-testid="profile-logout-btn" onClick={() => localStorage.clear()}>
-            <p classname="btn-perfil">Sair</p>
+            <p className="btn-perfil">Sair</p>
           </button>
         </Link>
       </div>
