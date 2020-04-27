@@ -18,6 +18,8 @@ const RecipesProvider = ({ children }) => {
   const [isFetching, setIsFetching] = useState(true);
   const [fetchResult, setFetchResult] = useState(null);
   const [isError, setIsError] = useState(null);
+  const [recipeId, setRecipeId] = useState();
+  const [buttonText] = useState('comidas');
 
   // context 1 - funções
   const debouncedSearchTerm = useDebounce(search, 600);
@@ -29,6 +31,7 @@ const RecipesProvider = ({ children }) => {
   };
 
   const requestFail = (errorMsg) => {
+    setFetchResult(null);
     setIsError(errorMsg);
     setIsFetching(false);
   };
@@ -63,14 +66,31 @@ const RecipesProvider = ({ children }) => {
     setSearchRadio('');
   }, [isSearchOpen]);
 
+  // useEffect(({ match }) => {
+  //   const title = match.path.split('/')[match.path.split('/').length - 1];
+  //   setHeaderTitle(title);
+  // }, []);
+
   // SearchBar fetch
   useEffect(() => {
-    const stringAPI = `https://www.${API}.com/api/json/v1/1/${searchRadio}=${search}`;
     if (searchRadio && search && debouncedSearchTerm) {
+      const stringAPI = `https://www.${API}.com/api/json/v1/1/${searchRadio}=${search}`;
       setIsFetching(true);
       callTemplateFetch(stringAPI);
     }
-  }, [debouncedSearchTerm]);
+  }, [debouncedSearchTerm, searchRadio]);
+
+  useEffect(() => {
+    if (recipeId) {
+      const detailsAPI = `https://www.${API}.com/api/json/v1/1/lookup.php?i=${recipeId}`;
+      setIsFetching(true);
+      simpleGetAnything(detailsAPI)
+        .then(
+          ({ meals, drinks }) => requestOk(meals || drinks),
+          (error) => requestFail(error.message),
+        );
+    }
+  }, [recipeId]);
 
   // context 2 - export.context
   const contextValues = {
@@ -80,6 +100,7 @@ const RecipesProvider = ({ children }) => {
     setPassword,
     headerTitle,
     setHeaderTitle,
+    buttonText,
     isSearchOpen,
     setIsSearchOpen,
     search,
@@ -96,6 +117,8 @@ const RecipesProvider = ({ children }) => {
     setFetchResult,
     isError,
     setIsError,
+    recipeId,
+    setRecipeId,
     btnCategory,
     requestOk,
     requestFail,
