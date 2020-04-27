@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
+import propTypes from 'prop-types';
 import profileIcon from '../images/profile-icon.png';
 import searchIcon from '../images/search-icon.png';
 import './Header.css';
@@ -37,5 +38,9 @@ const Header = ({ showSearch = true }) => {
     </div>
   );
 };
+
+Header.propTypes = {
+  showSearch: propTypes.bool.isRequired,
+}
 
 export default Header;

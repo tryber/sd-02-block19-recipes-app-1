@@ -36,7 +36,7 @@ h3 {
   font-size: 1.2rem;
 }
 
-.title-section h1,
+.title-section h1 ,
 .title-section h3 {
   margin-top: 0;
 }
@@ -58,7 +58,7 @@ h3 {
   width: 1.625rem;
 }
 
-.ingredients-section,
+.ingredients-section ,
 .instructions-section {
   margin: 1rem;
 }
@@ -70,6 +70,6 @@ h3 {
   padding: 1rem;
 }
 
-.recomendations-section h2 {
+.recomendations-section {
   margin-left: 1rem;
 }
