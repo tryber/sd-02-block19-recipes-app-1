@@ -34,7 +34,7 @@ const Header = ({ showSearch = true }) => {
           />
         </button>) : null}
       </header>
-      <SearchInput />
+      <SearchInput data-testid="search-input" />
     </div>
   );
 };

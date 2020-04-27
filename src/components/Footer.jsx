@@ -6,7 +6,7 @@ import ForkImg from '../images/fork.svg';
 import './Footer.css';
 
 const Footer = () => (
-  <div className="footer-container">
+  <div className="footer-container" data-testid="footer-container">
     <Link to="/receitas/bebidas/">
       <button
         className="footer-transparent-button"
