@@ -44,7 +44,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
             strInstructions,
             strYoutube,
           }) => (
-              <article className="details-page" key={strMeal || strDrink}>
+            <article className="details-page" key={strMeal || strDrink}>
                 <section className="top-image-section">
                   <img
                     className="top-image"

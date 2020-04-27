@@ -13,6 +13,6 @@ const ReceitasFeitas = () => {
       <Header showSearch={false} />
     </div>
   );
-}
+};
 
 export default ReceitasFeitas;

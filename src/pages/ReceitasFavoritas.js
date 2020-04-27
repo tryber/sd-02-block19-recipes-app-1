@@ -13,6 +13,6 @@ const ReceitasFavoritas = () => {
       <Header showSearch={false} />
     </div>
   );
-}
+};
 
 export default ReceitasFavoritas;
