@@ -10,10 +10,10 @@ const Ingredients = ({ ingredientsList }) => {
       </div>
     </section>
   );
-}
+};
 
 Ingredients.propTypes = {
   ingredientsList: propTypes.arrayOf(propTypes.string).isRequired,
-}
+};
 
 export default Ingredients;

@@ -10,9 +10,9 @@ const RecipeImage = ({ source, imgAlt }) => (
   />
 );
 
-RecipeImage.propTypes ={
+RecipeImage.propTypes = {
   source: propTypes.object.isRequired,
   imgAlt: propTypes.object.isRequired,
-}
+};
 
 export default RecipeImage;

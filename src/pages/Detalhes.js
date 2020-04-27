@@ -5,7 +5,7 @@ import { RecipesContext } from '../context/Recipes';
 import HeartIcon from '../images/heart.png';
 import ShareIcon from '../images/share.png';
 import ReceitaButton from '../components/ReceitaButton';
-import RecipeImage from '../components/RecipeImage'
+import RecipeImage from '../components/RecipeImage';
 import Ingredients from '../components/Ingredients';
 import Instructions from '../components/Instructions';
 import './Detalhes.css';
@@ -47,7 +47,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
             strInstructions,
             strYoutube,
           }) => (
-              <article className="details-page" key={strMeal || strDrink}>
+            <article className="details-page" key={strMeal || strDrink}>
                 <section className="top-image-section">
                   <RecipeImage source={strMealThumb || strDrinkThumb} imgAlt={strMeal || strDrink} />
                 </section>

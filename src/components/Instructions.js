@@ -8,10 +8,10 @@ const Instructions = ({ instructions }) => {
       <p className="gray">{instructions}</p>
     </section>
   );
-}
+};
 
 Instructions.propTypes = {
   instructions: propTypes.string.isRequired,
-}
+};
 
 export default Instructions;
