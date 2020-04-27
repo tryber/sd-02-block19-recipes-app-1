@@ -26,8 +26,6 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
     return [...acc, ingredient];
   }, []);
 
-  console.log(ingredientsList)
-
   if (isFetching) return <div>Carregando...</div>;
 
   return (
@@ -44,62 +42,72 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
             strInstructions,
             strYoutube,
           }) => (
-              <article className="details-page" key={strMeal || strDrink}>
-                <section className="top-image-section">
-                  <img
-                    className="top-image"
-                    src={strMealThumb || strDrinkThumb}
-                    alt={strMeal || strDrink}
-                    data-testid="recipe-photo"
-                  />
+            <article className="details-page" key={strMeal || strDrink}>
+              <section className="top-image-section">
+                <img
+                  className="top-image"
+                  src={strMealThumb || strDrinkThumb}
+                  alt={strMeal || strDrink}
+                  data-testid="recipe-photo"
+                />
+              </section>
+              <section className="header-section">
+                <section className="title-section" data-testid="recipe-title">
+                  <h1 className="recipe-title">{strMeal || strDrink}</h1>
+                  <h3 className="recipe-subtitle">{strCategory || strAlcoholic}</h3>
                 </section>
-                <section className="header-section">
-                  <section className="title-section" data-testid="recipe-title">
-                    <h1 className="recipe-title">{strMeal || strDrink}</h1>
-                    <h3 className="recipe-subtitle">{strCategory || strAlcoholic}</h3>
-                  </section>
-                  <section className="icons-section">
-                    <button
-                      className="icon-button"
-                      type="button"
-                    >
-                      <img className="icons" src={ShareIcon} alt="share icon" data-testid="share-btn" />
-                    </button>
-                    <button
-                      className="icon-button"
-                      type="button"
-                    >
-                      <img className="icons" src={HeartIcon} alt="heart icon" data-testid="favorite-btn" />
-                    </button>
-                  </section>
-                </section>
-                <section className="ingredients-section">
-                  <h2 className="details-titles">Ingredients</h2>
-                  <div className="gray">
-                    {ingredientsList.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}
-                  </div>
-                </section>
-                <section className="instructions-section">
-                  <h2 className="details-titles">Instructions</h2>
-                  <p className="gray">{strInstructions}</p>
-                </section>
-                <section className="video-section">
-                  {strYoutube && (
-                    <iframe
-                      title="recipe video"
-                      src={`https://youtube.com/embed/${strYoutube.split('=')[1]}`}
-                      width="100%"
-                      height="200px"
-                      allowFullScreen
-                      frameBorder="0"
+                <section className="icons-section">
+                  <button
+                    className="icon-button"
+                    type="button"
+                  >
+                    <img
+                      className="icons"
+                      src={ShareIcon}
+                      alt="share icon"
+                      data-testid="share-btn"
                     />
-                  )}
+                  </button>
+                  <button
+                    className="icon-button"
+                    type="button"
+                  >
+                    <img
+                      className="icons"
+                      src={HeartIcon}
+                      alt="heart icon"
+                      data-testid="favorite-btn"
+                    />
+                  </button>
                 </section>
-                <section className="recomendations-section">
-                  <h2 className="details-titles">Recomendations</h2>
-                </section>
-              </article>
-            ))}
+              </section>
+              <section className="ingredients-section">
+                <h2 className="details-titles">Ingredients</h2>
+                <div className="gray">
+                  {ingredientsList.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}
+                </div>
+              </section>
+              <section className="instructions-section">
+                <h2 className="details-titles">Instructions</h2>
+                <p className="gray">{strInstructions}</p>
+              </section>
+              <section className="video-section">
+                {strYoutube && (
+                  <iframe
+                    title="recipe video"
+                    src={`https://youtube.com/embed/${strYoutube.split('=')[1]}`}
+                    width="100%"
+                    height="200px"
+                    allowFullScreen
+                    frameBorder="0"
+                  />
+                )}
+              </section>
+              <section className="recomendations-section">
+                <h2 className="details-titles">Recomendations</h2>
+              </section>
+            </article>
+          ))}
     </div>
   );
 };
