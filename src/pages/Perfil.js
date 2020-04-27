@@ -16,9 +16,7 @@ const Perfil = () => {
     <div>
       <Header showSearch={false} />
       <div>
-        <div className="user-mail" data-testid="profile-email">
-          {userEmail.email}
-        </div>
+        {userEmail.email}
         <Link to="/receitas-feitas">
           <button className="rect" data-testid="profile-done-btn">
             <p className="btn-perfil">Receitas Feitas</p>
@@ -30,7 +28,11 @@ const Perfil = () => {
           </button>
         </Link>
         <Link to="/">
-          <button className="rect" data-testid="profile-logout-btn" onClick={() => localStorage.clear()}>
+          <button
+            className="rect"
+            data-testid="profile-logout-btn"
+            onClick={() => localStorage.clear()}
+          >
             <p className="btn-perfil">Sair</p>
           </button>
         </Link>
