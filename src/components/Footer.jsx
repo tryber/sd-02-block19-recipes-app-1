@@ -16,7 +16,7 @@ const Footer = () => (
         <img className="footer-image" src={Cocktail} alt="Bebidas" />
       </button>
     </Link>
-    <Link to="/receitas/explorar/">
+    <Link to="/explorar/">
       <button
         className="footer-transparent-button"
         type="button"
