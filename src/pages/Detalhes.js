@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 import HeartIcon from '../images/heart.png';
 import ShareIcon from '../images/share.png';
+import ReceitaButton from '../components/ReceitaButton';
 import './Detalhes.css';
 
 const Detalhes = ({ match: { params: { type, id } } }) => {
@@ -92,6 +93,9 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
               </section>
               <section className="recomendations-section">
                 <h2>Recomendations</h2>
+              </section>
+              <section>
+                <ReceitaButton data-testid="start-recipe-btn" />
               </section>
             </article>
           ))}
