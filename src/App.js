@@ -20,10 +20,6 @@ function App() {
           <Route exact path="/receitas/bebidas" component={Bebidas} />
           <Route exact path="/receitas/explorar" component={Explorar} />
           <Route exact path="/receitas/:type/:id" component={Detalhes} />
-<<<<<<< HEAD
-=======
-          <Route exact path="/" component={LoginPage} />
->>>>>>> master
         </Switch>
       </BrowserRouter>
     </RecipesProvider>

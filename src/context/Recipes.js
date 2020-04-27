@@ -101,7 +101,6 @@ const RecipesProvider = ({ children }) => {
     headerTitle,
     setHeaderTitle,
     buttonText,
-    setButtonText,
     isSearchOpen,
     setIsSearchOpen,
     search,
