@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import ShowRecipes from '../components/ShowRecipes';
 import './Explorar.css';
 
 const explorarBtn = (routeType) => (
@@ -15,15 +14,9 @@ const explorarBtn = (routeType) => (
   </Link>
 );
 
-const showResults = (isFetching) => (
-  <div className="MainContainerPage">
-    {isFetching ? <h2>Buscando...</h2> : <ShowRecipes />}
-  </div>
-);
-
 const Explorar = ({ match }) => {
   const title = match.path.split('/')[match.path.split('/').length - 1];
-  const { setHeaderTitle, isSearchOpen } = useContext(RecipesContext);
+  const { setHeaderTitle } = useContext(RecipesContext);
   useEffect(() => {
     setHeaderTitle(title);
   }, []);
