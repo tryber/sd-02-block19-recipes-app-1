@@ -21,14 +21,16 @@ const explorarBtn = (btnValue, recipeType, newPath) => {
 
 const ExplorarTipos = ({ match }) => {
   const title = match.path.split('/')[match.path.split('/').length - 1];
-  const { setHeaderTitle } = useContext(RecipesContext);
+  const { setHeaderTitle, setAPI, API } = useContext(RecipesContext);
   useEffect(() => {
     setHeaderTitle(`Explorar - ${title}`);
+    if (title === 'comidas' && title !== API) setAPI('themealdb');
+    if (title === 'bebidas' && title !== API) setAPI('thcocktaildb');
   }, []);
 
   return (
     <div>
-      <Header />
+      <Header isDisable />
       <div className="ExplorarContainer">
         {explorarBtn('Por ingredientes', title, 'ingredientes')}
         {explorarBtn('Por local de origem', title, 'area')}
