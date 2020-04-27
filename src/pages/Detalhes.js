@@ -5,6 +5,8 @@ import { RecipesContext } from '../context/Recipes';
 import HeartIcon from '../images/heart.png';
 import ShareIcon from '../images/share.png';
 import ReceitaButton from '../components/ReceitaButton';
+import Ingredients from '../components/Ingredients';
+import Instructions from '../components/Instructions';
 import './Detalhes.css';
 
 const Detalhes = ({ match: { params: { type, id } } }) => {
@@ -44,7 +46,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
             strInstructions,
             strYoutube,
           }) => (
-            <article className="details-page" key={strMeal || strDrink}>
+              <article className="details-page" key={strMeal || strDrink}>
                 <section className="top-image-section">
                   <img
                     className="top-image"
@@ -72,16 +74,8 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                     </button>
                   </section>
                 </section>
-                <section className="ingredients-section">
-                  <h2>Ingredients</h2>
-                  <div className="gray">
-                    {ingredientsList.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}
-                  </div>
-                </section>
-                <section className="instructions-section">
-                  <h2>Instructions</h2>
-                  <p className="gray">{strInstructions}</p>
-                </section>
+                <Ingredients ingredientsList={ingredientsList} />
+                <Instructions instructions={strInstructions} />
                 <section className="video-section">
                   <iframe
                     title="recipe video"

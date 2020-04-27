@@ -4,6 +4,7 @@ import { RecipesContext } from '../context/Recipes';
 import ReceitaButton from '../components/ReceitaButton';
 
 const EmProcesso = () => {
+
   const { setButtonText } = useContext(RecipesContext);
   useEffect(() => {
     setButtonText('Finalizar Receita');
