@@ -17,6 +17,6 @@ const ReceitaButton = () => {
       </Link>
     </div>
   );
-}
+};
 
 export default ReceitaButton;
