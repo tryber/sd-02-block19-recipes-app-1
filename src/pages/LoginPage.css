@@ -37,7 +37,7 @@ button:disabled {
   background: rgb(61, 90, 47);
 }
 
-@media ( min-width : 486px ) and ( max-width : 761px ) {
+@media ( min-width : 360px ) and ( max-width : 761px ) {
 
   .btn-entrar {
     align-items: center;
@@ -46,7 +46,7 @@ button:disabled {
     font-size: 35px;
     height: 70px;
     margin-top: 30px;
-    width: 440px;
+    width: 300px;
   }
 
   button:disabled {
@@ -58,9 +58,9 @@ button:disabled {
     border: 1px solid black;
     box-sizing: border-box;
     font-size: 25px;
-    height: 76px;
+    height: 60px;
     margin: 15px;
-    width: 440px;
+    width: 300px;
   }
 
   .login-campo {

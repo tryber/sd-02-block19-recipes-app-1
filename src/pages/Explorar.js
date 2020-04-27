@@ -23,23 +23,17 @@ const showResults = (isFetching) => (
 
 const Explorar = ({ match }) => {
   const title = match.path.split('/')[match.path.split('/').length - 1];
-  const {
-    setHeaderTitle, isSearchOpen, isFetching, debouncedSearchTerm,
-  } = useContext(RecipesContext);
+  const { setHeaderTitle, isSearchOpen } = useContext(RecipesContext);
   useEffect(() => {
     setHeaderTitle(title);
   }, []);
-  console.log(isSearchOpen);
   return (
     <div>
-      <Header />
-      {isSearchOpen && debouncedSearchTerm ? showResults(isFetching)
-        : (
-          <div className="ExplorarContainer">
-            {explorarBtn('comidas')}
-            {explorarBtn('bebidas')}
-          </div>
-        )}
+      <Header isDisable />
+      <div className="ExplorarContainer">
+        {explorarBtn('comidas')}
+        {explorarBtn('bebidas')}
+      </div>
       <Footer />
     </div>
   );

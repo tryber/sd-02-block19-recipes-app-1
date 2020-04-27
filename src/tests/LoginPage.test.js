@@ -57,6 +57,6 @@ describe('Testa a página de login', () => {
     expect(localStorage.getItem('cocktails-token')).toBe('1');
     expect(JSON.parse(localStorage.getItem('user'))).toMatchObject({ email: 'teste@testando.com' });
     fireEvent.click(loginButton);
-    expect(history.location.pathname).toBe('/receitas/');
+    expect(history.location.pathname).toBe('/receitas/comidas');
   });
 });
