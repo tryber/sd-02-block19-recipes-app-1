@@ -1,15 +1,12 @@
 import React from 'react';
 
-const RecipeImage = () => {
-  return (
-    <section className="top-image-section">
-      {/* <img
-        className="top-image"
-        src={strMealThumb || strDrinkThumb}
-        alt={strMeal || strDrink}
-      /> */}
-    </section>
-  );
-}
+const RecipeImage = ({ source, imgAlt }) => (
+  <img
+    className="top-image"
+    src={source}
+    alt={imgAlt}
+    data-testid="recipe-photo"
+  />
+);
 
 export default RecipeImage;
