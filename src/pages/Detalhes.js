@@ -1,8 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-<<<<<<< HEAD
-=======
 import PropTypes from 'prop-types';
->>>>>>> master
 import { RecipesContext } from '../context/Recipes';
 import HeartIcon from '../images/heart.png';
 import ShareIcon from '../images/share.png';
