@@ -26,6 +26,8 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
     return [...acc, ingredient];
   }, []);
 
+  console.log(ingredientsList)
+
   if (isFetching) return <div>Carregando...</div>;
 
   return (
@@ -48,10 +50,11 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                     className="top-image"
                     src={strMealThumb || strDrinkThumb}
                     alt={strMeal || strDrink}
+                    data-testid="recipe-photo"
                   />
                 </section>
                 <section className="header-section">
-                  <section className="title-section">
+                  <section className="title-section" data-testid="recipe-title">
                     <h1 className="recipe-title">{strMeal || strDrink}</h1>
                     <h3 className="recipe-subtitle">{strCategory || strAlcoholic}</h3>
                   </section>
@@ -60,13 +63,13 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                       className="icon-button"
                       type="button"
                     >
-                      <img className="icons" src={ShareIcon} alt="share icon" />
+                      <img className="icons" src={ShareIcon} alt="share icon" data-testid="share-btn" />
                     </button>
                     <button
                       className="icon-button"
                       type="button"
                     >
-                      <img className="icons" src={HeartIcon} alt="heart icon" />
+                      <img className="icons" src={HeartIcon} alt="heart icon" data-testid="favorite-btn" />
                     </button>
                   </section>
                 </section>
@@ -93,7 +96,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                   )}
                 </section>
                 <section className="recomendations-section">
-                  <h2>Recomendations</h2>
+                  <h2 className="details-titles">Recomendations</h2>
                 </section>
               </article>
             ))}

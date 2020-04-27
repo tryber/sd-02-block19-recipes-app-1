@@ -11,7 +11,7 @@ const Header = ({ showSearch = true }) => {
   const { headerTitle, isSearchOpen, setIsSearchOpen } = useContext(RecipesContext);
   return (
     <div>
-      <header>
+      <header className="header-main-page">
         <Link to="/perfil">
           <img
             src={profileIcon}
@@ -20,7 +20,7 @@ const Header = ({ showSearch = true }) => {
             data-testid="profile-top-btn"
           />
         </Link>
-        <h2 className="page-title" data-testid="page-title">{headerTitle}</h2>
+        <h2 className="main-page-title" data-testid="page-title">{headerTitle}</h2>
         {showSearch ? (<button
           style={{ background: 'none', border: 'none', cursor: 'pointer' }}
           type="button"

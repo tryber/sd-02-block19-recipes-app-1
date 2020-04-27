@@ -34,6 +34,7 @@
 .recipe-subtitle {
   color: darkgray;
   font-size: 1.2rem;
+  margin-bottom: 0;
 }
 
 .recipe-title , .recipe-subtitle {

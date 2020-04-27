@@ -1,14 +1,11 @@
-header {
+.header-main-page {
   display: flex;
   justify-content: space-around;
   margin: 2rem 5rem;
 }
 
-h2 {
+.main-page-title {
   margin: 1rem 0;
-}
-
-.page-title {
   text-transform: capitalize;
 }
 
@@ -22,7 +19,7 @@ h2 {
 
 @media only screen and ( max-width : 761px ) {
 
-  header {
+  .header-main-page {
     background-color: rgb(196, 196, 196);
     display: flex;
     justify-content: space-around;

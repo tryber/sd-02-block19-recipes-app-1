@@ -39,7 +39,7 @@ const RecipesProvider = ({ children }) => {
   const callTemplateFetch = (stringAPI) => {
     simpleGetAnything(stringAPI)
       .then(
-        (dataJson) => requestOk(dataJson.meals || dataJson.drinks),
+        (dataJson) => requestOk(dataJson.meals || dataJson.drinks || null),
         (error) => requestFail(error.message),
       );
   };
