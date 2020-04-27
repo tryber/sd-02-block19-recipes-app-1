@@ -45,7 +45,7 @@ button:disabled {
     font-size: 35px;
     height: 70px;
     margin-top: 30px;
-    width: 440px;
+    width: 300px;
   }
 
   button:disabled {
@@ -57,9 +57,9 @@ button:disabled {
     border: 1px solid black;
     box-sizing: border-box;
     font-size: 25px;
-    height: 76px;
+    height: 60px;
     margin: 15px;
-    width: 440px;
+    width:300px;
   }
 
   .login-campo {

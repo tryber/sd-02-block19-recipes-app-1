@@ -37,6 +37,10 @@ describe('Testa a página de perfil', () => {
     expect(receitasFeitas).toBeInTheDocument();
     expect(receitasFavoritas).toBeInTheDocument();
     expect(botaoSair).toBeInTheDocument();
+    expect(receitasFeitas.tagName).toBe('BUTTON');
+    expect(receitasFavoritas.tagName).toBe('BUTTON');
+    expect(botaoSair.tagName).toBe('BUTTON');
+
     //Ao clicar no botão de "Receitas Favoritas", a rota deve mudar para a tela de receitas favoritas;
     fireEvent.click(receitasFeitas);
     expect(history.location.pathname).toBe('/receitas-feitas');
