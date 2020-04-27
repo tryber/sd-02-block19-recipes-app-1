@@ -1,4 +1,4 @@
-.perfil-paragraphs {
+.btn-perfil {
   align-items: flex-end;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
@@ -14,15 +14,7 @@
   text-align: center;
 }
 
-.page-title {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 30px;
-  font-weight: 100;
-  margin-top: 20px;
-  padding-right: 400px;
-}
-
-.rectangles {
+.rect {
   align-items: center;
   background: silver;
   border-radius: 4px;
@@ -37,15 +29,7 @@
 
 @media ( min-width : 360px ) and ( max-width : 761px ) {
 
-  .page-title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
-    font-weight: 100;
-    margin-top: 20px;
-    padding-right: 100px;
-  }
-
-  .rectangles {
+  .rect {
     align-items: center;
     background: silver;
     border-radius: 4px;
