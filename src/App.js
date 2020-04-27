@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { RecipesProvider } from './context/Recipes';
 import LoginPage from './pages/LoginPage';
 import Comidas from './pages/Comidas';
+import Detalhes from './pages/Detalhes';
 import Bebidas from './pages/Bebidas';
 import Explorar from './pages/Explorar';
 import ExplorarTipos from './pages/ExplorarTipos';
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/receitas/comidas" component={Comidas} />
           <Route exact path="/receitas/bebidas" component={Bebidas} />
           <Route exact path="/receitas/explorar" component={Explorar} />
+          <Route exact path="/receitas/:type/:id" component={Detalhes} />
           <Route exact path="/" component={LoginPage} />
         </Switch>
       </BrowserRouter>
