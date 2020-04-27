@@ -4,33 +4,43 @@ import { Link } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ShowRecipes from '../components/ShowRecipes';
 import './Explorar.css';
+import useDebounce from '../hooks/useDebounce';
 
-const explorarBtn = (routeType) => {
-  const name = routeType.charAt(0).toUpperCase() + routeType.slice(1);
-  return (
-    <Link className="ExplorarLink" to={`/explorar/${name}`}>
-      <button className="ExplorarBtn" type="button">
-        {`Explorar ${name}`}
-      </button>
-    </Link>
-  );
-};
+const explorarBtn = (routeType) => (
+  <Link className="ExplorarLink" to={`/explorar/${routeType}`}>
+    <button className="ExplorarBtn" type="button">
+      {`Explorar ${routeType.charAt(0).toUpperCase() + routeType.slice(1)}`}
+    </button>
+  </Link>
+);
+
+const showResults = (isFetching) => (
+  <div className="MainContainerPage">
+    {isFetching ? <h2>Buscando...</h2> : <ShowRecipes />}
+  </div>
+);
 
 const Explorar = ({ match }) => {
   const title = match.path.split('/')[match.path.split('/').length - 1];
-  const { setHeaderTitle } = useContext(RecipesContext);
+  const {
+    setHeaderTitle, isSearchOpen, isFetching, debouncedSearchTerm,
+  } = useContext(RecipesContext);
   useEffect(() => {
     setHeaderTitle(title);
   }, []);
-
+  console.log(isSearchOpen);
   return (
     <div>
       <Header />
-      <div className="ExplorarContainer">
-        {explorarBtn('comidas')}
-        {explorarBtn('bebidas')}
-      </div>
+      {isSearchOpen && debouncedSearchTerm ? showResults(isFetching)
+        : (
+          <div className="ExplorarContainer">
+            {explorarBtn('comidas')}
+            {explorarBtn('bebidas')}
+          </div>
+        )}
       <Footer />
     </div>
   );

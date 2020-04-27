@@ -6,39 +6,41 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './Explorar.css';
 
-const explorarBtn = (routeType) => {
-  const name = routeType.charAt(0).toUpperCase() + routeType.slice(1);
+const explorarBtn = (btnValue, recipeType, newPath) => {
+  if (recipeType === 'bebidas' && newPath === 'area') {
+    return null;
+  }
   return (
-    <Link className="ExplorarLink" to={`/receitas/${name}`}>
+    <Link className="ExplorarLink" to={`/explorar/${recipeType}/${newPath}`}>
       <button className="ExplorarBtn" type="button">
-        {`Explorar ${name}`}
+        {btnValue}
       </button>
     </Link>
   );
 };
 
-const ExplorarComidas = ({ match }) => {
+const ExplorarTipos = ({ match }) => {
   const title = match.path.split('/')[match.path.split('/').length - 1];
   const { setHeaderTitle } = useContext(RecipesContext);
   useEffect(() => {
-    setHeaderTitle(title);
+    setHeaderTitle(`Explorar - ${title}`);
   }, []);
 
   return (
     <div>
       <Header />
-      <h2>xD</h2>
       <div className="ExplorarContainer">
-        {/* {explorarBtn('comidas')}
-        {explorarBtn('bebidas')} */}
+        {explorarBtn('Por ingredientes', title, 'ingredientes')}
+        {explorarBtn('Por local de origem', title, 'area')}
+        {explorarBtn('Me surpreenda!', title, 'random')}
       </div>
       <Footer />
     </div>
   );
 };
 
-ExplorarComidas.propTypes = {
+ExplorarTipos.propTypes = {
   match: propTypes.instanceOf(Object).isRequired,
 };
 
-export default ExplorarComidas;
+export default ExplorarTipos;
