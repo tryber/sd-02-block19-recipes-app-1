@@ -31,6 +31,6 @@ const Perfil = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default Perfil;

@@ -4,8 +4,8 @@ import { RecipesContext } from '../context/Recipes';
 
 class ReceitaButton extends React.Component {
   render() {
+    const { buttonText } = useContext(RecipesContext);
     return (
-      const { buttonText } = useContext(RecipesContext);
       <div>
         <Link>
           <button

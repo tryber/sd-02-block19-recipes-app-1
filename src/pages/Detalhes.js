@@ -43,7 +43,11 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
           }) => (
               <article className="details-page" key={strMeal || strDrink}>
                 <section className="top-image-section">
-                  <img className="top-image" src={strMealThumb || strDrinkThumb} alt={strMeal || strDrink} />
+                  <img
+                    className="top-image"
+                    src={strMealThumb || strDrinkThumb}
+                    alt={strMeal || strDrink}
+                  />
                 </section>
                 <section className="header-section">
                   <section className="title-section">

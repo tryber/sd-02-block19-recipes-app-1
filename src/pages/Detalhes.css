@@ -32,11 +32,12 @@ h2 {
 }
 
 h3 {
-  color: rgb(169, 169, 169);
+  color: darkgray;
   font-size: 1.2rem;
 }
 
-.title-section h1 , .title-section h3 {
+.title-section h1,
+.title-section h3 {
   margin-top: 0;
 }
 
@@ -57,7 +58,8 @@ h3 {
   width: 1.625rem;
 }
 
-.ingredients-section , .instructions-section {
+.ingredients-section,
+.instructions-section {
   margin: 1rem;
 }
 
