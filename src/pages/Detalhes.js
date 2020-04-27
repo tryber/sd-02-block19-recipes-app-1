@@ -72,7 +72,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                   </section>
                 </section>
                 <Ingredients ingredientsList={ingredientsList} />
-                <Instructions instructions={strInstructions} />
+                <Instructions />
                 <section className="video-section">
                   <iframe
                     title="recipe video"

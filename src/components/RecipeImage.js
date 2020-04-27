@@ -1,18 +1,26 @@
-import React from 'react';
-import propTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { RecipesContext } from '../context/Recipes';
 
-const RecipeImage = ({ source, imgAlt }) => (
-  <img
-    className="top-image"
-    src={source}
-    alt={imgAlt}
-    data-testid="recipe-photo"
-  />
-);
-
-RecipeImage.propTypes = {
-  source: propTypes.object.isRequired,
-  imgAlt: propTypes.object.isRequired,
+const RecipeImage = () => {
+  const { fetchResult } = useContext(RecipesContext);
+  return (
+    <div>
+      {fetchResult
+        && fetchResult
+          .map(({
+            strMeal,
+            strDrink,
+            strMealThumb,
+            strDrinkThumb,
+          }) => (
+            <img
+              className="top-image"
+              src={strMealThumb || strDrinkThumb}
+              alt={strMeal || strDrink}
+              data-testid="recipe-photo"
+            />
+          ))}
+    </div>
+  );
 };
-
 export default RecipeImage;

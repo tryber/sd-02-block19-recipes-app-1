@@ -23,9 +23,9 @@ const EmProcesso = ({ match: { params: { type, id } } }) => {
 
   return (
     <div>
-      <RecipeImage source={strMealThumb || strDrinkThumb} imgAlt={strMeal || strDrink} />
+      <RecipeImage />
       <Ingredients ingredientsList={ingredientsList} />
-      <Instructions instructions={fetchResult[0].strInstructions} />
+      <Instructions />
       <Link to="/receitas-feitas">
         <ReceitaButton />
       </Link>

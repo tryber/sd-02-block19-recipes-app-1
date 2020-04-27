@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import propTypes from 'prop-types';
+import { RecipesContext } from '../context/Recipes';
 
-const Instructions = ({ instructions }) => {
+const Instructions = () => {
+  const { fetchResult } = useContext(RecipesContext);
   return (
-    <section className="instructions-section">
-      <h2>Instructions</h2>
-      <p className="gray">{instructions}</p>
-    </section>
+    <div>
+      {fetchResult
+        && fetchResult
+          .map(({ strInstructions }) => (
+              <section className="instructions-section">
+                <h2>Instructions</h2>
+                <p className="gray">{strInstructions}</p>
+              </section>
+            ))}
+    </div>
   );
-};
+}
 
 Instructions.propTypes = {
   instructions: propTypes.string.isRequired,
