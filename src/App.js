@@ -7,7 +7,6 @@ import Comidas from './pages/Comidas';
 import Detalhes from './pages/Detalhes';
 import Bebidas from './pages/Bebidas';
 import Explorar from './pages/Explorar';
-import Detalhes from './pages/Detalhes';
 
 function App() {
   return (
