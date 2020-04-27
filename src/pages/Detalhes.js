@@ -5,6 +5,7 @@ import { RecipesContext } from '../context/Recipes';
 import HeartIcon from '../images/heart.png';
 import ShareIcon from '../images/share.png';
 import ReceitaButton from '../components/ReceitaButton';
+import RecipeImage from '../components/RecipeImage';
 import Ingredients from '../components/Ingredients';
 import Instructions from '../components/Instructions';
 import './Detalhes.css';
@@ -47,13 +48,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
             strYoutube,
           }) => (
               <article className="details-page" key={strMeal || strDrink}>
-                <section className="top-image-section">
-                  <img
-                    className="top-image"
-                    src={strMealThumb || strDrinkThumb}
-                    alt={strMeal || strDrink}
-                  />
-                </section>
+            <RecipeImage recipeName={strMeal || strDrink} recipeThumb={strMealThumb || strDrinkThumb} />
                 <section className="header-section">
                   <section className="title-section">
                     <h1 className="recipe-title">{strMeal || strDrink}</h1>
@@ -90,7 +85,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                   <h2>Recomendations</h2>
                 </section>
                 <section>
-                  <Link to="/receitas/emprocesso">
+                  <Link to={`/receitas/emprocesso/${type}/${id}`}>
                     <ReceitaButton data-testid="start-recipe-btn" />
                   </Link>
                 </section>

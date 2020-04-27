@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/receitas/explorar" component={Explorar} />
           <Route exact path="/receitas/:type/:id" component={Detalhes} />
           <Route exact path="/receitas-feitas" component={ReceitasFeitas} />
-          <Route exact path="/receitas/emprocesso" component={EmProcesso} />
+          <Route exact path="/receitas/emprocesso/:type/:id" component={EmProcesso} />
           <Route exact path="/receitas-favoritas" component={ReceitasFavoritas} />
         </Switch>
       </BrowserRouter>
