@@ -1,8 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
-import { simpleGetAnything, getMealsIngredientsList } from '../services/MealsAPI';
+import { simpleGetAnything } from '../services/MealsAPI';
 import useDebounce from '../hooks/useDebounce';
-import { getCocktailsIngredientsList } from '../services/CocktailsAPI';
 
 const RecipesContext = createContext();
 
