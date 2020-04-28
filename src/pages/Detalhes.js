@@ -1,26 +1,35 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
-import HeartIcon from '../images/heart.png';
-import ShareIcon from '../images/share.png';
 import ReceitaButton from '../components/ReceitaButton';
 import RecipeImage from '../components/RecipeImage';
 import Ingredients from '../components/Ingredients';
 import Instructions from '../components/Instructions';
 import './Detalhes.css';
+import DetailsHeader from '../components/DetailsHeader';
+import ShareButton from '../components/ShareButton';
+import FavoriteButton from '../components/FavoriteButton';
+import RecipeVideo from '../components/RecipeVideo';
+import Recomendations from '../components/Recomendations';
+import useFetchRecomendations from '../hooks/useFetchRecomendations';
 
 const Detalhes = ({ match: { params: { type, id } } }) => {
   const { fetchResult, setRecipeId, setAPI, isFetching } = useContext(RecipesContext);
+  const [recomendationsAPI, setRecomendationsAPI] = useState();
+
+  const [recomendations] = useFetchRecomendations(recomendationsAPI);
 
   useEffect(() => {
     if (type === 'comidas') {
+      setRecomendationsAPI('thecocktaildb');
       setAPI('themealdb');
     } if (type === 'bebidas') {
+      setRecomendationsAPI('themealdb');
       setAPI('thecocktaildb');
     }
     setRecipeId(id);
-  }, []);
+  }, [id]);
 
   if (isFetching) return <div>Carregando...</div>;
 
@@ -28,59 +37,27 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
     <div>
       {fetchResult
         && fetchResult
-          .map(({
-            strMeal,
-            strDrink,
-            strCategory,
-            strAlcoholic,
-            strYoutube,
-          }) => (
+          .map(({ strMeal, strDrink }) => (
             <article className="details-page" key={strMeal || strDrink}>
-              <section className="top-image-section">
-                <RecipeImage />
-              </section>
+              <RecipeImage />
               <section className="header-section">
-                <section className="title-section">
-                  <h1 className="recipe-title">{strMeal || strDrink}</h1>
-                  <h3 className="recipe-subtitle">{strCategory || strAlcoholic}</h3>
-                </section>
+                <DetailsHeader />
                 <section className="icons-section">
-                  <button
-                    className="icon-button"
-                    type="button"
-                  >
-                    <img className="icons" src={ShareIcon} alt="share icon" />
-                  </button>
-                  <button
-                    className="icon-button"
-                    type="button"
-                  >
-                    <img className="icons" src={HeartIcon} alt="heart icon" />
-                  </button>
+                  <ShareButton />
+                  <FavoriteButton />
                 </section>
               </section>
               <Ingredients />
               <Instructions />
-              <section className="video-section">
-                <iframe
-                  title="recipe video"
-                  src={`https://youtube.com/embed/${strYoutube.split('=')[1]}`}
-                  width="100%"
-                  height="200px"
-                  allowFullScreen
-                  frameBorder="0"
-                />
-              </section>
-              <section className="recomendations-section">
-                <h2>Recomendations</h2>
-              </section>
+              <RecipeVideo />
+              <Recomendations recipes={recomendations} />
               <section>
                 <Link to={`/receitas/emprocesso/${type}/${id}`}>
                   <ReceitaButton data-testid="start-recipe-btn" />
                 </Link>
               </section>
             </article>
-            ))}
+          ))}
     </div>
   );
 };

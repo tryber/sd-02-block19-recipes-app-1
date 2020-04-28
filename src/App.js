@@ -12,7 +12,6 @@ import EmProcesso from './pages/EmProcesso';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ExplorarTipos from './pages/ExplorarTipos';
-import ExplorarIngredientes from './pages/ExplorarIngredientes';
 
 
 function App() {
@@ -21,9 +20,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/perfil" component={Perfil} />
-          <Route path="/explorar/comidas/ingredientes" component={ExplorarIngredientes} />
           <Route exact path="/explorar/comidas" component={ExplorarTipos} />
-          <Route path="/explorar/bebidas/ingredientes" component={ExplorarIngredientes} />
           <Route exact path="/explorar/bebidas" component={ExplorarTipos} />
           <Route exact path="/explorar" component={Explorar} />
           <Route exact path="/receitas/comidas" component={Comidas} />

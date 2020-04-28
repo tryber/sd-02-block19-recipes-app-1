@@ -15,6 +15,13 @@ const getMealsByName = (name) => (
     .then((response) => response.json()
       .then(({ meals }) => meals)));
 
+const getMealsIngredientsList = () => (
+  fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list')
+    .then((response) => response.json())
+    .then(({ meals }) => meals.map(({ strIngredient }) => strIngredient))
+    .catch((error) => error)
+);
+
 // function getMealsByFirstLetter(letter) {
 //   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`)
 //     .then((response) => response.json()
@@ -45,17 +52,13 @@ const getMealsByName = (name) => (
 //       .then(({ meals }) => meals))
 // }
 
-// function getMealsIngredientsList() {
-//   fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list')
-//     .then((response) => response.json()
-//       .then(({ meals }) => meals))
-// }
 
-// function getMealsByMainIngredient(ingredient) {
-//   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
-//     .then((response) => response.json()
-//       .then(({ meals }) => meals))
-// }
+const getMealsByMainIngredient = (ingredient) => (
+  fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+    .then((response) => response.json())
+    .then(({ meals }) => meals)
+    .catch((error) => error)
+);
 
 // function getMealsByCategory(category) {
 //   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
@@ -69,4 +72,10 @@ const getMealsByName = (name) => (
 //       .then(({ meals }) => meals))
 // }
 
-export { simpleGetAnything, getSingleRandomMeal, getMealsByName };
+export {
+  simpleGetAnything,
+  getSingleRandomMeal,
+  getMealsByName,
+  getMealsIngredientsList,
+  getMealsByMainIngredient,
+};

@@ -19,6 +19,7 @@ const RecipesProvider = ({ children }) => {
   const [fetchResult, setFetchResult] = useState(null);
   const [isError, setIsError] = useState(null);
   const [recipeId, setRecipeId] = useState();
+  const [recomendations, setRecomendations] = useState([]);
   const [explorar, setExplorar] = useState(false);
   const [buttonText, setButtonText] = useState('Iniciar Receita');
 
@@ -122,6 +123,8 @@ const RecipesProvider = ({ children }) => {
     requestOk,
     requestFail,
     debouncedSearchTerm,
+    recomendations,
+    setRecomendations,
   };
 
   // render
