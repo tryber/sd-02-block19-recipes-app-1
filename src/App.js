@@ -7,32 +7,32 @@ import Comidas from './pages/Comidas';
 import Detalhes from './pages/Detalhes';
 import Bebidas from './pages/Bebidas';
 import Explorar from './pages/Explorar';
+
 import EmProcesso from './pages/EmProcesso';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ExplorarTipos from './pages/ExplorarTipos';
 
+
 function App() {
   return (
-    <div data-testid="App">
-      <RecipesProvider>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/perfil" component={Perfil} />
-            <Route exact path="/explorar/comidas" component={ExplorarTipos} />
-            <Route exact path="/explorar/bebidas" component={ExplorarTipos} />
-            <Route exact path="/explorar" component={Explorar} />
-            <Route exact path="/receitas/comidas" component={Comidas} />
-            <Route exact path="/receitas/bebidas" component={Bebidas} />
-            <Route exact path="/receitas/:type/:id" component={Detalhes} />
-            <Route path="/receitas-feitas" component={ReceitasFeitas} />
-            <Route path="/receitas/emprocesso/:type/:id" component={EmProcesso} />
-            <Route path="/receitas-favoritas" component={ReceitasFavoritas} />
-            <Route path="/" component={LoginPage} />
-          </Switch>
-        </BrowserRouter>
-      </RecipesProvider>
-    </div>
+    <RecipesProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/perfil" component={Perfil} />
+          <Route exact path="/explorar/comidas" component={ExplorarTipos} />
+          <Route exact path="/explorar/bebidas" component={ExplorarTipos} />
+          <Route exact path="/explorar" component={Explorar} />
+          <Route exact path="/receitas/comidas" component={Comidas} />
+          <Route exact path="/receitas/bebidas" component={Bebidas} />
+          <Route exact path="/receitas/:type/:id" component={Detalhes} />
+          <Route exact path="/receitas-feitas" component={ReceitasFeitas} />
+          <Route exact path="/receitas/emprocesso/:type/:id" component={EmProcesso} />
+          <Route exact path="/receitas-favoritas" component={ReceitasFavoritas} />
+          <Route exact path="/" component={LoginPage} />
+        </Switch>
+      </BrowserRouter>
+    </RecipesProvider>
   );
 }
 

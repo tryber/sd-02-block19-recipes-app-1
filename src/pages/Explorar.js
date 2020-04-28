@@ -19,7 +19,7 @@ const Explorar = ({ match }) => {
   const { setHeaderTitle } = useContext(RecipesContext);
   useEffect(() => {
     setHeaderTitle(title);
-  }, []);
+  });
   return (
     <div>
       <Header isDisable />

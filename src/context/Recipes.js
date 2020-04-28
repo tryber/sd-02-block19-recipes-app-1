@@ -20,13 +20,13 @@ const RecipesProvider = ({ children }) => {
   const [isError, setIsError] = useState(null);
   const [recipeId, setRecipeId] = useState();
   const [recomendations, setRecomendations] = useState([]);
+  const [explorar, setExplorar] = useState(false);
   const [buttonText, setButtonText] = useState('Iniciar Receita');
 
   // context 1 - funções
   const debouncedSearchTerm = useDebounce(search, 600);
 
   const requestOk = (dataJson) => {
-    console.log('result fetch', dataJson)
     setFetchResult(dataJson);
     setIsFetching(false);
     setIsError(null);
@@ -118,6 +118,8 @@ const RecipesProvider = ({ children }) => {
     setIsError,
     recipeId,
     setRecipeId,
+    explorar,
+    setExplorar,
     btnCategory,
     requestOk,
     requestFail,
