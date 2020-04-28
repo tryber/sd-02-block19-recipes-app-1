@@ -6,8 +6,8 @@ const RecipeVideo = () => {
   return (
     fetchResult
     && fetchResult
-      .map(({ strYoutube }) => (
-        <section className="video-section">
+      .map(({ strYoutube, strMeal, strDrink }) => (
+        <section className="video-section" key={strMeal || strDrink}>
           {strYoutube && (
             <iframe
               title="recipe video"

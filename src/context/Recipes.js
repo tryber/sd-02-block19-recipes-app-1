@@ -1,7 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
-import { simpleGetAnything } from '../services/MealsAPI';
+import { simpleGetAnything, getMealsIngredientsList } from '../services/MealsAPI';
 import useDebounce from '../hooks/useDebounce';
+import { getCocktailsIngredientsList } from '../services/CocktailsAPI';
 
 const RecipesContext = createContext();
 
@@ -20,6 +21,7 @@ const RecipesProvider = ({ children }) => {
   const [isError, setIsError] = useState(null);
   const [recipeId, setRecipeId] = useState();
   const [buttonText] = useState('comidas');
+  const [recomendations, setRecomendations] = useState([]);
 
   // context 1 - funções
   const debouncedSearchTerm = useDebounce(search, 600);
@@ -118,6 +120,8 @@ const RecipesProvider = ({ children }) => {
     requestOk,
     requestFail,
     debouncedSearchTerm,
+    recomendations,
+    setRecomendations,
   };
 
   // render

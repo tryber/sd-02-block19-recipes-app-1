@@ -8,7 +8,7 @@ const Instructions = () => {
     fetchResult
     && fetchResult
       .map(({ strInstructions }) => (
-        <section className="instructions-section">
+        <section className="instructions-section" key={strInstructions}>
           <h2 className="details-titles">Instructions</h2>
           <p className="gray">{strInstructions}</p>
         </section>

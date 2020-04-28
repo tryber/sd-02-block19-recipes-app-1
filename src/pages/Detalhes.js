@@ -9,9 +9,13 @@ import DetailsHeader from '../components/DetailsHeader';
 import ShareButton from '../components/ShareButton';
 import FavoriteButton from '../components/FavoriteButton';
 import RecipeVideo from '../components/RecipeVideo';
+import Recomendations from '../components/Recomendations';
+import useFetchRecomendations from '../hooks/useFetchRecomendations';
 
 const Detalhes = ({ match: { params: { type, id } } }) => {
   const { fetchResult, setRecipeId, setAPI, isFetching } = useContext(RecipesContext);
+
+  const [recomendations] = useFetchRecomendations(type);
 
   useEffect(() => {
     if (type === 'comidas') {
@@ -41,9 +45,12 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
               <Ingredients />
               <Instructions />
               <RecipeVideo />
-              <section className="recomendations-section">
-                <h2 className="details-titles">Recomendations</h2>
-              </section>
+              <Recomendations recipes={recomendations} />
+              {/* <section>
+                <Link to={`/receitas/emprocesso/${type}/${id}`}>
+                  <ReceitaButton data-testid="start-recipe-btn" />
+                </Link>
+              </section> */}
             </article>
           ))}
     </div>

@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import RecipesList from './RecipesList';
 import { RecipesContext } from '../context/Recipes';
 
-
 const oneRecipe = (fetchResult) => {
   const { idMeal, idDrink } = fetchResult[0];
   const idRecipe = idMeal || idDrink;

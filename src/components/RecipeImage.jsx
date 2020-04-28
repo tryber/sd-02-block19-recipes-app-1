@@ -9,7 +9,7 @@ const RecipeImage = () => {
       .map(({
         strMeal, strDrink, strMealThumb, strDrinkThumb,
       }) => (
-        <section className="top-image-section">
+        <section className="top-image-section" key={strMeal || strDrink}>
           <img
             className="top-image"
             src={strMealThumb || strDrinkThumb}
