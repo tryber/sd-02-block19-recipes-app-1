@@ -25,7 +25,7 @@ const ExplorarTipos = ({ match }) => {
   useEffect(() => {
     setHeaderTitle(`Explorar - ${title}`);
     if (title === 'comidas' && title !== API) setAPI('themealdb');
-    if (title === 'bebidas' && title !== API) setAPI('thcocktaildb');
+    if (title === 'bebidas' && title !== API) setAPI('thecocktaildb');
   }, []);
 
   return (
