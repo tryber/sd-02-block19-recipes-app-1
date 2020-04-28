@@ -1,9 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
-import HeartIcon from '../images/heart.png';
-import ShareIcon from '../images/share.png';
 import './Detalhes.css';
+import RecipeImage from '../components/RecipeImage';
+import Ingredients from '../components/Ingredients';
+import Instructions from '../components/Instructions';
+import DetailsHeader from '../components/DetailsHeader';
+import ShareButton from '../components/ShareButton';
+import FavoriteButton from '../components/FavoriteButton';
+import RecipeVideo from '../components/RecipeVideo';
 
 const Detalhes = ({ match: { params: { type, id } } }) => {
   const { fetchResult, setRecipeId, setAPI, isFetching } = useContext(RecipesContext);
@@ -17,92 +22,25 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
     setRecipeId(id);
   }, []);
 
-
-  const ingredients = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
-  const measures = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strMeasure')).map((el) => el[1]);
-
-  const ingredientsList = ingredients && ingredients.reduce((acc, cur, index) => {
-    const ingredient = `- ${cur[1]} - ${measures[index]}`;
-    return [...acc, ingredient];
-  }, []);
-
   if (isFetching) return <div>Carregando...</div>;
 
   return (
     <div>
       {fetchResult
         && fetchResult
-          .map(({
-            strMeal,
-            strDrink,
-            strMealThumb,
-            strDrinkThumb,
-            strCategory,
-            strAlcoholic,
-            strInstructions,
-            strYoutube,
-          }) => (
+          .map(({ strMeal, strDrink }) => (
             <article className="details-page" key={strMeal || strDrink}>
-              <section className="top-image-section">
-                <img
-                  className="top-image"
-                  src={strMealThumb || strDrinkThumb}
-                  alt={strMeal || strDrink}
-                  data-testid="recipe-photo"
-                />
-              </section>
+              <RecipeImage />
               <section className="header-section">
-                <section className="title-section" data-testid="recipe-title">
-                  <h1 className="recipe-title">{strMeal || strDrink}</h1>
-                  <h3 className="recipe-subtitle">{strCategory || strAlcoholic}</h3>
-                </section>
+                <DetailsHeader />
                 <section className="icons-section">
-                  <button
-                    className="icon-button"
-                    type="button"
-                  >
-                    <img
-                      className="icons"
-                      src={ShareIcon}
-                      alt="share icon"
-                      data-testid="share-btn"
-                    />
-                  </button>
-                  <button
-                    className="icon-button"
-                    type="button"
-                  >
-                    <img
-                      className="icons"
-                      src={HeartIcon}
-                      alt="heart icon"
-                      data-testid="favorite-btn"
-                    />
-                  </button>
+                  <ShareButton />
+                  <FavoriteButton />
                 </section>
               </section>
-              <section className="ingredients-section">
-                <h2 className="details-titles">Ingredients</h2>
-                <div className="gray">
-                  {ingredientsList.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}
-                </div>
-              </section>
-              <section className="instructions-section">
-                <h2 className="details-titles">Instructions</h2>
-                <p className="gray">{strInstructions}</p>
-              </section>
-              <section className="video-section">
-                {strYoutube && (
-                  <iframe
-                    title="recipe video"
-                    src={`https://youtube.com/embed/${strYoutube.split('=')[1]}`}
-                    width="100%"
-                    height="200px"
-                    allowFullScreen
-                    frameBorder="0"
-                  />
-                )}
-              </section>
+              <Ingredients />
+              <Instructions />
+              <RecipeVideo />
               <section className="recomendations-section">
                 <h2 className="details-titles">Recomendations</h2>
               </section>
