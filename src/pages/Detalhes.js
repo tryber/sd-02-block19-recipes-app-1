@@ -48,7 +48,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
           }) => (
             <article className="details-page" key={strMeal || strDrink}>
               <section className="top-image-section">
-                <RecipeImage source={strMealThumb || strDrinkThumb} imgAlt={strMeal || strDrink} />
+                <RecipeImage />
               </section>
               <section className="header-section">
                 <section className="title-section">
@@ -70,7 +70,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                     </button>
                   </section>
               </section>
-              <Ingredients ingredientsList={ingredientsList} />
+              <Ingredients />
               <Instructions />
               <section className="video-section">
                 <iframe
