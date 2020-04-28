@@ -44,19 +44,18 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
             strDrinkThumb,
             strCategory,
             strAlcoholic,
-            strInstructions,
             strYoutube,
           }) => (
             <article className="details-page" key={strMeal || strDrink}>
-                <section className="top-image-section">
-                  <RecipeImage source={strMealThumb || strDrinkThumb} imgAlt={strMeal || strDrink} />
-                </section>
+              <section className="top-image-section">
+                <RecipeImage source={strMealThumb || strDrinkThumb} imgAlt={strMeal || strDrink} />
+              </section>
               <section className="header-section">
-                  <section className="title-section">
+                <section className="title-section">
                     <h1 className="recipe-title">{strMeal || strDrink}</h1>
                     <h3 className="recipe-subtitle">{strCategory || strAlcoholic}</h3>
                   </section>
-                  <section className="icons-section">
+                <section className="icons-section">
                     <button
                       className="icon-button"
                       type="button"
@@ -70,11 +69,11 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                       <img className="icons" src={HeartIcon} alt="heart icon" />
                     </button>
                   </section>
-                </section>
+              </section>
               <Ingredients ingredientsList={ingredientsList} />
               <Instructions />
               <section className="video-section">
-                  <iframe
+                <iframe
                     title="recipe video"
                     src={`https://youtube.com/embed/${strYoutube.split('=')[1]}`}
                     width="100%"
@@ -82,16 +81,16 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                     allowFullScreen
                     frameBorder="0"
                   />
-                </section>
+              </section>
               <section className="recomendations-section">
-                  <h2>Recomendations</h2>
-                </section>
-                <section>
+                <h2>Recomendations</h2>
+              </section>
+              <section>
                   <Link to={`/receitas/emprocesso/${type}/${id}`}>
                     <ReceitaButton data-testid="start-recipe-btn" />
                   </Link>
                 </section>
-              </article>
+            </article>
             ))}
     </div>
   );
