@@ -1,10 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
-import './Detalhes.css';
+import ReceitaButton from '../components/ReceitaButton';
 import RecipeImage from '../components/RecipeImage';
 import Ingredients from '../components/Ingredients';
 import Instructions from '../components/Instructions';
+import './Detalhes.css';
 import DetailsHeader from '../components/DetailsHeader';
 import ShareButton from '../components/ShareButton';
 import FavoriteButton from '../components/FavoriteButton';
@@ -46,11 +48,11 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
               <Instructions />
               <RecipeVideo />
               <Recomendations recipes={recomendations} />
-              {/* <section>
+              <section>
                 <Link to={`/receitas/emprocesso/${type}/${id}`}>
                   <ReceitaButton data-testid="start-recipe-btn" />
                 </Link>
-              </section> */}
+              </section>
             </article>
           ))}
     </div>
