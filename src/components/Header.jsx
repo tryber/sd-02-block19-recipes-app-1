@@ -1,5 +1,11 @@
 import React, { useContext } from 'react';
+import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
+import profileIcon from '../images/profile-icon.png';
+import searchIcon from '../images/search-icon.png';
+import './Header.css';
+import SearchInput from './SearchInput';
 
 const Header = ({ showSearch = true, isDisable = false }) => {
   const { headerTitle, isSearchOpen, setIsSearchOpen } = useContext(RecipesContext);
@@ -35,22 +41,14 @@ const Header = ({ showSearch = true, isDisable = false }) => {
   );
 };
 
-  const ingredients = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
-  const measures = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strMeasure')).map((el) => el[1]);
+Header.propTypes = {
+  showSearch: propTypes.bool,
+  isDisable: propTypes.bool,
+};
 
-  const ingredientsList = ingredients && ingredients.reduce((acc, cur, index) => {
-    const ingredient = `- ${cur[1]} - ${measures[index]}`;
-    return [...acc, ingredient];
-  }, []);
-
-  return (
-    <section className="ingredients-section">
-      <h2 className="details-titles">Ingredients</h2>
-      <div className="gray">
-        {ingredientsList.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}
-      </div>
-    </section>
-  );
+Header.defaultProps = {
+  showSearch: true,
+  isDisable: false,
 };
 
 export default Header;

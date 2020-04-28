@@ -20,6 +20,7 @@ const RecipesProvider = ({ children }) => {
   const [isError, setIsError] = useState(null);
   const [recipeId, setRecipeId] = useState();
   const [explorar, setExplorar] = useState(false);
+  const [recomendations, setRecomendations] = useState([]);
   const [buttonText, setButtonText] = useState('Iniciar Receita');
 
   // context 1 - funções
