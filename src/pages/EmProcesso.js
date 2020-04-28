@@ -6,7 +6,7 @@ import Ingredients from '../components/Ingredients';
 import Instructions from '../components/Instructions';
 import ReceitaButton from '../components/ReceitaButton';
 
-const EmProcesso = ({ match: { params: { type, id } } }) => {
+const EmProcesso = () => {
 
   const { setButtonText, fetchResult } = useContext(RecipesContext);
   useEffect(() => {

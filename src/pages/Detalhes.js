@@ -51,7 +51,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                 <section className="top-image-section">
                   <RecipeImage source={strMealThumb || strDrinkThumb} imgAlt={strMeal || strDrink} />
                 </section>
-                <section className="header-section">
+              <section className="header-section">
                   <section className="title-section">
                     <h1 className="recipe-title">{strMeal || strDrink}</h1>
                     <h3 className="recipe-subtitle">{strCategory || strAlcoholic}</h3>
@@ -71,9 +71,9 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                     </button>
                   </section>
                 </section>
-                <Ingredients ingredientsList={ingredientsList} />
-                <Instructions />
-                <section className="video-section">
+              <Ingredients ingredientsList={ingredientsList} />
+              <Instructions />
+              <section className="video-section">
                   <iframe
                     title="recipe video"
                     src={`https://youtube.com/embed/${strYoutube.split('=')[1]}`}
@@ -83,7 +83,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                     frameBorder="0"
                   />
                 </section>
-                <section className="recomendations-section">
+              <section className="recomendations-section">
                   <h2>Recomendations</h2>
                 </section>
                 <section>
