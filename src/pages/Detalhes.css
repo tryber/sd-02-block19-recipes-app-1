@@ -69,3 +69,11 @@
   margin-top: 0.5rem;
   padding: 1rem;
 }
+
+.recomendations-recipe-card {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  margin: 1rem;
+}
