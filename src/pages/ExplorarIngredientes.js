@@ -1,34 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import propTypes from 'prop-types';
-import axios from 'axios';
 import { RecipesContext } from '../context/Recipes';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import useFetchIngredients from '../hooks/useFetchIngredients';
+import ExplorarUtils from '../services/ExplorarUtils';
 import './ExplorarIngredientes.css';
-
-const handleRedirect = (history, API) => {
-  if (API === 'themealdb') {
-    history.push('/receitas/comidas');
-  }
-  if (API === 'thecocktaildb') {
-    history.push('/receitas/bebidas');
-  }
-};
-
-const handleClick = (ingredient, API, setFetchResult, setExplorar, history) => {
-  const url = `https://www.${API}.com/api/json/v1/1/filter.php?i=${ingredient}`;
-  const fetchIngredientsArray = async () => {
-    const response = await axios.get(url)
-      .catch((error) => console.log(error));
-    const values = response.data.meals || response.data.drinks || null;
-    setFetchResult(values);
-    setExplorar(true);
-    handleRedirect(history, API);
-  };
-  fetchIngredientsArray();
-};
 
 const ExplorarIngredientes = ({ match }) => {
   const history = useHistory();
@@ -36,9 +14,7 @@ const ExplorarIngredientes = ({ match }) => {
   const {
     setHeaderTitle, isFetching, API, setFetchResult, setExplorar,
   } = useContext(RecipesContext);
-  useEffect(() => {
-    setHeaderTitle(`Explorar - ${title}`);
-  }, []);
+  useEffect(() => { setHeaderTitle(`Explorar - ${title}`); }, []);
   const [data] = useFetchIngredients(match);
   return (
     <div>
@@ -50,8 +26,9 @@ const ExplorarIngredientes = ({ match }) => {
               key={`${strIngredient || strIngredient1} - ${Math.random()}`}
               type="button"
               className="ExplorarIngredientesList"
-              onClick={(
-                () => handleClick(strIngredient || strIngredient1, API, setFetchResult, setExplorar, history))}
+              onClick={(() => ExplorarUtils(
+                strIngredient || strIngredient1, API, setFetchResult, setExplorar, history,
+              ))}
             >
               <img
                 src={`https://www.${API}.com/images/ingredients/${strIngredient || strIngredient1}-Small.png`}

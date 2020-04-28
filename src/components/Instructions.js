@@ -12,7 +12,7 @@ const Instructions = () => {
               <h2>Instructions</h2>
               <p className="gray">{strInstructions}</p>
             </section>
-            ))}
+          ))}
     </div>
   );
 };

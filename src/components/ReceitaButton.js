@@ -7,6 +7,7 @@ const ReceitaButton = () => {
   return (
     <div>
       <button
+        type="button"
         className="button-receita"
         data-testid="start-recipe-btn"
       >
