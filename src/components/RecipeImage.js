@@ -4,7 +4,7 @@ import { RecipesContext } from '../context/Recipes';
 const RecipeImage = () => {
   const { fetchResult } = useContext(RecipesContext);
   return (
-    <div>
+    <div className="top-image-section">
       {fetchResult
         && fetchResult
           .map(({

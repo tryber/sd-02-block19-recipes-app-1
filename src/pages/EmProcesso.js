@@ -5,6 +5,7 @@ import RecipeImage from '../components/RecipeImage';
 import Ingredients from '../components/Ingredients';
 import Instructions from '../components/Instructions';
 import ReceitaButton from '../components/ReceitaButton';
+import './EmProcesso.css';
 
 const EmProcesso = () => {
 
