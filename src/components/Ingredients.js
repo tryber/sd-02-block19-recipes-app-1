@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { RecipesContext } from '../context/Recipes';
-import propTypes from 'prop-types';
 
 const Ingredients = () => {
   const { fetchResult } = useContext(RecipesContext);
@@ -21,10 +20,6 @@ const Ingredients = () => {
       </div>
     </section>
   );
-};
-
-Ingredients.propTypes = {
-  ingredientsList: propTypes.arrayOf(propTypes.string).isRequired,
 };
 
 export default Ingredients;
