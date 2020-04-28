@@ -5,14 +5,16 @@ const Instructions = () => {
   const { fetchResult } = useContext(RecipesContext);
 
   return (
-    fetchResult
-    && fetchResult
-      .map(({ strInstructions }) => (
-        <section className="instructions-section" key={strInstructions}>
-          <h2 className="details-titles">Instructions</h2>
-          <p className="gray">{strInstructions}</p>
-        </section>
-      ))
+    <div>
+      {fetchResult
+        && fetchResult
+          .map(({ strInstructions }) => (
+            <section className="instructions-section">
+              <h2>Instructions</h2>
+              <p className="gray">{strInstructions}</p>
+            </section>
+          ))}
+    </div>
   );
 };
 
