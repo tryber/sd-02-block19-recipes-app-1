@@ -13,6 +13,7 @@ import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ExplorarTipos from './pages/ExplorarTipos';
 import ExplorarIngredientes from './pages/ExplorarIngredientes';
+import ExplorarArea from './pages/ExplorarArea';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route path="/perfil" component={Perfil} />
           <Route path="/explorar/comidas/ingredientes" component={ExplorarIngredientes} />
+          <Route path="/explorar/comidas/area" component={ExplorarArea} />
           <Route exact path="/explorar/comidas" component={ExplorarTipos} />
           <Route path="/explorar/bebidas/ingredientes" component={ExplorarIngredientes} />
           <Route exact path="/explorar/bebidas" component={ExplorarTipos} />
