@@ -37,8 +37,12 @@ const Recomendations = ({ recipes }) => (
         strDrinkThumb,
         strCategory,
         strAlcoholic,
-      }) => (
-        <div className="recomendations-recipe-card" key={`${strMeal}-${Math.random() * 32}`}>
+      }, index) => (
+        <div
+          className="recomendations-recipe-card"
+          key={`${strMeal}-${Math.random() * 32}`}
+          data-testid={`${index}-recomendation-card`}
+        >
           <Link
             className="link-card"
             to={idMeal ? `/receitas/comidas/${idMeal}` : `/receitas/bebidas/${idDrink}`}

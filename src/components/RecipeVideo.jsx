@@ -16,6 +16,7 @@ const RecipeVideo = () => {
               height="200px"
               allowFullScreen
               frameBorder="0"
+              data-testid="video"
             />
           )}
         </section>

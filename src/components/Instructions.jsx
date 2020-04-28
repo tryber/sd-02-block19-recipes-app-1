@@ -10,7 +10,7 @@ const Instructions = () => {
       .map(({ strInstructions }) => (
         <section className="instructions-section" key={strInstructions}>
           <h2 className="details-titles">Instructions</h2>
-          <p className="gray">{strInstructions}</p>
+          <p className="gray" data-testid="instructions">{strInstructions}</p>
         </section>
       ))
   );
