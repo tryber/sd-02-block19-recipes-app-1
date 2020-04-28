@@ -18,7 +18,7 @@ describe('Testa a página de perfil', () => {
     );
 
     const userEmail = getByTestId('profile-email');
-
+    fireEvent.change(userEmail, { target: { value: 'teste@testando.com' } });
     expect(userEmail).toBeInTheDocument();
   });
   it('A tela deve conter 3 botões: um de receitas favoritas, um de receitas feitas e um de sair', () => {
