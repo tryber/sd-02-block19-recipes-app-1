@@ -16,23 +16,25 @@ import ExplorarTipos from './pages/ExplorarTipos';
 
 function App() {
   return (
-    <RecipesProvider>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/perfil" component={Perfil} />
-          <Route exact path="/explorar/comidas" component={ExplorarTipos} />
-          <Route exact path="/explorar/bebidas" component={ExplorarTipos} />
-          <Route exact path="/explorar" component={Explorar} />
-          <Route exact path="/receitas/comidas" component={Comidas} />
-          <Route exact path="/receitas/bebidas" component={Bebidas} />
-          <Route exact path="/receitas/:type/:id" component={Detalhes} />
-          <Route exact path="/receitas-feitas" component={ReceitasFeitas} />
-          <Route exact path="/receitas/emprocesso/:type/:id" component={EmProcesso} />
-          <Route exact path="/receitas-favoritas" component={ReceitasFavoritas} />
-          <Route exact path="/" component={LoginPage} />
-        </Switch>
-      </BrowserRouter>
-    </RecipesProvider>
+    <div data-testid="App">
+      <RecipesProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/perfil" component={Perfil} />
+            <Route exact path="/explorar/comidas" component={ExplorarTipos} />
+            <Route exact path="/explorar/bebidas" component={ExplorarTipos} />
+            <Route exact path="/explorar" component={Explorar} />
+            <Route exact path="/receitas/comidas" component={Comidas} />
+            <Route exact path="/receitas/bebidas" component={Bebidas} />
+            <Route exact path="/receitas/:type/:id" component={Detalhes} />
+            <Route exact path="/receitas-feitas" component={ReceitasFeitas} />
+            <Route exact path="/receitas/emprocesso/:type/:id" component={EmProcesso} />
+            <Route exact path="/receitas-favoritas" component={ReceitasFavoritas} />
+            <Route exact path="/" component={LoginPage} />
+          </Switch>
+        </BrowserRouter>
+      </RecipesProvider>
+    </div>
   );
 }
 
