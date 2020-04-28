@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+
 import './Perfil.css';
 
 const userEmail = JSON.parse(localStorage.getItem('user'));
@@ -14,12 +15,20 @@ function renderPage() {
         {userEmail.email}
       </div>
       <Link to="/receitas-feitas">
-        <button className="rect" data-testid="profile-done-btn">
+        <button
+          className="rect"
+          data-testid="profile-done-btn"
+          type="button"
+        >
           <p className="btn-perfil">Receitas Feitas</p>
         </button>
       </Link>
       <Link to="/receitas-favoritas">
-        <button className="rect" data-testid="profile-favorite-btn">
+        <button
+          className="rect"
+          data-testid="profile-favorite-btn"
+          type="button"
+        >
           <p className="btn-perfil">Receitas Favoritas</p>
         </button>
       </Link>
@@ -28,6 +37,7 @@ function renderPage() {
           className="rect"
           data-testid="profile-logout-btn"
           onClick={() => localStorage.clear()}
+          type="button"
         >
           <p className="btn-perfil">Sair</p>
         </button>
@@ -38,12 +48,16 @@ function renderPage() {
 
 const Perfil = () => {
   const { setHeaderTitle } = useContext(RecipesContext);
+
   useEffect(() => {
     setHeaderTitle('Perfil');
   }, []);
+
+  if (!userEmail) return <div>Carregando...</div>;
+
   return (
     <div>
-      <Header showSearch={false} />
+      <Header isDisable />
       {renderPage()}
       <Footer />
     </div>

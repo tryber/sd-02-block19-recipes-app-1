@@ -18,12 +18,12 @@ const Comidas = ({ match }) => {
 
   return (
     <div>
-      <Header data-testid="header" />
+      <Header />
       <CategoriesList random={data} match={match} data-testid="categories-component" />
       <div className="MainContainerPage">
         {isFetching ? <h2>Buscando...</h2> : <ShowRecipes />}
       </div>
-      <Footer data-testid="footer" />
+      <Footer />
     </div>
   );
 };

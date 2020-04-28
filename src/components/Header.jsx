@@ -11,7 +11,7 @@ const Header = ({ showSearch = true, isDisable = false }) => {
   const { headerTitle, isSearchOpen, setIsSearchOpen } = useContext(RecipesContext);
   return (
     <div>
-      <header className="header-main-page">
+      <header className="header-main-page" data-testid="header">
         <Link to="/perfil">
           <img
             src={profileIcon}
