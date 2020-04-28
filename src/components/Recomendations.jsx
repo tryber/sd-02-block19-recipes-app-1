@@ -38,9 +38,8 @@ const Recomendations = ({ recipes }) => (
         strCategory,
         strAlcoholic,
       }) => (
-        <div className="recomendations-recipe-card">
+        <div className="recomendations-recipe-card" key={`${strMeal}-${Math.random() * 32}`}>
           <Link
-            key={`${strMeal}-${Math.random() * 32}`}
             className="link-card"
             to={idMeal ? `/receitas/comidas/${idMeal}` : `/receitas/bebidas/${idDrink}`}
           >
