@@ -8,7 +8,6 @@ const RecipesList = () => {
   }) => (
     <button
       key={`${strMeal}-${Math.random() * 32}`}
-      style={{ background: 'none', border: 'none', cursor: 'pointer' }}
       type="button"
       className="MainContainerRecipe"
       onClick={() => setRecipeId(idMeal || idDrink)}

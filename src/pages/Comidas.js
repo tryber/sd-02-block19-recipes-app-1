@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import propTypes from 'prop-types';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -9,8 +9,13 @@ import useFetchRandom from '../hooks/useFetchRandom';
 import './MainPage.css';
 
 const Comidas = ({ match }) => {
-  const { isFetching } = useContext(RecipesContext);
+  const { isFetching, setExplorar } = useContext(RecipesContext);
   const [data] = useFetchRandom(match);
+
+  useEffect(() => (() => {
+    setExplorar(false);
+  }));
+
   return (
     <div>
       <Header data-testid="header" />

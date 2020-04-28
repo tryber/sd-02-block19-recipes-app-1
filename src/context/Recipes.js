@@ -19,6 +19,7 @@ const RecipesProvider = ({ children }) => {
   const [fetchResult, setFetchResult] = useState(null);
   const [isError, setIsError] = useState(null);
   const [recipeId, setRecipeId] = useState();
+  const [explorar, setExplorar] = useState(false);
   const [buttonText, setButtonText] = useState('Iniciar Receita');
 
   // context 1 - funções
@@ -115,6 +116,8 @@ const RecipesProvider = ({ children }) => {
     setIsError,
     recipeId,
     setRecipeId,
+    explorar,
+    setExplorar,
     btnCategory,
     requestOk,
     requestFail,
