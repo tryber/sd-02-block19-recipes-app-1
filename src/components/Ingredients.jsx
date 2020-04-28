@@ -3,6 +3,7 @@ import { RecipesContext } from '../context/Recipes';
 
 const Ingredients = () => {
   const { fetchResult } = useContext(RecipesContext);
+
   const ingredients = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
   const measures = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strMeasure')).map((el) => el[1]);
 
@@ -10,6 +11,7 @@ const Ingredients = () => {
     const ingredient = `- ${cur[1]} - ${measures[index]}`;
     return [...acc, ingredient];
   }, []);
+
   return (
     <section className="ingredients-section">
       <h2 className="details-titles">Ingredients</h2>

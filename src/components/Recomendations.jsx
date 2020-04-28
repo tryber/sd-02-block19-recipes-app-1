@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
+import { oneRecipe } from './ShowRecipes';
 
 const responsive = {
   desktop: {
@@ -25,28 +26,15 @@ const responsive = {
 
 const Recomendations = ({ recipes }) => {
   const { setRecipeId } = useContext(RecipesContext);
-  // console.log(recipes)
 
-  // const repeatedIngredientsInAPI = (mealsIngredients && drinksIngredients)
-  //   && mealsIngredients.filter((el) => drinksIngredients.indexOf(el) !== -1);
-
-  // const recipeIngredients = fetchResult && Object.entries(fetchResult[0])
-  //   .map(([key, value]) => key.match('strIngredient') && value).filter(Boolean);
-
-  // const ingredientsInCommon = repeatedIngredientsInAPI && repeatedIngredientsInAPI
-  //   .filter((el) => recipeIngredients.indexOf(el) !== -1);
-
-  // useEffect(() => {
-  //   if (API === 'themealdb') {
-  //     getCocktailsByIngredient(ingredientsInCommon[0])
-  //       .then((result) => setRecomendations(result));
-  //   } if (API === 'thecocktaildb') {
-  //     getMealsByMainIngredient(ingredientsInCommon[0])
-  //       .then((result) => setRecomendations(result));
-  //   }
-  // }, [ingredientsInCommon]);
-
-  // console.log(recipeIngredients, repeatedIngredientsInAPI, ingredientsInCommon)
+  function handleClick(idMeal, idDrink) {
+    if (idMeal) {
+      setRecipeId(idMeal);
+      return oneRecipe({ idMeal });
+    }
+    setRecipeId(idDrink);
+    return oneRecipe({ idDrink });
+  }
 
   return (
     <section className="recomendations-section">
@@ -62,19 +50,17 @@ const Recomendations = ({ recipes }) => {
           strCategory,
           strAlcoholic,
         }) => (
-          <button
+          <Link
             key={`${strMeal}-${Math.random() * 32}`}
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-            type="button"
-            className="MainContainerRecipe"
-            onClick={() => (idMeal
-              ? setRecipeId(idMeal) && <Redirect to={`/receitas/comidas/${idMeal}`} />
-              : setRecipeId(idDrink) && <Redirect to={`/receitas/bebidas/${idDrink}`} />)}
+            // style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            // type="button"
+            className="recomendations-recipe-card"
+            to={idMeal ? `/receitas/comidas/${idMeal}` : `/receitas/bebidas/${idDrink}`}
           >
             <img className="MainImg" src={strMealThumb || strDrinkThumb} alt={strMeal || strDrink} />
             <p className="MainCategory">{strCategory || strAlcoholic}</p>
             <p className="MainRecipe">{strMeal || strDrink}</p>
-          </button>
+          </Link>
         ))}
       </Carousel>
     </section>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
@@ -16,17 +16,20 @@ import useFetchRecomendations from '../hooks/useFetchRecomendations';
 
 const Detalhes = ({ match: { params: { type, id } } }) => {
   const { fetchResult, setRecipeId, setAPI, isFetching } = useContext(RecipesContext);
+  const [recomendationsAPI, setRecomendationsAPI] = useState();
 
-  const [recomendations] = useFetchRecomendations(type);
+  const [recomendations] = useFetchRecomendations(recomendationsAPI);
 
   useEffect(() => {
     if (type === 'comidas') {
+      setRecomendationsAPI('thecocktaildb');
       setAPI('themealdb');
     } if (type === 'bebidas') {
+      setRecomendationsAPI('themealdb');
       setAPI('thecocktaildb');
     }
     setRecipeId(id);
-  }, []);
+  }, [id]);
 
   if (isFetching) return <div>Carregando...</div>;
 

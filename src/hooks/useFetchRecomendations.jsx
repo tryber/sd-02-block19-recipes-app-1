@@ -1,14 +1,11 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { RecipesContext } from '../context/Recipes';
 
-const useFetchRecomendations = (type) => {
+const useFetchRecomendations = (API) => {
   const { recomendations, setRecomendations } = useContext(RecipesContext);
-  const [API, setAPI] = useState('');
 
   useEffect(() => {
-    if (type === 'comidas') setAPI('thecocktaildb');
-    if (type === 'bebidas') setAPI('themealdb');
     const value = [];
     if (API) {
       const fetchRandom = async () => {
