@@ -13,10 +13,8 @@ const useFetchIngredients = ({ path }) => {
     const getIngredients = async () => {
       const url = `https://www.${API}.com/api/json/v1/1/list.php?i=list`;
       const response = await axios.get(url);
-      console.log('r', response);
       const value = response.data.meals || response.data.drinks;
       if (value.length > 400) value.length = 322;
-      console.log('v', value);
       setData(value);
       setIsFetching(false);
     };

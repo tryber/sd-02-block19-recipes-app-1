@@ -4,7 +4,7 @@ import { RecipesContext } from '../context/Recipes';
 
 const useFetchRandom = ({ path }) => {
   const {
-    API, requestOk, headerTitle, setIsFetching, setHeaderTitle, setAPI,
+    API, requestOk, headerTitle, setIsFetching, setHeaderTitle, setAPI, explorar,
   } = useContext(RecipesContext);
   const [data, setData] = useState(null);
 
@@ -15,8 +15,8 @@ const useFetchRandom = ({ path }) => {
     if (title === 'explorar') setAPI('themealdb');
     if (title === 'bebidas') setAPI('thecocktaildb');
     const value = [];
-    setIsFetching(true);
-    if (title === headerTitle) {
+    if (title === headerTitle && !explorar) {
+      setIsFetching(true);
       const fetchRandom = async () => {
         const url = `https://www.${API}.com/api/json/v1/1/random.php`;
         const response = await axios.get(url);

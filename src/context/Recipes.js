@@ -20,6 +20,7 @@ const RecipesProvider = ({ children }) => {
   const [isError, setIsError] = useState(null);
   const [recipeId, setRecipeId] = useState();
   const [buttonText] = useState('comidas');
+  const [explorar, setExplorar] = useState(false);
 
   // context 1 - funções
   const debouncedSearchTerm = useDebounce(search, 600);
@@ -114,6 +115,8 @@ const RecipesProvider = ({ children }) => {
     setIsError,
     recipeId,
     setRecipeId,
+    explorar,
+    setExplorar,
     btnCategory,
     requestOk,
     requestFail,
