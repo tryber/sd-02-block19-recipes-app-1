@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 // import Carousel from 'react-multi-carousel';
+// import 'react-multi-carousel/lib/styles.css';
 import PropTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
-import 'react-multi-carousel/lib/styles.css';
 
 // const responsive = {
 //   desktop: {
