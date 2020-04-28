@@ -8,7 +8,6 @@ import ReceitaButton from '../components/ReceitaButton';
 import './EmProcesso.css';
 
 const EmProcesso = () => {
-
   const { setButtonText } = useContext(RecipesContext);
   useEffect(() => {
     setButtonText('Finalizar Receita');

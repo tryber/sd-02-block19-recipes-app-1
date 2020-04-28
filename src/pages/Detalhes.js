@@ -41,8 +41,8 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
               </section>
               <section className="header-section">
                 <section className="title-section">
-                <h1 className="recipe-title">{strMeal || strDrink}</h1>
-                 <h3 className="recipe-subtitle">{strCategory || strAlcoholic}</h3>
+                  <h1 className="recipe-title">{strMeal || strDrink}</h1>
+                  <h3 className="recipe-subtitle">{strCategory || strAlcoholic}</h3>
                 </section>
                 <section className="icons-section">
                   <button
@@ -50,13 +50,13 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
                     type="button"
                   >
                     <img className="icons" src={ShareIcon} alt="share icon" />
-                    </button>
+                  </button>
                   <button
                     className="icon-button"
                     type="button"
                   >
-                      <img className="icons" src={HeartIcon} alt="heart icon" />
-                    </button>
+                    <img className="icons" src={HeartIcon} alt="heart icon" />
+                  </button>
                 </section>
               </section>
               <Ingredients />
