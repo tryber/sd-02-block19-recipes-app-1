@@ -50,17 +50,17 @@ const Recomendations = ({ recipes }) => {
           strCategory,
           strAlcoholic,
         }) => (
-          <Link
-            key={`${strMeal}-${Math.random() * 32}`}
-            // style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-            // type="button"
-            className="recomendations-recipe-card"
-            to={idMeal ? `/receitas/comidas/${idMeal}` : `/receitas/bebidas/${idDrink}`}
-          >
-            <img className="MainImg" src={strMealThumb || strDrinkThumb} alt={strMeal || strDrink} />
-            <p className="MainCategory">{strCategory || strAlcoholic}</p>
-            <p className="MainRecipe">{strMeal || strDrink}</p>
-          </Link>
+          <div className="recomendations-recipe-card">
+            <Link
+              key={`${strMeal}-${Math.random() * 32}`}
+              className="link-card"
+              to={idMeal ? `/receitas/comidas/${idMeal}` : `/receitas/bebidas/${idDrink}`}
+            >
+              <img className="MainImg" src={strMealThumb || strDrinkThumb} alt={strMeal || strDrink} />
+              <p className="MainCategory">{strCategory || strAlcoholic}</p>
+              <p className="MainRecipe">{strMeal || strDrink}</p>
+            </Link>
+          </div>
         ))}
       </Carousel>
     </section>

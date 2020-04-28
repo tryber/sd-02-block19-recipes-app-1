@@ -80,7 +80,6 @@ const RecipesProvider = ({ children }) => {
   useEffect(() => {
     if (recipeId) {
       const detailsAPI = `https://www.${API}.com/api/json/v1/1/lookup.php?i=${recipeId}`;
-      console.log('fetch chamada')
       setIsFetching(true);
       simpleGetAnything(detailsAPI)
         .then(
