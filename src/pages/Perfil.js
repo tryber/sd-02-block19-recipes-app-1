@@ -15,20 +15,12 @@ function renderPage() {
         {userEmail.email}
       </div>
       <Link to="/receitas-feitas">
-        <button
-          className="rect"
-          data-testid="profile-done-btn"
-          type="button"
-        >
+        <button className="rect" data-testid="profile-done-btn" type="button">
           <p className="btn-perfil">Receitas Feitas</p>
         </button>
       </Link>
       <Link to="/receitas-favoritas">
-        <button
-          className="rect"
-          data-testid="profile-favorite-btn"
-          type="button"
-        >
+        <button className="rect" data-testid="profile-favorite-btn" type="button">
           <p className="btn-perfil">Receitas Favoritas</p>
         </button>
       </Link>
