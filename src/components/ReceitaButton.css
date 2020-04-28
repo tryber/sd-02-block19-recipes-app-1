@@ -1,8 +1,13 @@
 .button-receita {
   background: rgb(108, 227, 79);
+  display: flex;
+  font-size: 29px;
   height: 76px;
+  justify-content: center;
   left: 11px;
-  position: absolute;
+  margin: auto;
+  margin-bottom: 40px;
+  text-decoration: none;
   top: 934px;
   width: 339px;
 }
