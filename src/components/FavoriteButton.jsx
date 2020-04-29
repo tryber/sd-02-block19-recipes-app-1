@@ -23,6 +23,7 @@ const FavoriteButton = ({ recipe }) => {
     if (favoriteRecipes && favoriteRecipes.some((el) => el.id === recipe.id)) {
       return setFavorited(true);
     }
+    return (() => setFavorited(false));
   }, [favorited]);
 
   return (

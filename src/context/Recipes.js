@@ -25,7 +25,6 @@ const RecipesProvider = ({ children }) => {
   const [checkboxes, setCheckboxes] = useState({});
   const [area, setArea] = useState(null);
   const [randomic, setRandomic] = useState(null);
-  const [favorites, setFavorites] = useState([]);
 
   // context 1 - funções
   const debouncedSearchTerm = useDebounce(search, 600);
