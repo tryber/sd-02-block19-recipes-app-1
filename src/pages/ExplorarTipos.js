@@ -21,11 +21,15 @@ const explorarBtn = (btnValue, recipeType, newPath) => {
 
 const ExplorarTipos = ({ match }) => {
   const title = match.path.split('/')[match.path.split('/').length - 1];
-  const { setHeaderTitle, setAPI, API } = useContext(RecipesContext);
+  const {
+    setHeaderTitle, setAPI, API, setIsFetching, setFetchResult,
+  } = useContext(RecipesContext);
   useEffect(() => {
     setHeaderTitle(`Explorar - ${title}`);
     if (title === 'comidas' && title !== API) setAPI('themealdb');
     if (title === 'bebidas' && title !== API) setAPI('thecocktaildb');
+    setIsFetching(true);
+    setFetchResult(null);
   }, []);
 
   return (
