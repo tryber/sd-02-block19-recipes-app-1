@@ -11,7 +11,7 @@ import ReceitaButton from '../components/ReceitaButton';
 import './EmProcesso.css';
 
 const habilitaBotao = (fetchResult, checkboxes) => {
-  const ingredients = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
+  const ingredients = Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
   const valores = Object.values(checkboxes).filter((item) => item === true);
   if (ingredients.length === valores.length) return false;
   return true;

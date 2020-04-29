@@ -7,7 +7,6 @@ import { RecipesContext } from '../context/Recipes';
 export const oneRecipe = ({ idMeal, idDrink }) => {
   const idRecipe = idMeal || idDrink;
   const type = idMeal ? 'comidas' : 'bebidas';
-  console.log(`/receitas/${type}/${idRecipe}`)
   return <Redirect to={`/receitas/${type}/${idRecipe}`} />;
 };
 

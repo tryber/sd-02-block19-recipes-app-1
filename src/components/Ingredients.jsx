@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 import './Ingredients.css';
@@ -21,7 +21,7 @@ const Ingredients = ({ useCheckbox = false }) => {
         <h2 className="details-titles">Ingredients</h2>
         <div className="gray checklist">
           {ingredientsList.map((ingredient) => (
-            <>
+            <Fragment>
               <input
                 type="checkbox"
                 className="checkbox-boxes"
@@ -33,7 +33,7 @@ const Ingredients = ({ useCheckbox = false }) => {
                 }}
               />
               <label className={checkboxes[ingredient] ? 'checkedbox' : ''}>{ingredient}</label>
-            </>
+            </Fragment>
           ))}
         </div>
       </section>
