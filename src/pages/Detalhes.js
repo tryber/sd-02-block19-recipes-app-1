@@ -14,9 +14,7 @@ import RecipeVideo from '../components/RecipeVideo';
 import Recomendations from '../components/Recomendations';
 import useFetchRecomendations from '../hooks/useFetchRecomendations';
 
-
 const Detalhes = ({ match: { params: { type, id }, url } }) => {
-
   const {
     fetchResult, setRecipeId, setAPI, isFetching,
   } = useContext(RecipesContext);
