@@ -24,7 +24,7 @@ const FavoriteButton = ({ recipe }) => {
       return setFavorited(true);
     }
     return (() => setFavorited(false));
-  }, [favorited]);
+  }, []);
 
   return (
     <button
