@@ -6,16 +6,17 @@ const RecipeVideo = () => {
   return (
     fetchResult
     && fetchResult
-      .map(({ strYoutube, strMeal, strDrink }) => (
+      .map(({ strYoutube, strVideo, strMeal, strDrink }) => (
         <section className="video-section" key={strMeal || strDrink}>
-          {strYoutube && (
+          {(strYoutube || strVideo) && (
             <iframe
               title="recipe video"
-              src={`https://youtube.com/embed/${strYoutube.split('=')[1]}`}
+              src={`https://youtube.com/embed/${strYoutube.split('=')[1] || strVideo.split('=')[1]}`}
               width="100%"
               height="200px"
               allowFullScreen
               frameBorder="0"
+              data-testid="video"
             />
           )}
         </section>

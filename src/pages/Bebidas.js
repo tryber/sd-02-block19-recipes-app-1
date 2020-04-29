@@ -9,12 +9,16 @@ import useFetchRandom from '../hooks/useFetchRandom';
 import './MainPage.css';
 
 const Bebidas = ({ match }) => {
-  const { isFetching, setExplorar } = useContext(RecipesContext);
+  const title = match.path.split('/')[match.path.split('/').length - 1];
+  const { isFetching, setExplorar, setHeaderTitle } = useContext(RecipesContext);
   const [data] = useFetchRandom(match);
 
-  useEffect(() => (() => {
-    setExplorar(false);
-  }));
+  useEffect(() => {
+    setHeaderTitle(title);
+    return () => {
+      setExplorar(false);
+    };
+  });
 
   return (
     <div>

@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import PropTypes from 'prop-types';
-import { RecipesContext } from '../context/Recipes';
-import { oneRecipe } from './ShowRecipes';
 
 const responsive = {
   desktop: {
@@ -24,48 +22,42 @@ const responsive = {
   },
 };
 
-const Recomendations = ({ recipes }) => {
-  const { setRecipeId } = useContext(RecipesContext);
-
-  function handleClick(idMeal, idDrink) {
-    if (idMeal) {
-      setRecipeId(idMeal);
-      return oneRecipe({ idMeal });
-    }
-    setRecipeId(idDrink);
-    return oneRecipe({ idDrink });
-  }
-
-  return (
-    <section className="recomendations-section">
-      <h2 className="details-titles">Recomendations</h2>
-      <Carousel responsive={responsive} infinite>
-        {recipes.length && recipes.map(({
-          idMeal,
-          idDrink,
-          strMeal,
-          strDrink,
-          strMealThumb,
-          strDrinkThumb,
-          strCategory,
-          strAlcoholic,
-        }) => (
+const Recomendations = ({ recipes }) => (
+  <section className="recomendations-section">
+    <h2 className="details-titles">Recomendations</h2>
+    <Carousel responsive={responsive} infinite>
+      {recipes.length && recipes.map(({
+        idMeal,
+        idDrink,
+        strMeal,
+        strDrink,
+        strMealThumb,
+        strDrinkThumb,
+        strCategory,
+        strAlcoholic,
+      }, index) => (
+        <div
+          className="recomendations-recipe-card"
+          key={`${strMeal}-${Math.random() * 32}`}
+          data-testid={`${index}-recomendation-card`}
+        >
           <Link
-            key={`${strMeal}-${Math.random() * 32}`}
-            // style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-            // type="button"
-            className="recomendations-recipe-card"
+            className="link-card"
             to={idMeal ? `/receitas/comidas/${idMeal}` : `/receitas/bebidas/${idDrink}`}
           >
-            <img className="MainImg" src={strMealThumb || strDrinkThumb} alt={strMeal || strDrink} />
+            <img
+              className="MainImg"
+              src={strMealThumb || strDrinkThumb}
+              alt={strMeal || strDrink}
+            />
             <p className="MainCategory">{strCategory || strAlcoholic}</p>
             <p className="MainRecipe">{strMeal || strDrink}</p>
           </Link>
-        ))}
-      </Carousel>
-    </section>
-  );
-};
+        </div>
+      ))}
+    </Carousel>
+  </section>
+);
 
 Recomendations.propTypes = {
   recipes: PropTypes.instanceOf(Array).isRequired,

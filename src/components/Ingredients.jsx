@@ -48,13 +48,10 @@ const Ingredients = ({ useCheckbox = false }) => {
     </section>
   );
 };
-
 Ingredients.defaultProps = {
   useCheckbox: false,
 };
-
 Ingredients.propTypes = {
   useCheckbox: propTypes.bool,
 };
-
 export default Ingredients;
