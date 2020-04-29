@@ -14,7 +14,7 @@ const Ingredients = () => {
 
   return (
     <section className="ingredients-section">
-      <h2>Ingredients</h2>
+      <h2 className="details-titles">Ingredients</h2>
       <div className="gray">
         {ingredientsList.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}
       </div>

@@ -19,8 +19,11 @@ const RecipesProvider = ({ children }) => {
   const [fetchResult, setFetchResult] = useState(null);
   const [isError, setIsError] = useState(null);
   const [recipeId, setRecipeId] = useState();
+  const [recomendations, setRecomendations] = useState([]);
   const [explorar, setExplorar] = useState(false);
   const [buttonText, setButtonText] = useState('Iniciar Receita');
+  const [area, setArea] = useState(null);
+  const [random, setRandom] = useState(null);
 
   // context 1 - funções
   const debouncedSearchTerm = useDebounce(search, 600);
@@ -106,6 +109,8 @@ const RecipesProvider = ({ children }) => {
     setSearchRadio,
     category,
     setCategory,
+    area,
+    setArea,
     API,
     setAPI,
     isFetching,
@@ -118,10 +123,14 @@ const RecipesProvider = ({ children }) => {
     setRecipeId,
     explorar,
     setExplorar,
+    random,
+    setRandom,
     btnCategory,
     requestOk,
     requestFail,
     debouncedSearchTerm,
+    recomendations,
+    setRecomendations,
   };
 
   // render

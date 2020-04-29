@@ -9,21 +9,25 @@ import useFetchRandom from '../hooks/useFetchRandom';
 import './MainPage.css';
 
 const Comidas = ({ match }) => {
-  const { isFetching, setExplorar } = useContext(RecipesContext);
+  const title = match.path.split('/')[match.path.split('/').length - 1];
+  const { isFetching, setExplorar, setHeaderTitle } = useContext(RecipesContext);
   const [data] = useFetchRandom(match);
 
-  useEffect(() => (() => {
-    setExplorar(false);
-  }));
+  useEffect(() => {
+    setHeaderTitle(title);
+    return () => {
+      setExplorar(false);
+    };
+  });
 
   return (
     <div>
-      <Header data-testid="header" />
+      <Header />
       <CategoriesList random={data} match={match} data-testid="categories-component" />
       <div className="MainContainerPage">
         {isFetching ? <h2>Buscando...</h2> : <ShowRecipes />}
       </div>
-      <Footer data-testid="footer" />
+      <Footer />
     </div>
   );
 };

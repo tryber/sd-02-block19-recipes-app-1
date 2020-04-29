@@ -34,11 +34,12 @@ export function getRandomCocktail() {
       .then(({ drinks }) => drinks));
 }
 
-export function getCocktailsByIngredient(ingredient) {
+export const getCocktailsByIngredient = (ingredient) => (
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`)
-    .then((response) => response.json()
-      .then(({ drinks }) => drinks));
-}
+    .then((response) => response.json())
+    .then(({ drinks }) => drinks)
+    .catch((error) => error)
+);
 
 export function getCocktailsByType(type) {
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${type}`)
@@ -58,11 +59,12 @@ export function getCocktailsCategoriesList() {
       .then(({ drinks }) => drinks));
 }
 
-export function getCocktailsIngredientsList() {
+export const getCocktailsIngredientsList = () => (
   fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
-    .then((response) => response.json()
-      .then(({ drinks }) => drinks));
-}
+    .then((response) => response.json())
+    .then(({ drinks }) => drinks.map(({ strIngredient1 }) => strIngredient1))
+    .catch((error) => error)
+);
 
 export function getCocktailsTypeList() {
   fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list')

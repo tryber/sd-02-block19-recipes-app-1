@@ -4,13 +4,12 @@ import { RecipesContext } from '../context/Recipes';
 
 const useFetchRandom = ({ path }) => {
   const {
-    API, requestOk, headerTitle, setIsFetching, setHeaderTitle, setAPI, explorar,
+    API, requestOk, headerTitle, setIsFetching, setHeaderTitle, setAPI, explorar, setRandom,
   } = useContext(RecipesContext);
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const title = path.split('/')[path.split('/').length - 1];
-    setHeaderTitle(title);
     if (title === 'comidas') setAPI('themealdb');
     if (title === 'explorar') setAPI('themealdb');
     if (title === 'bebidas') setAPI('thecocktaildb');
@@ -25,6 +24,7 @@ const useFetchRandom = ({ path }) => {
         value.push(actual);
         if (value.length === 12) {
           setData(value);
+          setRandom(value);
           requestOk(value);
         }
       };
