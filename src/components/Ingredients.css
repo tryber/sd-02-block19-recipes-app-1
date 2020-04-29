@@ -1,10 +1,13 @@
 .checkedbox {
   text-decoration: line-through;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .checklist {
   display: flex;
   flex-direction: column;
+}
 
+.checkbox-boxes {
+  
 }

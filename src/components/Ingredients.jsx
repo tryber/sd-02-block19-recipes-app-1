@@ -27,6 +27,7 @@ const Ingredients = ({ useCheckbox = false }) => {
             <>
               <input
                 type="checkbox"
+                className="checkbox-boxes"
                 key={ingredient}
                 onChange={(event) => {
                   setCheckboxes({

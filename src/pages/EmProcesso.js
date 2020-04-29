@@ -17,17 +17,23 @@ const EmProcesso = () => {
   }, []);
 
   return (
-    <div>
+    <article>
       <RecipeImage />
-      <DetailsHeader />
-      <ShareButton />
-      <FavoriteButton />
+      <section className="header-section">
+        <DetailsHeader />
+        <section className="icons-section">
+          <ShareButton />
+          <FavoriteButton />
+        </section>
+      </section>
       <Ingredients useCheckbox />
       <Instructions />
-      <Link to="/receitas-feitas">
-        <ReceitaButton />
-      </Link>
-    </div>
+      <section>
+        <Link to="/receitas-feitas">
+          <ReceitaButton />
+        </Link>
+      </section>
+    </article>
   );
 };
 
