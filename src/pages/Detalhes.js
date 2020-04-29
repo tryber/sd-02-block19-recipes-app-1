@@ -14,12 +14,11 @@ import RecipeVideo from '../components/RecipeVideo';
 import Recomendations from '../components/Recomendations';
 import useFetchRecomendations from '../hooks/useFetchRecomendations';
 
-const Detalhes = ({ match: { params: { type, id } } }) => {
+const Detalhes = ({ match: { params: { type, id }, url } }) => {
   const {
     fetchResult, setRecipeId, setAPI, isFetching,
   } = useContext(RecipesContext);
   const [recomendationsAPI, setRecomendationsAPI] = useState();
-
   const [recomendations] = useFetchRecomendations(recomendationsAPI);
 
   useEffect(() => {
@@ -45,7 +44,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
               <section className="header-section">
                 <DetailsHeader />
                 <section className="icons-section">
-                  <ShareButton />
+                  <ShareButton url={url} />
                   <FavoriteButton />
                 </section>
               </section>
@@ -66,6 +65,7 @@ const Detalhes = ({ match: { params: { type, id } } }) => {
 
 Detalhes.propTypes = {
   match: PropTypes.shape({
+    url: PropTypes.string.isRequired,
     params: PropTypes.shape({
       type: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
