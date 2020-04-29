@@ -1,14 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 import './Ingredients.css';
 
 
 const Ingredients = ({ useCheckbox = false }) => {
-  const { fetchResult } = useContext(RecipesContext);
-
-  const [checkboxes, setCheckboxes] = useState({});
-  console.log(checkboxes);
+  const { fetchResult, checkboxes, setCheckboxes } = useContext(RecipesContext);
 
   const ingredients = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
   const measures = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strMeasure')).map((el) => el[1]);
