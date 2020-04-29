@@ -24,6 +24,7 @@ const Ingredients = ({ useCheckbox = false }) => {
             <Fragment>
               <input
                 type="checkbox"
+                id="ingredient"
                 className="checkbox-boxes"
                 key={ingredient}
                 onChange={(event) => {
@@ -32,7 +33,7 @@ const Ingredients = ({ useCheckbox = false }) => {
                   });
                 }}
               />
-              <label className={checkboxes[ingredient] ? 'checkedbox' : ''}>{ingredient}</label>
+              <label htmlFor="ingredient" className={checkboxes[ingredient] ? 'checkedbox' : ''}>{ingredient}</label>
             </Fragment>
           ))}
         </div>
