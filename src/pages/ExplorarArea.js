@@ -10,7 +10,7 @@ import './ExplorarArea.css';
 
 const ExplorarArea = ({ match }) => {
   const {
-    setHeaderTitle, isFetching, setIsFetching, setIsSearchOpen, area, setArea, randomic, setFetchResult,
+    setHeaderTitle, isFetching, setIsFetching, setIsSearchOpen, area, setArea,
   } = useContext(RecipesContext);
 
   useEffect(() => {
