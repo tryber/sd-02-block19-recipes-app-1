@@ -22,6 +22,7 @@ const RecipesProvider = ({ children }) => {
   const [recomendations, setRecomendations] = useState([]);
   const [explorar, setExplorar] = useState(false);
   const [buttonText, setButtonText] = useState('Iniciar Receita');
+  const [checkboxes, setCheckboxes] = useState({});
   const [area, setArea] = useState(null);
   const [randomic, setRandomic] = useState(null);
 
@@ -131,6 +132,8 @@ const RecipesProvider = ({ children }) => {
     debouncedSearchTerm,
     recomendations,
     setRecomendations,
+    checkboxes,
+    setCheckboxes,
   };
 
   // render
