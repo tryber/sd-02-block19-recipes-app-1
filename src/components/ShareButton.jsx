@@ -1,7 +1,7 @@
 import React from 'react';
 import ShareIcon from '../images/share.png';
 
-const FavoriteButton = () => (
+const ShareButton = () => (
   <button
     className="icon-button"
     type="button"
@@ -15,4 +15,4 @@ const FavoriteButton = () => (
   </button>
 );
 
-export default FavoriteButton;
+export default ShareButton;
