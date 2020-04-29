@@ -1,8 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
+import './Ingredients.css';
 
-const Ingredients = () => {
+
+const Ingredients = ({ useCheckbox = false }) => {
   const { fetchResult } = useContext(RecipesContext);
+
+  const [checkboxes, setCheckboxes] = useState({});
+  console.log(checkboxes);
 
   const ingredients = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
   const measures = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strMeasure')).map((el) => el[1]);
@@ -12,6 +18,29 @@ const Ingredients = () => {
     return [...acc, ingredient];
   }, []);
 
+  if (useCheckbox === true) {
+    return (
+      <section className="ingredients-section">
+        <h2 className="details-titles">Ingredients</h2>
+        <div className="gray checklist">
+          {ingredientsList.map((ingredient) => (
+            <>
+              <input
+                type="checkbox"
+                key={ingredient}
+                onChange={(event) => {
+                  setCheckboxes({
+                    ...checkboxes, [ingredient]: event.target.checked,
+                  });
+                }}
+              />
+              <label className={checkboxes[ingredient] ? 'checkedbox' : ''}>{ingredient}</label>
+            </>
+          ))}
+        </div>
+      </section>
+    );
+  }
   return (
     <section className="ingredients-section">
       <h2 className="details-titles">Ingredients</h2>
@@ -20,6 +49,14 @@ const Ingredients = () => {
       </div>
     </section>
   );
+};
+
+Ingredients.defaultProps = {
+  useCheckbox: false,
+};
+
+Ingredients.propTypes = {
+  useCheckbox: propTypes.bool,
 };
 
 export default Ingredients;

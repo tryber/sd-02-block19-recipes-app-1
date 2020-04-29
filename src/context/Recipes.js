@@ -27,7 +27,7 @@ const RecipesProvider = ({ children }) => {
   const debouncedSearchTerm = useDebounce(search, 600);
 
   const requestOk = (dataJson) => {
-    console.log('result fetch', dataJson)
+    console.log('result fetch', dataJson);
     setFetchResult(dataJson);
     setIsFetching(false);
     setIsError(null);
@@ -81,7 +81,7 @@ const RecipesProvider = ({ children }) => {
   useEffect(() => {
     if (recipeId) {
       const detailsAPI = `https://www.${API}.com/api/json/v1/1/lookup.php?i=${recipeId}`;
-      console.log('fetch chamada')
+      console.log('fetch chamada');
       setIsFetching(true);
       simpleGetAnything(detailsAPI)
         .then(
