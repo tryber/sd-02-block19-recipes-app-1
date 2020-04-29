@@ -6,16 +6,16 @@ import Footer from '../components/Footer';
 import ShowAreas from '../components/ShowAreas';
 import ShowRecipes from '../components/ShowRecipes';
 import { RecipesContext } from '../context/Recipes';
+import './ExplorarArea.css';
 
 const ExplorarArea = ({ match }) => {
   const {
-    setHeaderTitle, isFetching, setIsFetching, setIsSearchOpen, area, setArea, random, setFetchResult,
+    setHeaderTitle, isFetching, setIsFetching, setIsSearchOpen, area, setArea, randomic, setFetchResult,
   } = useContext(RecipesContext);
 
   useEffect(() => {
     setHeaderTitle('Explorar - Origem');
     setIsSearchOpen(false);
-    setFetchResult(random);
     const url = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
     const fetchArea = async () => {
       const response = await axios.get(url);
@@ -28,7 +28,7 @@ const ExplorarArea = ({ match }) => {
   return (
     <div>
       <Header />
-      <div>
+      <div className="ExplorarAreaTopContainer">
         {area && <ShowAreas match={match} />}
       </div>
       <div className="MainContainerPage">

@@ -23,7 +23,7 @@ const RecipesProvider = ({ children }) => {
   const [explorar, setExplorar] = useState(false);
   const [buttonText, setButtonText] = useState('Iniciar Receita');
   const [area, setArea] = useState(null);
-  const [random, setRandom] = useState(null);
+  const [randomic, setRandomic] = useState(null);
 
   // context 1 - funções
   const debouncedSearchTerm = useDebounce(search, 600);
@@ -123,8 +123,8 @@ const RecipesProvider = ({ children }) => {
     setRecipeId,
     explorar,
     setExplorar,
-    random,
-    setRandom,
+    randomic,
+    setRandomic,
     btnCategory,
     requestOk,
     requestFail,

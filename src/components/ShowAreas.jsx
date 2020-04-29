@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 import useFetchRandom from '../hooks/useFetchRandom';
 
-const fetchAreaRecipes = (value, setFetchResult, random, setIsFetching) => {
+const fetchAreaRecipes = (value, setFetchResult, randomic, setIsFetching) => {
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${value}`;
   setIsFetching(true);
   const fetchRecipes = async () => {
@@ -15,21 +15,22 @@ const fetchAreaRecipes = (value, setFetchResult, random, setIsFetching) => {
     fetchRecipes();
   }
   if (value === 'Todas') {
-    setFetchResult(random);
+    setFetchResult(randomic);
   }
   setIsFetching(false);
 };
 
 const ShowAreas = ({ match }) => {
   const {
-    area, setFetchResult, random, setIsFetching,
+    area, setFetchResult, randomic, setIsFetching,
   } = useContext(RecipesContext);
   useFetchRandom(match);
   return (
     <select
+      className="ExplorarAreaSelect"
       defaultValue="Todas"
       onChange={(e) => fetchAreaRecipes(
-        e.target.value, setFetchResult, random, setIsFetching,
+        e.target.value, setFetchResult, randomic, setIsFetching,
       )}
     >
       <option value="Todas">Todas</option>

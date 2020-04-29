@@ -1,0 +1,12 @@
+.ExplorarAreaTopContainer {
+  text-align: center;
+}
+
+.ExplorarAreaSelect {
+  background: none;
+  border: 1px solid black;
+  font-size: 1.4rem;
+  height: 45px;
+  margin: 10px auto;
+  width: 90%;
+}
