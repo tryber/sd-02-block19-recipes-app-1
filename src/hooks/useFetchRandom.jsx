@@ -26,7 +26,6 @@ const useFetchRandom = ({ path }) => {
           setData(value);
           setRandomic(value);
           requestOk(value);
-          console.log('trocando', API);
         }
       };
       for (let i = 0; i < 12; i += 1) {

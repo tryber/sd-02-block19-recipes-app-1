@@ -39,7 +39,7 @@ describe('Testa o componente Footer', () => {
     expect(exploreIcon).toBeInTheDocument();
     expect(exploreIcon.tagName).toBe('BUTTON');
     fireEvent.click(exploreIcon);
-    expect(history.location.pathname).toBe('/receitas/explorar/');
+    expect(history.location.pathname).toBe('/explorar/');
   });
   it('Deve ter uma imagem que indica comer que, ao ser clicada, redireciona para a página de comidas', () => {
     const history = createMemoryHistory();

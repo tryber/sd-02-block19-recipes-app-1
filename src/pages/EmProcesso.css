@@ -1,3 +1,7 @@
+.details-page {
+  box-sizing: border-box;
+}
+
 .top-image-section {
   height: 155px;
   overflow: hidden;
@@ -10,9 +14,25 @@
   width: 100%;
 }
 
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.title-section {
+  display: block;
+}
+
 .recipe-title {
   font-size: 2rem;
   margin-bottom: 0;
+}
+
+.details-titles {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  margin-top: 2rem;
 }
 
 .recipe-subtitle {
@@ -52,4 +72,12 @@
   list-style-type: none;
   margin-top: 0.5rem;
   padding: 1rem;
+}
+
+.recomendations-recipe-card {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  margin: 1rem;
 }
