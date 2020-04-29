@@ -55,9 +55,11 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
                 <section className="icons-section">
                   <ShareButton url={url} />
                   <FavoriteButton
-                    recipe={[
-                      idMeal || idDrink, strCategory || strAlcoholic, strMealThumb || strDrinkThumb,
-                    ]}
+                    recipe={{
+                      id: idMeal || idDrink,
+                      category: strCategory || strAlcoholic,
+                      image: strMealThumb || strDrinkThumb,
+                    }}
                   />
                 </section>
               </section>
