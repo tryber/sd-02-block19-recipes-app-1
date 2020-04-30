@@ -12,6 +12,11 @@ const ReceitaButton = ({ isDisabled = false, onClick }) => {
         className="button-receita"
         data-testid="start-recipe-btn"
         disabled={isDisabled}
+        onClick={() => {
+          if (onClick !== null) {
+            onClick();
+          }
+        }}
       >
         {buttonText}
       </button>
@@ -21,12 +26,12 @@ const ReceitaButton = ({ isDisabled = false, onClick }) => {
 
 ReceitaButton.defaultProps = {
   isDisabled: false,
-  onClick: ,
+  onClick: null,
 };
 
 ReceitaButton.propTypes = {
   isDisabled: propTypes.bool,
-  onClick: ,
+  onClick: propTypes.func,
 };
 
 export default ReceitaButton;

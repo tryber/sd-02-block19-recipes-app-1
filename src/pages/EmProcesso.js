@@ -25,6 +25,17 @@ const EmProcesso = () => {
     setButtonText('Finalizar Receita');
   }, []);
 
+  const setDoneRecipes = () => {
+    const doneRecipes = localStorage.getItem('done-recipes');
+    let newDoneRecipes = [];
+    if (doneRecipes) {
+      const parsedDoneRecipes = JSON.parse(doneRecipes);
+      newDoneRecipes = [...parsedDoneRecipes];
+    }
+    const newDoneItem = {...fetchResult[0], doneDate: new Date()};
+    localStorage.setItem('done-recipes', JSON.stringify([...newDoneRecipes, newDoneItem]));
+  };
+
   return (
     <article>
       <RecipeImage />
@@ -39,7 +50,7 @@ const EmProcesso = () => {
       <Instructions />
       <section>
         <Link to="/receitas-feitas">
-          <ReceitaButton isDisabled={habilitaBotao(fetchResult, checkboxes)} />
+          <ReceitaButton onClick={setDoneRecipes} isDisabled={habilitaBotao(fetchResult, checkboxes)} />
         </Link>
       </section>
     </article>
