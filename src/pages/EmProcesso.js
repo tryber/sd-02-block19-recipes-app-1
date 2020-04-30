@@ -26,11 +26,7 @@ const EmProcesso = () => {
 
   const setDoneRcps = () => {
     const doneRecipes = localStorage.getItem('done-recipes');
-    let newDoneRecipes = [];
-    if (doneRecipes) {
-      const parsedDoneRecipes = JSON.parse(doneRecipes);
-      newDoneRecipes = [...parsedDoneRecipes];
-    }
+    const newDoneRecipes = doneRecipes ? JSON.parse(doneRecipes) : [];
     const newDoneItem = { ...fetchResult[0], doneDate: new Date() };
     localStorage.setItem('done-recipes', JSON.stringify([...newDoneRecipes, newDoneItem]));
   };
