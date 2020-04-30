@@ -19,7 +19,6 @@ const ReceitaButton = ({ isDisabled = false, onClick }) => {
   );
 };
 
-
 ReceitaButton.defaultProps = {
   isDisabled: false,
   onClick: ,
