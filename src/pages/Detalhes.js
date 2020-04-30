@@ -16,12 +16,20 @@ import useFetchRecomendations from '../hooks/useFetchRecomendations';
 
 const Detalhes = ({ match: { params: { type, id }, url } }) => {
   const {
-    fetchResult, setRecipeId, setAPI, isFetching,
+    fetchResult, setRecipeId, setAPI, isFetching, setButtonText,
   } = useContext(RecipesContext);
   const [recomendationsAPI, setRecomendationsAPI] = useState();
   const [recomendations] = useFetchRecomendations(recomendationsAPI);
 
+
   useEffect(() => {
+    setButtonText('Iniciar Receita');
+    const recipesInProgressFrmStrg = localStorage.getItem('in-progress');
+    const recipesInProgress = recipesInProgressFrmStrg ? JSON.parse(recipesInProgressFrmStrg) : [];
+    const isCurrentRecipeInProgress = recipesInProgress.find((recipeID) => recipeID === id);
+    if (isCurrentRecipeInProgress) {
+      setButtonText('Continuar Receita');
+    }
     if (type === 'comidas') {
       setRecomendationsAPI('thecocktaildb');
       setAPI('themealdb');
@@ -31,6 +39,17 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
     }
     setRecipeId(id);
   }, [id]);
+
+  const setRecipesInProgress = () => {
+    const inProgressRecipes = localStorage.getItem('in-progress');
+    let newInProgressRecipes = [];
+    if (inProgressRecipes) {
+      const parsedinProgressRecipes = JSON.parse(inProgressRecipes);
+      newInProgressRecipes = [...parsedinProgressRecipes];
+    }
+    const newProgressItem = fetchResult[0].idMeal ? fetchResult[0].idMeal : fetchResult[0].idDrink;
+    localStorage.setItem('in-progress', JSON.stringify([...newInProgressRecipes, newProgressItem]));
+  };
 
   if (isFetching) return <div>Carregando...</div>;
 
@@ -69,7 +88,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
               <Recomendations recipes={recomendations} />
               <section>
                 <Link to={`/receitas/emprocesso/${type}/${id}`}>
-                  <ReceitaButton data-testid="start-recipe-btn" />
+                  <ReceitaButton onClick={setRecipesInProgress} data-testid="start-recipe-btn" />
                 </Link>
               </section>
             </article>
