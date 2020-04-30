@@ -22,7 +22,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
     isFetching,
     setButtonText,
   } = useContext(RecipesContext);
-  
+
   const [recomendationsAPI, setRecomendationsAPI] = useState();
   const [recomendations] = useFetchRecomendations(recomendationsAPI);
 
