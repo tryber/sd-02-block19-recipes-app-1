@@ -16,9 +16,13 @@ import useFetchRecomendations from '../hooks/useFetchRecomendations';
 
 const Detalhes = ({ match: { params: { type, id }, url } }) => {
   const {
-    fetchResult, setRecipeId,
-    setAPI, isFetching, setButtonText,
+    fetchResult,
+    setRecipeId,
+    setAPI,
+    isFetching,
+    setButtonText,
   } = useContext(RecipesContext);
+  
   const [recomendationsAPI, setRecomendationsAPI] = useState();
   const [recomendations] = useFetchRecomendations(recomendationsAPI);
 
