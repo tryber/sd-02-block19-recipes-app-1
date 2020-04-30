@@ -38,14 +38,29 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
     <div>
       {fetchResult
         && fetchResult
-          .map(({ strMeal, strDrink }) => (
+          .map(({
+            strMeal,
+            strDrink,
+            idMeal,
+            idDrink,
+            strCategory,
+            strAlcoholic,
+            strMealThumb,
+            strDrinkThumb,
+          }) => (
             <article className="details-page" key={strMeal || strDrink}>
               <RecipeImage />
               <section className="header-section">
                 <DetailsHeader />
                 <section className="icons-section">
                   <ShareButton url={url} />
-                  <FavoriteButton />
+                  <FavoriteButton
+                    recipe={{
+                      id: idMeal || idDrink,
+                      category: strCategory || strAlcoholic,
+                      image: strMealThumb || strDrinkThumb,
+                    }}
+                  />
                 </section>
               </section>
               <Ingredients />
