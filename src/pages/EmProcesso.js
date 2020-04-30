@@ -13,6 +13,8 @@ import './EmProcesso.css';
 const habilitaBotao = (fetchResult, checkboxes) => {
   const ingredients = Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
   const valores = Object.values(checkboxes).filter((item) => item === true);
+  console.log(valores)
+  // if (ingredients.length < valores.length) return true;
   if (ingredients.length === valores.length) return false;
   return true;
 };

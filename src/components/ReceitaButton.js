@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 import './ReceitaButton.css';
 
-const ReceitaButton = ({ isDisabled = false }) => {
+const ReceitaButton = ({ isDisabled = false, onClick }) => {
   const { buttonText } = useContext(RecipesContext);
   return (
     <div>
@@ -22,10 +22,12 @@ const ReceitaButton = ({ isDisabled = false }) => {
 
 ReceitaButton.defaultProps = {
   isDisabled: false,
+  onClick: ,
 };
 
 ReceitaButton.propTypes = {
   isDisabled: propTypes.bool,
+  onClick: ,
 };
 
 export default ReceitaButton;
