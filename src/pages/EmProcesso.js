@@ -43,7 +43,15 @@ const EmProcesso = ({ match: { url } }) => {
         <DetailsHeader />
         <section className="icons-section">
           <ShareButton url={url} />
-          <FavoriteButton />
+          {fetchResult && (
+            <FavoriteButton
+              recipe={{
+                id: fetchResult[0].idMeal || fetchResult[0].idDrink,
+                category: fetchResult[0].strCategory || fetchResult[0].strAlcoholic,
+                image: fetchResult[0].strMealThumb || fetchResult[0].strDrinkThumb,
+              }}
+            />
+          )}
         </section>
       </section>
       <Ingredients useCheckbox />
