@@ -1,4 +1,5 @@
-import React, { useContext, Fragment } from 'react';
+/* eslint-disable react/jsx-fragments */
+import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 import './Ingredients.css';
@@ -21,20 +22,26 @@ const Ingredients = ({ useCheckbox = false }) => {
         <h2 className="details-titles">Ingredients</h2>
         <div className="gray checklist">
           {ingredientsList.map((ingredient) => (
-            <Fragment>
+            <div key={ingredient}>
               <input
                 type="checkbox"
-                id="ingredient"
+                id={ingredient}
                 className="checkbox-boxes"
                 key={ingredient}
+                value={ingredient}
                 onChange={(event) => {
                   setCheckboxes({
                     ...checkboxes, [ingredient]: event.target.checked,
                   });
                 }}
               />
-              <label htmlFor="ingredient" className={checkboxes[ingredient] ? 'checkedbox' : ''}>{ingredient}</label>
-            </Fragment>
+              <label
+                htmlFor={ingredient}
+                className={checkboxes[ingredient] ? 'checkedbox-striked' : 'checkedbox'}
+              >
+                {ingredient}
+              </label>
+            </div>
           ))}
         </div>
       </section>

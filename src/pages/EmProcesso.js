@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 import RecipeImage from '../components/RecipeImage';
 import DetailsHeader from '../components/DetailsHeader';
@@ -11,16 +12,20 @@ import ReceitaButton from '../components/ReceitaButton';
 import './EmProcesso.css';
 
 const habilitaBotao = (fetchResult, checkboxes) => {
-  const ingredients = Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
+  const ingredients = Object.entries(fetchResult[0])
+    .filter(([key, value]) => value && key.match('strIngredient'));
   const valores = Object.values(checkboxes).filter((item) => item === true);
   if (ingredients.length === valores.length) return false;
   return true;
 };
 
-const EmProcesso = () => {
-  const { setButtonText, fetchResult, checkboxes } = useContext(RecipesContext);
+const EmProcesso = ({ match: { url } }) => {
+  const {
+    setButtonText, fetchResult, checkboxes, setCheckboxes,
+  } = useContext(RecipesContext);
   useEffect(() => {
     setButtonText('Finalizar Receita');
+    setCheckboxes({});
   }, []);
 
   return (
@@ -29,7 +34,7 @@ const EmProcesso = () => {
       <section className="header-section">
         <DetailsHeader />
         <section className="icons-section">
-          <ShareButton />
+          <ShareButton url={url} />
           <FavoriteButton />
         </section>
       </section>
@@ -37,11 +42,19 @@ const EmProcesso = () => {
       <Instructions />
       <section>
         <Link to="/receitas-feitas">
-          <ReceitaButton isDisabled={habilitaBotao(fetchResult, checkboxes)} />
+          <ReceitaButton
+            isDisabled={habilitaBotao(fetchResult, checkboxes)}
+          />
         </Link>
       </section>
     </article>
   );
+};
+
+EmProcesso.propTypes = {
+  match: propTypes.shape({
+    url: propTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default EmProcesso;
