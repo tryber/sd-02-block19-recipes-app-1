@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Cocktail from '../images/cocktail.svg';
 import Explorer from '../images/explorer.svg';
 import ForkImg from '../images/fork.svg';
@@ -24,15 +24,14 @@ const Footer = () => {
       >
         <img className="footer-image" src={Cocktail} alt="Bebidas" />
       </button>
-      <Link to="/explorar/">
-        <button
-          className="footer-transparent-button"
-          type="button"
-          data-testid="explore-bottom-btn"
-        >
-          <img className="footer-image" src={Explorer} alt="Exploração" />
-        </button>
-      </Link>
+      <button
+        className="footer-transparent-button"
+        type="button"
+        data-testid="explore-bottom-btn"
+        onClick={() => handleRedirect(history, setFetchResult, '/explorar/')}
+      >
+        <img className="footer-image" src={Explorer} alt="Exploração" />
+      </button>
       <button
         className="footer-transparent-button"
         type="button"
