@@ -1,4 +1,5 @@
-import React, { useContext, Fragment } from 'react';
+/* eslint-disable react/jsx-fragments */
+import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 import './Ingredients.css';
@@ -10,10 +11,13 @@ const Ingredients = ({ useCheckbox = false }) => {
   const ingredients = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
   const measures = fetchResult && Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strMeasure')).map((el) => el[1]);
 
-  const ingredientsList = ingredients && ingredients.reduce((acc, cur, index) => {
+  let ingredientsList = ingredients && ingredients.reduce((acc, cur, index) => {
     const ingredient = `- ${cur[1]} - ${measures[index]}`;
     return [...acc, ingredient];
   }, []);
+  console.log('antes', ingredientsList);
+  ingredientsList = [...new Set(ingredientsList)];
+  console.log('depois', ingredientsList);
 
   if (useCheckbox === true) {
     return (
@@ -21,20 +25,26 @@ const Ingredients = ({ useCheckbox = false }) => {
         <h2 className="details-titles">Ingredients</h2>
         <div className="gray checklist">
           {ingredientsList.map((ingredient) => (
-            <Fragment>
+            <div key={ingredient}>
               <input
                 type="checkbox"
-                id="ingredient"
+                id={ingredient}
                 className="checkbox-boxes"
                 key={ingredient}
+                value={ingredient}
                 onChange={(event) => {
                   setCheckboxes({
                     ...checkboxes, [ingredient]: event.target.checked,
                   });
                 }}
               />
-              <label htmlFor="ingredient" className={checkboxes[ingredient] ? 'checkedbox' : ''}>{ingredient}</label>
-            </Fragment>
+              <label
+                htmlFor={ingredient}
+                className={checkboxes[ingredient] ? 'checkedbox-striked' : 'checkedbox'}
+              >
+                {ingredient}
+              </label>
+            </div>
           ))}
         </div>
       </section>
@@ -44,11 +54,18 @@ const Ingredients = ({ useCheckbox = false }) => {
     <section className="ingredients-section">
       <h2 className="details-titles">Ingredients</h2>
       <div className="gray">
-        {ingredientsList.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}
+        {ingredientsList.map((ingredient) => (
+          <li
+            key={`${ingredient} - ${Math.random()}`}
+          >
+            {ingredient}
+          </li>
+        ))}
       </div>
     </section>
   );
 };
+
 Ingredients.defaultProps = {
   useCheckbox: false,
 };

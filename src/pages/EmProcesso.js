@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
 import { RecipesContext } from '../context/Recipes';
 import RecipeImage from '../components/RecipeImage';
 import DetailsHeader from '../components/DetailsHeader';
@@ -12,16 +13,20 @@ import './EmProcesso.css';
 
 const habilitbotao = (fetchResult, checkboxes) => {
   const ingredients = Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
+  console.log(ingredients);
   const valores = Object.values(checkboxes).filter((item) => item === true);
-
+  console.log(valores);
   if (ingredients.length === valores.length) return false;
   return true;
 };
 
-const EmProcesso = () => {
-  const { setButtonText, fetchResult, checkboxes } = useContext(RecipesContext);
+const EmProcesso = ({ match: { url } }) => {
+  const {
+    setButtonText, fetchResult, checkboxes, setCheckboxes,
+  } = useContext(RecipesContext);
   useEffect(() => {
     setButtonText('Finalizar Receita');
+    setCheckboxes({});
   }, []);
 
   const setDoneRcps = () => {
@@ -37,7 +42,7 @@ const EmProcesso = () => {
       <section className="header-section">
         <DetailsHeader />
         <section className="icons-section">
-          <ShareButton />
+          <ShareButton url={url} />
           <FavoriteButton />
         </section>
       </section>
@@ -50,6 +55,12 @@ const EmProcesso = () => {
       </section>
     </article>
   );
+};
+
+EmProcesso.propTypes = {
+  match: propTypes.shape({
+    url: propTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default EmProcesso;
