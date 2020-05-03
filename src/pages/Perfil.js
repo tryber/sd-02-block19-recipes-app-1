@@ -27,7 +27,7 @@ function renderPage(userEmail) {
           data-testid="profile-logout-btn"
           onClick={() => localStorage.clear()}
           type="button"
-          >
+        >
           <p className="btn-perfil">Sair</p>
         </button>
       </Link>
