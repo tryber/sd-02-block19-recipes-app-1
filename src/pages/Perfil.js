@@ -39,17 +39,18 @@ function renderPage() {
 }
 
 const Perfil = () => {
-  const { setHeaderTitle } = useContext(RecipesContext);
+  const { setHeaderTitle, setIsFetching } = useContext(RecipesContext);
 
   useEffect(() => {
     setHeaderTitle('Perfil');
+    setIsFetching(true);
   }, []);
 
   if (!userEmail) return <div>Carregando...</div>;
 
   return (
     <div>
-      <Header isDisable />
+      <Header showSearch={false} isDisable />
       {renderPage()}
       <Footer />
     </div>

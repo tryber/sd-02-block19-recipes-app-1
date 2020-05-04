@@ -13,9 +13,7 @@ import './EmProcesso.css';
 
 const habilitbotao = (fetchResult, checkboxes) => {
   const ingredients = Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
-  console.log(ingredients);
   const valores = Object.values(checkboxes).filter((item) => item === true);
-  console.log(valores);
   if (ingredients.length === valores.length) return false;
   return true;
 };
@@ -32,7 +30,7 @@ const EmProcesso = ({ match: { url } }) => {
   const setDoneRcps = () => {
     const doneRecipes = localStorage.getItem('done-recipes');
     const newDoneRecipes = doneRecipes ? JSON.parse(doneRecipes) : [];
-    const newDoneItem = { ...fetchResult[0], doneDate: new Date() };
+    const newDoneItem = { ...fetchResult[0], doneDate: new Date().toISOString() };
     localStorage.setItem('done-recipes', JSON.stringify([...newDoneRecipes, newDoneItem]));
   };
 
