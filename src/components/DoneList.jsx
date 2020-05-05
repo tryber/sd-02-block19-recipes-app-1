@@ -9,6 +9,33 @@ const handleClick = (id, type, fetchResult, setFetchResult, history) => {
   history.push(`/receitas/${type}/${id}`);
 };
 
+const mealsJSX = (
+  idMeal, strArea, strCategory, strMeal, cleanDate, tags,
+) => (
+  <div className="DoneText">
+    <div className="DoneFlexySides">
+      <span className="DoneCategory">{`${strArea} - ${strCategory}`}</span>
+      <ShareButton url={`/receitas/comidas/${idMeal}`} />
+    </div>
+    <p className="DoneRecipe">{strMeal}</p>
+    <p className="DoneDate">{`Feita em: ${cleanDate}`}</p>
+    <p>
+      {tags.map((tag) => `${tag} `)}
+    </p>
+  </div>
+);
+
+const drinksJSX = (idDrink, strAlcoholic, strDrink, cleanDate) => (
+  <div className="DoneText">
+    <div className="DoneFlexySides">
+      <span className="DoneCategory">{`${strAlcoholic} Drink`}</span>
+      <ShareButton url={`/receitas/bebidas/${idDrink}`} />
+    </div>
+    <p className="DoneRecipe">{strDrink}</p>
+    <p className="DoneDate">{`Feita em: ${cleanDate}`}</p>
+  </div>
+);
+
 const DoneList = () => {
   const { fetchResult, setFetchResult } = useContext(RecipesContext);
   const history = useHistory();
@@ -51,29 +78,9 @@ const DoneList = () => {
               alt={strMeal || strDrink}
             />
           </button>
-          {idMeal ? (
-            <div className="DoneText">
-              <div className="DoneFlexySides">
-                <span className="DoneCategory">{`${strArea} - ${strCategory}`}</span>
-                <ShareButton url={`/receitas/comidas/${idMeal}`} />
-              </div>
-              <p className="DoneRecipe">{strMeal || strDrink}</p>
-              <p className="DoneDate">{`Feita em: ${cleanDate}`}</p>
-              <p>
-                {tags.map((tag) => `${tag} `)}
-              </p>
-            </div>
-          )
-            : (
-              <div className="DoneText">
-                <div className="DoneFlexySides">
-                  <span className="DoneCategory">{`${strAlcoholic} Drink`}</span>
-                  <ShareButton url={`/receitas/bebidas/${idDrink}`} />
-                </div>
-                <p className="DoneRecipe">{strMeal || strDrink}</p>
-                <p className="DoneDate">{`Feita em: ${cleanDate}`}</p>
-              </div>
-            )}
+          {idMeal
+            ? mealsJSX(idMeal, strArea, strCategory, strMeal, cleanDate, tags)
+            : drinksJSX(idDrink, strAlcoholic, strDrink, cleanDate)}
         </div>
       </div>
     );
