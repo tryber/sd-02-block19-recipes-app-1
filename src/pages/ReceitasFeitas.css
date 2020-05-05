@@ -18,8 +18,8 @@
 
 .DoneSearchBtn {
   background-color: rgb(196, 196, 196);
-  border-radius: 6px;
   border: none;
+  border-radius: 6px;
   font-size: 18px;
   padding: 10px;
 }
