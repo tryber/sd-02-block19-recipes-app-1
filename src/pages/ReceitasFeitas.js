@@ -12,6 +12,29 @@ function ShowDone() {
   if (fetchResult.length >= 1) return <DoneList />;
 }
 
+const handleClick = (doneRecipes, setFetchResult, value) => {
+  if (value === 'mealdb') {
+    const filtered = doneRecipes.filter((item) => item.idMeal);
+    setFetchResult(filtered);
+  } else if (value === 'cocktaildb') {
+    const filtered = doneRecipes.filter((item) => item.idDrink);
+    setFetchResult(filtered);
+  } else {
+    setFetchResult(doneRecipes);
+  }
+};
+
+const searchBtn = (value, btnName, doneRecipes, setFetchResult) => (
+  <button
+    className="DoneSearchBtn"
+    type="button"
+    value={value}
+    onClick={() => handleClick(doneRecipes, setFetchResult, value)}
+  >
+    {btnName}
+  </button>
+);
+
 const ReceitasFeitas = () => {
   const {
     setHeaderTitle, setIsFetching, setFetchResult, isFetching,
@@ -27,6 +50,11 @@ const ReceitasFeitas = () => {
   return (
     <div>
       <Header showSearch={false} isDisable />
+      <div className="DoneButtons">
+        {searchBtn('all', 'All', doneRecipes, setFetchResult)}
+        {searchBtn('mealdb', 'Food', doneRecipes, setFetchResult)}
+        {searchBtn('cocktaildb', 'Drinks', doneRecipes, setFetchResult)}
+      </div>
       <div className="DoneContainerPage">
         {!isFetching && <ShowDone />}
       </div>

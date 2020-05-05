@@ -9,6 +9,21 @@
   width: 100%;
 }
 
+.DoneButtons {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0 0;
+  width: 100%;
+}
+
+.DoneSearchBtn {
+  background-color: rgb(196, 196, 196);
+  border-radius: 6px;
+  border: none;
+  font-size: 18px;
+  padding: 10px;
+}
+
 .DoneFlexySides {
   display: flex;
   justify-content: space-between;

@@ -34,8 +34,8 @@ const mealsJSX = (idMeal, strArea, strCategory, strMeal, cleanDate, tags) => (
     </div>
     <p className="DoneRecipe">{strMeal}</p>
     <p className="DoneDate">{`Feita em: ${cleanDate}`}</p>
-    <p>
-      {tags.map((tag) => `${tag} `)}
+    <p className="DoneButtons">
+      {tags.map((tag) => <span className="DoneSearchBtn">{tag}</span>)}
     </p>
   </div>
 );
