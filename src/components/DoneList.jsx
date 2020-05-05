@@ -35,7 +35,7 @@ const mealsJSX = (idMeal, strArea, strCategory, strMeal, cleanDate, tags) => (
     <p className="DoneRecipe">{strMeal}</p>
     <p className="DoneDate">{`Feita em: ${cleanDate}`}</p>
     <p className="DoneButtons">
-      {tags.map((tag) => <span className="DoneSearchBtn">{tag}</span>)}
+      {tags.map((tag) => <span key={tag} className="DoneSearchBtn">{tag}</span>)}
     </p>
   </div>
 );
@@ -59,7 +59,7 @@ const DoneList = () => {
     idDrink, strDrink, strDrinkThumb, strAlcoholic, doneDate,
   }) => {
     const cleanDate = new Date(doneDate).toLocaleDateString();
-    let tags = '';
+    let tags = [];
     const id = idMeal || idDrink;
     let type = 'comidas';
     if (strTags) tags = strTags.split(',');

@@ -3,7 +3,6 @@ import { RecipesContext } from '../context/Recipes';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import DoneList from '../components/DoneList';
-// import ShowDone from '../components/ShowDone';
 import './ReceitasFeitas.css';
 
 function ShowDone() {
