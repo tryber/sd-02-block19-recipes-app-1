@@ -28,7 +28,7 @@ const ReceitasFeitas = () => {
     <div>
       <Header showSearch={false} isDisable />
       <div className="DoneContainerPage">
-        {fetchResult && <ShowDone />}
+        {!isFetching && <ShowDone />}
       </div>
       <Footer />
     </div>

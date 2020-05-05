@@ -31,6 +31,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
     const recipesInProgressFrmStrg = localStorage.getItem('in-progress');
     const recipesInProgress = recipesInProgressFrmStrg ? JSON.parse(recipesInProgressFrmStrg) : [];
     const isCurrentRecipeInProgress = recipesInProgress.find((recipeID) => recipeID === id);
+    console.log('rodando');
     if (isCurrentRecipeInProgress) {
       setButtonText('Continuar Receita');
     }
@@ -80,7 +81,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
             <Ingredients />
             <Instructions />
             <RecipeVideo />
-            <Recomendations recipes={recomendations} />
+            {/* <Recomendations recipes={recomendations} /> */}
             <section>
               <Link to={`/receitas/emprocesso/${type}/${id}`}>
                 <ReceitaButton onClick={setRecipesInProgress} data-testid="start-recipe-btn" />
