@@ -28,10 +28,11 @@ const DoneList = () => {
   }) => {
     const cleanDate = new Date(doneDate).toLocaleDateString();
     let tags = '';
-    if (strTags) tags = strTags.split(',');
     let id = '';
     let type = '';
 
+    if (strTags) tags = strTags.split(',');
+    if (tags.length > 2) tags.length = 2;
     if (idMeal) {
       id = idMeal;
       type = 'comidas';
@@ -68,7 +69,7 @@ const DoneList = () => {
               <p className="DoneRecipe">{strMeal || strDrink}</p>
               <p className="DoneDate">{`Feita em: ${cleanDate}`}</p>
               <p>
-                {`${tags[0]} / ${tags[1]}`}
+                {tags.map((tag) => `${tag} `)}
               </p>
             </div>
           )
