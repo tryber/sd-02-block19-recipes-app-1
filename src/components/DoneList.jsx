@@ -9,6 +9,23 @@ const handleClick = (id, type, fetchResult, setFetchResult, history) => {
   history.push(`/receitas/${type}/${id}`);
 };
 
+const headerJSX = (
+  id, type, fetchResult, setFetchResult, strMealThumb, strDrinkThumb,
+  strMeal, strDrink, history,
+) => (
+  <button
+    className="DoneButtonImg"
+    type="button"
+    onClick={() => handleClick(id, type, fetchResult, setFetchResult, history)}
+  >
+    <img
+      className="DoneImg"
+      src={strMealThumb || strDrinkThumb}
+      alt={strMeal || strDrink}
+    />
+  </button>
+);
+
 const mealsJSX = (idMeal, strArea, strCategory, strMeal, cleanDate, tags) => (
   <div className="DoneText">
     <div className="DoneFlexySides">
@@ -45,24 +62,13 @@ const DoneList = () => {
     let tags = '';
     const id = idMeal || idDrink;
     let type = 'comidas';
-
     if (strTags) tags = strTags.split(',');
     if (tags.length > 2) tags.length = 2;
     if (idDrink) type = 'bebidas';
-
     return (
-      <div key={`${strMeal}-${Math.random() * 32}`} className="DoneContainerRecipe DoneFlexy">
-        <button
-          className="DoneButtonImg"
-          type="button"
-          onClick={() => handleClick(id, type, fetchResult, setFetchResult, history)}
-        >
-          <img
-            className="DoneImg"
-            src={strMealThumb || strDrinkThumb}
-            alt={strMeal || strDrink}
-          />
-        </button>
+      <div key={`${strMeal}-${Math.random() * 32}`} className="DoneContainerRecipe">
+        {headerJSX(id, type, fetchResult, setFetchResult,
+          strMealThumb, strDrinkThumb, strMeal, strDrink, history)}
         {idMeal
           ? mealsJSX(idMeal, strArea, strCategory, strMeal, cleanDate, tags)
           : drinksJSX(idDrink, strAlcoholic, strDrink, cleanDate)}
