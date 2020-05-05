@@ -9,9 +9,7 @@ const handleClick = (id, type, fetchResult, setFetchResult, history) => {
   history.push(`/receitas/${type}/${id}`);
 };
 
-const mealsJSX = (
-  idMeal, strArea, strCategory, strMeal, cleanDate, tags,
-) => (
+const mealsJSX = (idMeal, strArea, strCategory, strMeal, cleanDate, tags) => (
   <div className="DoneText">
     <div className="DoneFlexySides">
       <span className="DoneCategory">{`${strArea} - ${strCategory}`}</span>
@@ -41,47 +39,33 @@ const DoneList = () => {
   const history = useHistory();
   return (fetchResult.map(({
     idMeal, strMeal, strMealThumb, strArea, strCategory, strTags,
-    idDrink, strDrink, strDrinkThumb, strAlcoholic,
-    doneDate,
+    idDrink, strDrink, strDrinkThumb, strAlcoholic, doneDate,
   }) => {
     const cleanDate = new Date(doneDate).toLocaleDateString();
     let tags = '';
-    let id = '';
-    let type = '';
+    const id = idMeal || idDrink;
+    let type = 'comidas';
 
     if (strTags) tags = strTags.split(',');
     if (tags.length > 2) tags.length = 2;
-    if (idMeal) {
-      id = idMeal;
-      type = 'comidas';
-    }
-
-    if (idDrink) {
-      id = idDrink;
-      type = 'bebidas';
-    }
+    if (idDrink) type = 'bebidas';
 
     return (
-      <div
-        key={`${strMeal}-${Math.random() * 32}`}
-        className="DoneContainerRecipe"
-      >
-        <div className="DoneFlexy">
-          <button
-            className="DoneButtonImg"
-            type="button"
-            onClick={() => handleClick(id, type, fetchResult, setFetchResult, history)}
-          >
-            <img
-              className="DoneImg"
-              src={strMealThumb || strDrinkThumb}
-              alt={strMeal || strDrink}
-            />
-          </button>
-          {idMeal
-            ? mealsJSX(idMeal, strArea, strCategory, strMeal, cleanDate, tags)
-            : drinksJSX(idDrink, strAlcoholic, strDrink, cleanDate)}
-        </div>
+      <div key={`${strMeal}-${Math.random() * 32}`} className="DoneContainerRecipe DoneFlexy">
+        <button
+          className="DoneButtonImg"
+          type="button"
+          onClick={() => handleClick(id, type, fetchResult, setFetchResult, history)}
+        >
+          <img
+            className="DoneImg"
+            src={strMealThumb || strDrinkThumb}
+            alt={strMeal || strDrink}
+          />
+        </button>
+        {idMeal
+          ? mealsJSX(idMeal, strArea, strCategory, strMeal, cleanDate, tags)
+          : drinksJSX(idDrink, strAlcoholic, strDrink, cleanDate)}
       </div>
     );
   }));
