@@ -6,15 +6,15 @@ import DoneList from '../components/DoneList';
 // import ShowDone from '../components/ShowDone';
 import './ReceitasFeitas.css';
 
-const ShowDone = () => {
+function ShowDone() {
   const { fetchResult } = useContext(RecipesContext);
   if (fetchResult === null) return <h2>Nenhuma receita favoritada.</h2>;
   if (fetchResult.length >= 1) return <DoneList />;
-};
+}
 
 const ReceitasFeitas = () => {
   const {
-    setHeaderTitle, setIsFetching, setFetchResult, fetchResult, isFetching,
+    setHeaderTitle, setIsFetching, setFetchResult, isFetching,
   } = useContext(RecipesContext);
   const doneRecipes = JSON.parse(localStorage.getItem('done-recipes'));
   useEffect(() => {

@@ -3,15 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
 import ShareButton from './ShareButton';
 
-const handleRedirect = (history, API) => {
-  if (API === 'themealdb') {
-    history.push('/receitas/comidas');
-  }
-  if (API === 'thecocktaildb') {
-    history.push('/receitas/bebidas');
-  }
-};
-
 const handleClick = (id, type, fetchResult, setFetchResult, history) => {
   const findId = fetchResult.find((item) => item.idMeal === id || item.idDrink === id);
   setFetchResult([findId]);
