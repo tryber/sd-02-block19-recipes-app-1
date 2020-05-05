@@ -17,6 +17,7 @@ const useFetchRecomendations = (API) => {
         value.push(actual);
         if (value.length === 6) {
           setRecomendations(value);
+          setIsFetching(false);
         }
       };
       for (let i = 0; i < 6; i += 1) {
