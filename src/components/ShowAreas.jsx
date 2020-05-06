@@ -32,12 +32,14 @@ const ShowAreas = ({ match }) => {
       onChange={(e) => fetchAreaRecipes(
         e.target.value, setFetchResult, randomic, setIsFetching,
       )}
+      data-testid="explore-by-area-dropdown"
     >
       <option value="Todas">Todas</option>
       {area.map(({ strArea }) => (
         <option
           key={strArea}
           value={strArea}
+          data-testid={`${strArea}-option`}
         >
           {strArea}
         </option>
