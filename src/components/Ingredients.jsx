@@ -15,9 +15,7 @@ const Ingredients = ({ useCheckbox = false }) => {
     const ingredient = `- ${cur[1]} - ${measures[index]}`;
     return [...acc, ingredient];
   }, []);
-  console.log('antes', ingredientsList);
   ingredientsList = [...new Set(ingredientsList)];
-  console.log('depois', ingredientsList);
 
   if (useCheckbox === true) {
     return (

@@ -21,20 +21,22 @@ const Header = ({ showSearch = true, isDisable = false }) => {
           />
         </Link>
         <h2 className="main-page-title" data-testid="page-title">{headerTitle}</h2>
-        {showSearch ? (
-          <button
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-            type="button"
-            onClick={() => (!isSearchOpen ? setIsSearchOpen(true) : setIsSearchOpen(false))}
-            data-testid="search-top-btn"
-          >
+        <button
+          style={{
+            background: 'none', border: 'none', cursor: 'pointer', width: '76px',
+          }}
+          type="button"
+          onClick={() => (!isSearchOpen ? setIsSearchOpen(true) : setIsSearchOpen(false))}
+          data-testid="search-top-btn"
+        >
+          {showSearch ? (
             <img
               src={searchIcon}
               alt="lupa de busca"
               className="search-icon"
             />
-          </button>
-        ) : null}
+          ) : null}
+        </button>
       </header>
       {!isDisable && <SearchInput data-testid="search-input" />}
     </div>
