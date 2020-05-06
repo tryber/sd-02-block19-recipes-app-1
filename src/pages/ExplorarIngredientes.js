@@ -33,9 +33,15 @@ const ExplorarIngredientes = ({ match }) => {
               <img
                 src={`https://www.${API}.com/images/ingredients/${strIngredient || strIngredient1}-Small.png`}
                 alt={strIngredient || strIngredient1}
+                data-testid={`${strIngredient}-card-img`}
               />
               <p className="ExplorarIngredientesText">Ingredient</p>
-              <p className="ExplorarIngredientesTitle">{strIngredient || strIngredient1}</p>
+              <p
+                className="ExplorarIngredientesTitle"
+                data-testid={`${strIngredient}-card-img`}
+              >
+                {strIngredient || strIngredient1}
+              </p>
             </button>
           )))}
       </div>

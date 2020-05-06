@@ -8,7 +8,11 @@ import './Explorar.css';
 
 const explorarBtn = (routeType) => (
   <Link className="ExplorarLink" to={`/explorar/${routeType}`}>
-    <button className="ExplorarBtn" type="button">
+    <button
+      className="ExplorarBtn"
+      type="button"
+      data-testid={routeType === 'comidas' ? 'explore-food' : 'explore-drinks'}
+    >
       {`Explorar ${routeType.charAt(0).toUpperCase() + routeType.slice(1)}`}
     </button>
   </Link>
