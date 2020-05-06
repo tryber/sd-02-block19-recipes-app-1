@@ -23,7 +23,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
     setButtonText,
   } = useContext(RecipesContext);
 
-  const [recomendationsAPI, setRecomendationsAPI] = useState();
+  const [recomendationsAPI, setRecomendationsAPI] = useState('thecocktaildb');
   const [recomendations] = useFetchRecomendations(recomendationsAPI);
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
             <Ingredients />
             <Instructions />
             <RecipeVideo />
-            <Recomendations recipes={recomendations} />
+            {isFetching ? <div>Carregando...</div> : <Recomendations recipes={recomendations} />}
             <section>
               <Link to={`/receitas/emprocesso/${type}/${id}`}>
                 <ReceitaButton onClick={setRecipesInProgress} data-testid="start-recipe-btn" />
