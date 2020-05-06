@@ -36,7 +36,7 @@ function renderPage(userEmail) {
 }
 
 const Perfil = () => {
-  const { setHeaderTitle } = useContext(RecipesContext);
+  const { setHeaderTitle, setIsFetching } = useContext(RecipesContext);
   const userEmail = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
