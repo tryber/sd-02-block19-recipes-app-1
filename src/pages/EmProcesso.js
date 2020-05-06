@@ -13,8 +13,9 @@ import './EmProcesso.css';
 
 const habilitbotao = (fetchResult, checkboxes) => {
   const ingredients = Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
+  const finalIngredients = [...new Set([...ingredients].map((item) => item.pop()))];
   const valores = Object.values(checkboxes).filter((item) => item === true);
-  if (ingredients.length === valores.length) return false;
+  if (finalIngredients.length === valores.length) return false;
   return true;
 };
 
