@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
 import './Perfil.css';
 
-const userEmail = JSON.parse(localStorage.getItem('user'));
-
-function renderPage() {
+function renderPage(userEmail) {
   return (
     <div>
       <div className="user-mail" data-testid="profile-email">
@@ -40,6 +37,7 @@ function renderPage() {
 
 const Perfil = () => {
   const { setHeaderTitle } = useContext(RecipesContext);
+  const userEmail = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     setHeaderTitle('Perfil');
@@ -50,7 +48,7 @@ const Perfil = () => {
   return (
     <div>
       <Header isDisable />
-      {renderPage()}
+      {renderPage(userEmail)}
       <Footer />
     </div>
   );

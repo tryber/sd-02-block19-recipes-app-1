@@ -11,10 +11,11 @@ import Instructions from '../components/Instructions';
 import ReceitaButton from '../components/ReceitaButton';
 import './EmProcesso.css';
 
-const habilitaBotao = (fetchResult, checkboxes) => {
-  const ingredients = Object.entries(fetchResult[0])
-    .filter(([key, value]) => value && key.match('strIngredient'));
+const habilitbotao = (fetchResult, checkboxes) => {
+  const ingredients = Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
+  console.log(ingredients);
   const valores = Object.values(checkboxes).filter((item) => item === true);
+  console.log(valores);
   if (ingredients.length === valores.length) return false;
   return true;
 };
@@ -28,6 +29,13 @@ const EmProcesso = ({ match: { url } }) => {
     setCheckboxes({});
   }, []);
 
+  const setDoneRcps = () => {
+    const doneRecipes = localStorage.getItem('done-recipes');
+    const newDoneRecipes = doneRecipes ? JSON.parse(doneRecipes) : [];
+    const newDoneItem = { ...fetchResult[0], doneDate: new Date() };
+    localStorage.setItem('done-recipes', JSON.stringify([...newDoneRecipes, newDoneItem]));
+  };
+
   return (
     <article>
       <RecipeImage />
@@ -35,16 +43,22 @@ const EmProcesso = ({ match: { url } }) => {
         <DetailsHeader />
         <section className="icons-section">
           <ShareButton url={url} />
-          <FavoriteButton />
+          {fetchResult && (
+            <FavoriteButton
+              recipe={{
+                id: fetchResult[0].idMeal || fetchResult[0].idDrink,
+                category: fetchResult[0].strCategory || fetchResult[0].strAlcoholic,
+                image: fetchResult[0].strMealThumb || fetchResult[0].strDrinkThumb,
+              }}
+            />
+          )}
         </section>
       </section>
       <Ingredients useCheckbox />
       <Instructions />
       <section>
         <Link to="/receitas-feitas">
-          <ReceitaButton
-            isDisabled={habilitaBotao(fetchResult, checkboxes)}
-          />
+          <ReceitaButton onClick={setDoneRcps} isDisabled={habilitbotao(fetchResult, checkboxes)} />
         </Link>
       </section>
     </article>

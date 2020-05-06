@@ -50,6 +50,7 @@ const randomBtn = (btnValue, setFetchResult, history, API) => (
 );
 
 const ExplorarTipos = ({ match }) => {
+  console.log(match);
   const history = useHistory();
   const title = match.path.split('/')[match.path.split('/').length - 1];
   const {
