@@ -29,7 +29,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
   useEffect(() => {
     setButtonText('Iniciar Receita');
     const recipesInProgressFrmStrg = localStorage.getItem('in-progress');
-    const recipesInProgress = recipesInProgressFrmStrg && JSON.parse(recipesInProgressFrmStrg);
+    const recipesInProgress = JSON.parse(recipesInProgressFrmStrg);
     const isCurrentRecipeInProgress = recipesInProgress
       && recipesInProgress.find((recipeID) => recipeID === id);
     if (isCurrentRecipeInProgress) {
