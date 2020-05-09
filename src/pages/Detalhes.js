@@ -27,7 +27,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
   const [recomendations] = useFetchRecomendations(recomendationsAPI);
 
   useEffect(() => {
-    setButtonText('Iniciar Receita');
+    // setButtonText('Iniciar Receita');
     const recipesInProgressFrmStrg = localStorage.getItem('in-progress');
     const recipesInProgress = recipesInProgressFrmStrg ? JSON.parse(recipesInProgressFrmStrg) : [];
     const isCurrentRecipeInProgress = recipesInProgress.find((recipeID) => recipeID === id);
@@ -56,9 +56,9 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
   };
 
   return (
-    (isFetching || !fetchResult) ? <div>Carregando...</div> : (
+    isFetching ? <div>Carregando...</div> : (
       <div>
-        {fetchResult.map(({
+        {fetchResult && fetchResult.map(({
           strMeal, strDrink, idMeal, idDrink,
           strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
         }) => (
@@ -83,7 +83,11 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
             {isFetching ? <div>Carregando...</div> : <Recomendations recipes={recomendations} />}
             <section>
               <Link to={`/receitas/emprocesso/${type}/${id}`}>
-                <ReceitaButton onClick={setRecipesInProgress} data-testid="start-recipe-btn" id={id} />
+                <ReceitaButton
+                  onClick={setRecipesInProgress}
+                  data-testid="start-recipe-btn"
+                  id={id}
+                />
               </Link>
             </section>
           </article>
