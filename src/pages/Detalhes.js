@@ -83,7 +83,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
             {isFetching ? <div>Carregando...</div> : <Recomendations recipes={recomendations} />}
             <section>
               <Link to={`/receitas/emprocesso/${type}/${id}`}>
-                <ReceitaButton onClick={setRecipesInProgress} data-testid="start-recipe-btn" id={id} />
+                <ReceitaButton onClick={setRecipesInProgress} data-testid="start-recipe-btn" />
               </Link>
             </section>
           </article>
