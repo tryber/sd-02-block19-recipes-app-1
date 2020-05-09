@@ -29,9 +29,8 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
   useEffect(() => {
     setButtonText('Iniciar Receita');
     const recipesInProgressFrmStrg = localStorage.getItem('in-progress');
-    const recipesInProgress = JSON.parse(recipesInProgressFrmStrg);
-    const isCurrentRecipeInProgress = recipesInProgress
-      && recipesInProgress.find((recipeID) => recipeID === id);
+    const recipesInProgress = recipesInProgressFrmStrg ? JSON.parse(recipesInProgressFrmStrg) : [];
+    const isCurrentRecipeInProgress = recipesInProgress.find((recipeID) => recipeID === id);
     if (isCurrentRecipeInProgress) {
       setButtonText('Continuar Receita');
     }
@@ -56,45 +55,45 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
     localStorage.setItem('in-progress', JSON.stringify([...newInProgressRecipes, newProgressItem]));
   };
 
+  if (isFetching) return <div>Carregando...</div>;
+
   return (
-    isFetching ? <div>Carregando...</div> : (
-      <div>
-        {fetchResult && fetchResult.map(({
-          strMeal, strDrink, idMeal, idDrink,
-          strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
-        }) => (
-          <article className="details-page" key={strMeal || strDrink}>
-            <RecipeImage />
-            <section className="header-section">
-              <DetailsHeader />
-              <section className="icons-section">
-                <ShareButton url={url} />
-                <FavoriteButton
-                  recipe={{
-                    id: idMeal || idDrink,
-                    category: strCategory || strAlcoholic,
-                    image: strMealThumb || strDrinkThumb,
-                  }}
-                />
-              </section>
+    <div>
+      {fetchResult && fetchResult.map(({
+        strMeal, strDrink, idMeal, idDrink,
+        strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
+      }) => (
+        <article className="details-page" key={strMeal || strDrink}>
+          <RecipeImage />
+          <section className="header-section">
+            <DetailsHeader />
+            <section className="icons-section">
+              <ShareButton url={url} />
+              <FavoriteButton
+                recipe={{
+                  id: idMeal || idDrink,
+                  category: strCategory || strAlcoholic,
+                  image: strMealThumb || strDrinkThumb,
+                }}
+              />
             </section>
-            <Ingredients />
-            <Instructions />
-            <RecipeVideo />
-            {isFetching ? <div>Carregando...</div> : <Recomendations recipes={recomendations} />}
-            <section>
-              <Link to={`/receitas/emprocesso/${type}/${id}`}>
-                <ReceitaButton
-                  onClick={setRecipesInProgress}
-                  data-testid="start-recipe-btn"
-                  id={id}
-                />
-              </Link>
-            </section>
-          </article>
-        ))}
-      </div>
-    )
+          </section>
+          <Ingredients />
+          <Instructions />
+          <RecipeVideo />
+          {isFetching ? <div>Carregando...</div> : <Recomendations recipes={recomendations} />}
+          <section>
+            <Link to={`/receitas/emprocesso/${type}/${id}`}>
+              <ReceitaButton
+                onClick={setRecipesInProgress}
+                data-testid="start-recipe-btn"
+                id={id}
+              />
+            </Link>
+          </section>
+        </article>
+      ))}
+    </div>
   );
 };
 
