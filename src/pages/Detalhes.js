@@ -58,7 +58,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
   return (
     isFetching ? <div>Carregando...</div> : (
       <div>
-        {fetchResult.map(({
+        {fetchResult && fetchResult.map(({
           strMeal, strDrink, idMeal, idDrink,
           strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
         }) => (
@@ -83,7 +83,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
             {isFetching ? <div>Carregando...</div> : <Recomendations recipes={recomendations} />}
             <section>
               <Link to={`/receitas/emprocesso/${type}/${id}`}>
-                <ReceitaButton onClick={setRecipesInProgress} data-testid="start-recipe-btn" />
+                <ReceitaButton onClick={setRecipesInProgress} data-testid="start-recipe-btn" id={id} />
               </Link>
             </section>
           </article>
