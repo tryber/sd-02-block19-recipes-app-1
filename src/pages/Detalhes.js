@@ -55,45 +55,45 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
     localStorage.setItem('in-progress', JSON.stringify([...newInProgressRecipes, newProgressItem]));
   };
 
-  if (isFetching) return <div>Carregando...</div>;
-
   return (
-    <div>
-      {fetchResult && fetchResult.map(({
-        strMeal, strDrink, idMeal, idDrink,
-        strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
-      }) => (
-        <article className="details-page" key={strMeal || strDrink}>
-          <RecipeImage />
-          <section className="header-section">
-            <DetailsHeader />
-            <section className="icons-section">
-              <ShareButton url={url} />
-              <FavoriteButton
-                recipe={{
-                  id: idMeal || idDrink,
-                  category: strCategory || strAlcoholic,
-                  image: strMealThumb || strDrinkThumb,
-                }}
-              />
+    !fetchResult ? <div>Carregando...</div> : (
+      <div>
+        {fetchResult.map(({
+          strMeal, strDrink, idMeal, idDrink,
+          strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
+        }) => (
+          <article className="details-page" key={strMeal || strDrink}>
+            <RecipeImage />
+            <section className="header-section">
+              <DetailsHeader />
+              <section className="icons-section">
+                <ShareButton url={url} />
+                <FavoriteButton
+                  recipe={{
+                    id: idMeal || idDrink,
+                    category: strCategory || strAlcoholic,
+                    image: strMealThumb || strDrinkThumb,
+                  }}
+                />
+              </section>
             </section>
-          </section>
-          <Ingredients />
-          <Instructions />
-          <RecipeVideo />
-          {isFetching ? <div>Carregando...</div> : <Recomendations recipes={recomendations} />}
-          <section>
-            <Link to={`/receitas/emprocesso/${type}/${id}`}>
-              <ReceitaButton
-                onClick={setRecipesInProgress}
-                data-testid="start-recipe-btn"
-                id={id}
-              />
-            </Link>
-          </section>
-        </article>
-      ))}
-    </div>
+            <Ingredients />
+            <Instructions />
+            <RecipeVideo />
+            {isFetching ? <div>Carregando...</div> : <Recomendations recipes={recomendations} />}
+            <section>
+              <Link to={`/receitas/emprocesso/${type}/${id}`}>
+                <ReceitaButton
+                  onClick={setRecipesInProgress}
+                  data-testid="start-recipe-btn"
+                  id={id}
+                />
+              </Link>
+            </section>
+          </article>
+        ))}
+      </div>
+    )
   );
 };
 
