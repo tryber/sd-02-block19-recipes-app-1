@@ -52,9 +52,10 @@ const Ingredients = ({ useCheckbox = false }) => {
     <section className="ingredients-section">
       <h2 className="details-titles">Ingredients</h2>
       <div className="gray">
-        {ingredientsList.map((ingredient) => (
+        {ingredientsList.map((ingredient, index) => (
           <li
             key={`${ingredient} - ${Math.random()}`}
+            data-testid={`${index}-ingredient`}
           >
             {ingredient}
           </li>
