@@ -37,7 +37,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
     if (type === 'comidas') {
       setRecomendationsAPI('thecocktaildb');
       setAPI('themealdb');
-    } if (type === 'bebidas') {
+    } else {
       setRecomendationsAPI('themealdb');
       setAPI('thecocktaildb');
     }
@@ -83,7 +83,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
             {isFetching ? <div>Carregando...</div> : <Recomendations recipes={recomendations} />}
             <section>
               <Link to={`/receitas/emprocesso/${type}/${id}`}>
-                <ReceitaButton onClick={setRecipesInProgress} data-testid="start-recipe-btn" />
+                <ReceitaButton onClick={setRecipesInProgress} data-testid="start-recipe-btn" id={id} />
               </Link>
             </section>
           </article>
