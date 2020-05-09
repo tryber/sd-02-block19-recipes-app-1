@@ -27,11 +27,11 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
   const [recomendations] = useFetchRecomendations(recomendationsAPI);
 
   useEffect(() => {
-    // setButtonText('Iniciar Receita');
+    setButtonText('Iniciar Receita');
     const recipesInProgressFrmStrg = localStorage.getItem('in-progress');
     const recipesInProgress = recipesInProgressFrmStrg ? JSON.parse(recipesInProgressFrmStrg) : [];
-    const isCurrentRecipeInProgress = recipesInProgress.find((recipeID) => recipeID === id);
-    if (isCurrentRecipeInProgress) {
+    // const isCurrentRecipeInProgress = recipesInProgress.find((recipeID) => recipeID === id);
+    if (recipesInProgress.find((recipeID) => recipeID === id)) {
       setButtonText('Continuar Receita');
     }
     if (type === 'comidas') {
