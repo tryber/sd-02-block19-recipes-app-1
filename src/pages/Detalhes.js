@@ -58,7 +58,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
   return (
     isFetching ? <div>Carregando...</div> : (
       <div>
-        {fetchResult.map(({
+        {fetchResult && fetchResult.map(({
           strMeal, strDrink, idMeal, idDrink,
           strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
         }) => (
@@ -80,7 +80,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
             <Ingredients />
             <Instructions />
             <RecipeVideo />
-            {isFetching ? <div>Carregando...</div> : <Recomendations recipes={recomendations} />}
+            <Recomendations recipes={recomendations} />
             <section>
               <Link to={`/receitas/emprocesso/${type}/${id}`}>
                 <ReceitaButton
