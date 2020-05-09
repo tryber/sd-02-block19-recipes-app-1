@@ -30,8 +30,8 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
     setButtonText('Iniciar Receita');
     const recipesInProgressFrmStrg = localStorage.getItem('in-progress');
     const recipesInProgress = recipesInProgressFrmStrg ? JSON.parse(recipesInProgressFrmStrg) : [];
-    // const isCurrentRecipeInProgress = recipesInProgress.find((recipeID) => recipeID === id);
-    if (recipesInProgress.find((recipeID) => recipeID === id)) {
+    const isCurrentRecipeInProgress = recipesInProgress.find((recipeID) => recipeID === id);
+    if (isCurrentRecipeInProgress) {
       setButtonText('Continuar Receita');
     }
     if (type === 'comidas') {
@@ -58,7 +58,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
   return (
     isFetching ? <div>Carregando...</div> : (
       <div>
-        {fetchResult && fetchResult.map(({
+        {(fetchResult || []).map(({
           strMeal, strDrink, idMeal, idDrink,
           strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
         }) => (
