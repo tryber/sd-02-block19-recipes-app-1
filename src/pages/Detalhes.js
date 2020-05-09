@@ -58,7 +58,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
   return (
     isFetching ? <div>Carregando...</div> : (
       <div>
-        {(fetchResult || []).map(({
+        {fetchResult.map(({
           strMeal, strDrink, idMeal, idDrink,
           strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
         }) => (
