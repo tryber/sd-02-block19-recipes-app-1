@@ -37,7 +37,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
     if (type === 'comidas') {
       setRecomendationsAPI('thecocktaildb');
       setAPI('themealdb');
-    } else {
+    } if (type === 'bebidas') {
       setRecomendationsAPI('themealdb');
       setAPI('thecocktaildb');
     }
@@ -56,9 +56,9 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
   };
 
   return (
-    isFetching ? <div>Carregando...</div> : (
+    (isFetching || !fetchResult) ? <div>Carregando...</div> : (
       <div>
-        {fetchResult && fetchResult.map(({
+        {fetchResult.map(({
           strMeal, strDrink, idMeal, idDrink,
           strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
         }) => (
