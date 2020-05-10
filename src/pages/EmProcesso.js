@@ -9,6 +9,7 @@ import FavoriteButton from '../components/FavoriteButton';
 import Ingredients from '../components/Ingredients';
 import Instructions from '../components/Instructions';
 import ReceitaButton from '../components/ReceitaButton';
+import useFetchEmProcesso from '../hooks/useFetchEmProcesso';
 import './EmProcesso.css';
 
 const habilitbotao = (fetchResult, checkboxes) => {
@@ -23,6 +24,8 @@ const EmProcesso = ({ match: { url } }) => {
   const {
     setButtonText, fetchResult, checkboxes, setCheckboxes,
   } = useContext(RecipesContext);
+  const title = url.split('/')[url.split('/').length - 1];
+  useFetchEmProcesso(url, title);
   useEffect(() => {
     setButtonText('Finalizar Receita');
     setCheckboxes({});
@@ -36,13 +39,14 @@ const EmProcesso = ({ match: { url } }) => {
   };
 
   return (
-    <article>
-      <RecipeImage />
-      <section className="header-section">
-        <DetailsHeader />
-        <section className="icons-section">
-          <ShareButton url={url} />
-          {fetchResult && (
+    !fetchResult ? <div>Carregando...</div> : (
+      <article>
+        <RecipeImage />
+        <section className="header-section">
+          <DetailsHeader />
+          <section className="icons-section">
+            <ShareButton url={url} />
+            {fetchResult && (
             <FavoriteButton
               recipe={{
                 id: fetchResult[0].idMeal || fetchResult[0].idDrink,
@@ -50,18 +54,21 @@ const EmProcesso = ({ match: { url } }) => {
                 image: fetchResult[0].strMealThumb || fetchResult[0].strDrinkThumb,
               }}
             />
-          )}
+            )}
+          </section>
         </section>
-      </section>
-      <Ingredients useCheckbox />
-      <Instructions />
-      <section>
-        <Link to="/receitas-feitas">
-          <ReceitaButton onClick={setDoneRcps} isDisabled={habilitbotao(fetchResult, checkboxes)} />
-        </Link>
-      </section>
-    </article>
-  );
+        <Ingredients useCheckbox />
+        <Instructions />
+        <section>
+          <Link to="/receitas-feitas">
+            <ReceitaButton
+              onClick={setDoneRcps}
+              isDisabled={habilitbotao(fetchResult, checkboxes)}
+            />
+          </Link>
+        </section>
+      </article>
+    ));
 };
 
 EmProcesso.propTypes = {
