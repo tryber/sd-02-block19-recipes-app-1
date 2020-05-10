@@ -9,7 +9,8 @@ const ReceitaButton = ({ isDisabled = false, onClick, id }) => {
 
   useEffect(() => {
     const doneRecipes = JSON.parse(localStorage.getItem('done-recipes'));
-    const isDone = doneRecipes && doneRecipes.some(({ idDrink }) => idDrink === id);
+    const isDone = doneRecipes
+      && doneRecipes.some(({ idDrink, idMeal }) => (idDrink || idMeal) === id);
     if (isDone) setRecipeIsDone(true);
   }, []);
 
