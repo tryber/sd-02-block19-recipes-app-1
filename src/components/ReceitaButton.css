@@ -11,3 +11,7 @@
   top: 934px;
   width: 339px;
 }
+
+.hidden-button-receita {
+  display: none;
+}
