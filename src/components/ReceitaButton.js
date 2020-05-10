@@ -42,7 +42,7 @@ ReceitaButton.defaultProps = {
 ReceitaButton.propTypes = {
   isDisabled: PropTypes.bool,
   onClick: PropTypes.func,
-  id: PropTypes.number,
+  id: PropTypes.string,
 };
 
 export default ReceitaButton;

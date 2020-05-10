@@ -7,7 +7,7 @@ import './Perfil.css';
 
 function renderPage(userEmail) {
   return (
-    <div>
+    <div className="perfilContainer">
       <div className="user-mail" data-testid="profile-email">
         {userEmail.email}
       </div>
