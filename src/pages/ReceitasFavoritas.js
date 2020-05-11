@@ -12,10 +12,10 @@ function ShowFave() {
 
 const handleClick = (faveRecipes, setFetchResult, value) => {
   if (value === 'mealdb') {
-    const filtered = faveRecipes.filter((item) => item.idMeal);
+    const filtered = faveRecipes.filter((item) => item.isMeal === true);
     setFetchResult(filtered);
   } else if (value === 'cocktaildb') {
-    const filtered = faveRecipes.filter((item) => item.idDrink);
+    const filtered = faveRecipes.filter((item) => item.isMeal === false);
     setFetchResult(filtered);
   } else {
     setFetchResult(faveRecipes);
