@@ -5,8 +5,8 @@ import FavoriteButton from './FavoriteButton';
 import ShareButton from './ShareButton';
 
 const handleClick = (id, type, fetchResult, setFetchResult, history) => {
-  const findId = fetchResult.find((item) => item.idMeal === id || item.idDrink === id);
-  setFetchResult([findId]);
+  const goToRecipe = fetchResult.find((item) => item.idMeal === id || item.idDrink === id);
+  setFetchResult([goToRecipe]);
   history.push(`/receitas/${type}/${id}`);
 };
 
