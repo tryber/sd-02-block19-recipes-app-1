@@ -7,7 +7,7 @@ import './ReceitasFeitas.css';
 
 function ShowDone() {
   const { fetchResult } = useContext(RecipesContext);
-  if (fetchResult === null) return <h2>Nenhuma receita favoritada.</h2>;
+  if (fetchResult === null) return <h2>Nenhuma receita feita.</h2>;
   if (fetchResult.length >= 1) return <DoneList />;
 }
 

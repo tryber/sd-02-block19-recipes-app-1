@@ -61,6 +61,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
         {fetchResult.map(({
           strMeal, strDrink, idMeal, idDrink,
           strCategory, strAlcoholic, strMealThumb, strDrinkThumb,
+          strArea,
         }) => (
           <article className="details-page" key={strMeal || strDrink}>
             <RecipeImage />
@@ -73,6 +74,9 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
                     id: idMeal || idDrink,
                     category: strCategory || strAlcoholic,
                     image: strMealThumb || strDrinkThumb,
+                    area: strArea,
+                    name: strMeal || strDrink,
+                    isMeal: !!idMeal,
                   }}
                 />
               </section>
