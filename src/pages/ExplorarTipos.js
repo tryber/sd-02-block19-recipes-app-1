@@ -13,7 +13,11 @@ const explorarBtn = (btnValue, recipeType, newPath) => {
   }
   return (
     <Link className="ExplorarLink" to={`/explorar/${recipeType}/${newPath}`}>
-      <button className="ExplorarBtn" type="button">
+      <button
+        className="ExplorarBtn"
+        data-testid={newPath === 'area' ? 'explore-by-area' : 'explore-by-ingredient'}
+        type="button"
+      >
         {btnValue}
       </button>
     </Link>
@@ -42,6 +46,7 @@ const randomBtn = (btnValue, setFetchResult, history, API) => (
     <button
       className="ExplorarBtn"
       type="button"
+      data-testid="explore-surprise"
       onClick={() => fetchToRandomDetails(setFetchResult, history, API)}
     >
       {btnValue}
@@ -50,7 +55,6 @@ const randomBtn = (btnValue, setFetchResult, history, API) => (
 );
 
 const ExplorarTipos = ({ match }) => {
-  console.log(match);
   const history = useHistory();
   const title = match.path.split('/')[match.path.split('/').length - 1];
   const {

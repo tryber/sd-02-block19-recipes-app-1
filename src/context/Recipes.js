@@ -51,7 +51,7 @@ const RecipesProvider = ({ children }) => {
 
   const btnCategory = (param, random) => {
     if (param === category) {
-      setFetchResult(null);
+      setFetchResult(random);
       setCategory(null);
     } else if (param === 'All') {
       setCategory(param);
