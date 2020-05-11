@@ -1,9 +1,7 @@
 .faveButtons {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 10px 15px;
-  padding: 10px;
+  justify-content: space-around;
+  margin: 10px 0 0;
   width: 100%;
 }
 

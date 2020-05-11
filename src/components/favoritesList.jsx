@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
 import FavoriteButton from './FavoriteButton';
+import ShareButton from './ShareButton';
 
 const handleClick = (id, type, fetchResult, setFetchResult, history) => {
   const findId = fetchResult.find((item) => item.idMeal === id || item.idDrink === id);
@@ -30,12 +31,15 @@ const mealsJSX = (idMeal, strArea, strCategory, strMeal, tags) => (
   <div className="faveText">
     <div className="faveFlexySides">
       <span className="faveCategory">{`${strArea} - ${strCategory}`}</span>
-      <FavoriteButton url={`/receitas/comidas/${idMeal}`} />
     </div>
     <p className="faveRecipe">{strMeal}</p>
     <p className="faveButtons">
       {tags.map((tag) => <span key={tag} className="faveSearchBtn">{tag}</span>)}
     </p>
+    <div className="buttons-bottom">
+      <FavoriteButton url={`/receitas/comidas/${idMeal}`} />
+      <ShareButton />
+    </div>
   </div>
 );
 
@@ -43,9 +47,12 @@ const drinksJSX = (idDrink, strAlcoholic, strDrink) => (
   <div className="faveText">
     <div className="faveFlexySides">
       <span className="faveCategory">{`${strAlcoholic} Drink`}</span>
-      <FavoriteButton url={`/receitas/bebidas/${idDrink}`} />
     </div>
     <p className="faveRecipe">{strDrink}</p>
+    <div className="buttons-bottom">
+      <FavoriteButton url={`/receitas/bebidas/${idDrink}`} />
+      <ShareButton />
+    </div>
   </div>
 );
 
