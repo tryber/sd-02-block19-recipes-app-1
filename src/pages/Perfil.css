@@ -1,3 +1,7 @@
+.perfilContainer {
+  text-align: center;
+}
+
 .btn-perfil {
   align-items: flex-end;
   font-family: Arial, Helvetica, sans-serif;
