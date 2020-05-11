@@ -21,8 +21,8 @@ const useFetchEmProcesso = (path, id) => {
       setData(value);
       setFetchResult(value);
     };
-    setIsFetching(false);
     getIngredients();
+    setIsFetching(false);
   }, []);
   return [data];
 };

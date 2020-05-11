@@ -12,23 +12,31 @@ import ReceitaButton from '../components/ReceitaButton';
 import useFetchEmProcesso from '../hooks/useFetchEmProcesso';
 import './EmProcesso.css';
 
-const habilitbotao = (fetchResult, checkboxes) => {
+const habilitbotao = (fetchResult, checkboxes = {}) => {
   const ingredients = Object.entries(fetchResult[0]).filter(([key, value]) => value && key.match('strIngredient'));
   const finalIngredients = [...new Set([...ingredients].map((item) => item.pop()))];
-  const valores = Object.values(checkboxes).filter((item) => item === true);
+  console.log(checkboxes);
+  const valores = Object.values(checkboxes).filter((item) => item === true) || [];
   if (finalIngredients.length === valores.length) return false;
   return true;
 };
+
+const updateSetCheckboxes = (setCheckboxes, id) => {
+  const locStor = JSON.parse(localStorage.getItem(id)) || {};
+  setCheckboxes(locStor);
+};
+
 
 const EmProcesso = ({ match: { url } }) => {
   const {
     setButtonText, fetchResult, checkboxes, setCheckboxes,
   } = useContext(RecipesContext);
-  const title = url.split('/')[url.split('/').length - 1];
-  useFetchEmProcesso(url, title);
+  const idRecipe = url.split('/')[url.split('/').length - 1];
+  useFetchEmProcesso(url, idRecipe);
   useEffect(() => {
     setButtonText('Finalizar Receita');
     setCheckboxes({});
+    updateSetCheckboxes(setCheckboxes, idRecipe);
   }, []);
 
   const setDoneRcps = () => {
