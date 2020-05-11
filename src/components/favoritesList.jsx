@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { RecipesContext } from '../context/Recipes';
-import FavoriteButton from '../images/heart2.png';
+import FavoriteButton from './FavoriteButton';
 
 const handleClick = (id, type, fetchResult, setFetchResult, history) => {
   const findId = fetchResult.find((item) => item.idMeal === id || item.idDrink === id);
@@ -26,28 +26,26 @@ const headerJSX = (
   </button>
 );
 
-const mealsJSX = (idMeal, strArea, strCategory, strMeal, cleanDate, tags) => (
+const mealsJSX = (idMeal, strArea, strCategory, strMeal, tags) => (
   <div className="faveText">
     <div className="faveFlexySides">
       <span className="faveCategory">{`${strArea} - ${strCategory}`}</span>
       <FavoriteButton url={`/receitas/comidas/${idMeal}`} />
     </div>
     <p className="faveRecipe">{strMeal}</p>
-    <p className="faveDate">{`Feita em: ${cleanDate}`}</p>
-    <p className="FavoriteButtons">
+    <p className="faveButtons">
       {tags.map((tag) => <span key={tag} className="faveSearchBtn">{tag}</span>)}
     </p>
   </div>
 );
 
-const drinksJSX = (idDrink, strAlcoholic, strDrink, cleanDate) => (
+const drinksJSX = (idDrink, strAlcoholic, strDrink) => (
   <div className="faveText">
     <div className="faveFlexySides">
       <span className="faveCategory">{`${strAlcoholic} Drink`}</span>
       <FavoriteButton url={`/receitas/bebidas/${idDrink}`} />
     </div>
     <p className="faveRecipe">{strDrink}</p>
-    <p className="faveDate">{`Feita em: ${cleanDate}`}</p>
   </div>
 );
 
@@ -56,23 +54,20 @@ const FavoritesList = () => {
   const { fetchResult, setFetchResult } = useContext(RecipesContext);
   const history = useHistory();
   return (fetchResult.map(({
-    idMeal, strMeal, strMealThumb, strArea, strCategory, strTags,
-    idDrink, strDrink, strDrinkThumb, strAlcoholic, faveDate,
+    id, isMeal, category, image, area, name, strTags,
   }) => {
-    const cleanDate = new Date(faveDate).toLocaleDateString();
     let tags = [];
-    const id = idMeal || idDrink;
     let type = 'comidas';
     if (strTags) tags = strTags.split(',');
     if (tags.length > 2) tags.length = 2;
-    if (idDrink) type = 'bebidas';
+    if (id) type = 'bebidas';
     return (
-      <div key={`${strMeal}-${Math.random() * 32}`} className="favoriteContainerRecipe">
+      <div key={`${name}-${Math.random() * 32}`} className="faveContainerRecipe">
         {headerJSX(id, type, fetchResult, setFetchResult,
-          strMealThumb, strDrinkThumb, strMeal, strDrink, history)}
-        {idMeal
-          ? mealsJSX(idMeal, strArea, strCategory, strMeal, cleanDate, tags)
-          : drinksJSX(idDrink, strAlcoholic, strDrink, cleanDate)}
+          image, image, name, name, history)}
+        {isMeal
+          ? mealsJSX(id, area, category, name, tags)
+          : drinksJSX(id, category, name)}
       </div>
     );
   }));

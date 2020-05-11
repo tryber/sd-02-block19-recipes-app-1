@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { RecipesContext } from '../context/Recipes';
 import FavoritesList from '../components/FavoritesList';
 import Header from '../components/Header';
+import './ReceitasFavoritas.css';
 
 function ShowFave() {
   const { fetchResult } = useContext(RecipesContext);
@@ -49,12 +50,12 @@ const ReceitasFavoritas = () => {
   return (
     <article>
       <Header showSearch={false} />
-      <div className="FavoriteButtons">
+      <div className="faveButtons">
         {searchBtn('all', 'All', faveRecipes, setFetchResult)}
         {searchBtn('mealdb', 'Food', faveRecipes, setFetchResult)}
         {searchBtn('cocktaildb', 'Drinks', faveRecipes, setFetchResult)}
       </div>
-      <div className="FavoriteContainerPage">
+      <div className="faveContainerPage">
         {!isFetching && <ShowFave />}
       </div>
     </article>

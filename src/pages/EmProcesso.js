@@ -48,6 +48,9 @@ const EmProcesso = ({ match: { url } }) => {
                 id: fetchResult[0].idMeal || fetchResult[0].idDrink,
                 category: fetchResult[0].strCategory || fetchResult[0].strAlcoholic,
                 image: fetchResult[0].strMealThumb || fetchResult[0].strDrinkThumb,
+                area: fetchResult[0].strArea,
+                name: fetchResult[0].strMeal || fetchResult[0].strDrink,
+                isMeal: !!fetchResult[0].idMeal,
               }}
             />
           )}
