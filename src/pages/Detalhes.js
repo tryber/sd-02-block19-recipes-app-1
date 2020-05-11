@@ -86,7 +86,7 @@ const Detalhes = ({ match: { params: { type, id }, url } }) => {
                 <ReceitaButton
                   onClick={setRecipesInProgress}
                   data-testid="start-recipe-btn"
-                  id={Number.id}
+                  id={Number(id)}
                 />
               </Link>
             </section>
