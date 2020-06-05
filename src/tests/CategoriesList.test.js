@@ -10,14 +10,14 @@ afterEach(cleanup);
 describe('Testa o componente Categories List - Lista de Categorias', () => {
   it('Deve ter botões clicáveis de categorias', () => {
     const history = createMemoryHistory();
-    const { queryByRole } = render(
+    const { queryByText } = render(
       <RecipesProvider>
         <Router history={history}>
           <CategoriesList />
         </Router>
       </RecipesProvider>
     );
-      const categoriesButtons = queryByRole('MainCategoryButton');
+      const categoriesButtons = queryByText('Beef');
       expect(categoriesButtons).toBeInTheDocument();
       expect(categoriesButtons.tagName).toBe('BUTTON');
       expect(categoriesButtons.click).toBeTruthy();
